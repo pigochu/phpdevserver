@@ -1,0 +1,6 @@
+/Apache24/conf/httpd.conf
+/Apache24/logs/httpd.pid
+/Apache24/logs/access.log
+/Apache24/logs/error.log
+/Apache24/logs/install.log
+/phpmyadmin/config.inc.php
