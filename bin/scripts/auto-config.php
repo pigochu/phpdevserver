@@ -74,17 +74,14 @@ echo "OK" . PHP_EOL;
 echo "Configuring Apache24 ... ";
 // copy Apache24 config file
 copyfolder("{$PHPDEVSERVER_PATH}/bin/scripts/templates/Apache24" , "{$PHPDEVSERVER_PATH}/Apache24");
-$conf_file = "{$PHPDEVSERVER_PATH}/Apahe24/conf/httpd.conf";
-
-
-$sample_file = "{$PHPDEVSERVER_PATH}/Apache24/conf/httpd.conf";
-if(!file_exists($conf_file)) {
+$conf_file = "{$PHPDEVSERVER_PATH}/Apache24/conf/httpd.conf";
+if(file_exists($conf_file)) {
 	preg_replace_file(
 		$conf_file ,
 		"/%__PHPDEVSERVER__%/i",
 		cpath($PHPDEVSERVER_PATH)
 	);
-}
+} 
 echo "OK" . PHP_EOL;
 
 // Replace all php fcgid setting
@@ -115,7 +112,7 @@ preg_replace_file(
 );
 echo "OK" . PHP_EOL;
 
-echo "phpMyAdmin URL : http://localhost/phpmyadmin/" . PHP_EOL;
+
 
 
 
