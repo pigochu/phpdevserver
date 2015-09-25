@@ -33,8 +33,8 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - 先不要刪除 phpdevserver 目錄
 - 先反註冊 Apache24 service , 以系統管理員執行 httpd -k uninstall
-- 移除系統變數 PATH 中關於 phpdevserver 的路徑
-- 移除系統變數 PHP_COMMAND
+- 修改系統變數 PATH ，將 %PHPDEVSERVER_PATH% 拿掉
+- 移除系統變數 PHPDEVSERVER_PATH
 - 移除系統變數 PHPDEVSERVER_PHP_VERSION
 - 移除系統變數 PHP_INI_SCAN_DIR
 - 現在可以刪除 phpdevserver 目錄了

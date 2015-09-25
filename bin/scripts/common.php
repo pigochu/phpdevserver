@@ -73,3 +73,24 @@ function confirm($message , $yes = 'y' , $no = 'n' , $ignore_case = true) {
     }
     return true;
 }
+
+
+function config_apache_php_module($PHPDEVSERVER_PATH , $php_version){
+    $conf_file = "{$PHPDEVSERVER_PATH}/Apache24/conf.d/50-php.conf";
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidInitialEnv.*PHPRC.*/i",
+            "FcgidInitialEnv PHPRC " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}") . "\""
+    );
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidInitialEnv.*PHP_INI_SCAN_DIR.*/i",
+            "FcgidInitialEnv PHP_INI_SCAN_DIR " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/conf.apache.d") . "\""
+    );
+
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidWrapper.*/i",
+            "FcgidWrapper " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/php-cgi.exe") . "\"" . " .php"
+    );
+}

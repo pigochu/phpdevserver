@@ -93,23 +93,7 @@ $php_version = @getenv("PHPDEVSERVER_PHP_VERSION");
 if($php_version === "") {
     $php_version = "php56";
 }
-$conf_file = "{$PHPDEVSERVER_PATH}/Apache24/conf.d/50-php.conf";
-preg_replace_file(
-	$conf_file ,
-	"/FcgidInitialEnv.*PHPRC.*/i",
-        "FcgidInitialEnv PHPRC " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}") . "\""
-);
-preg_replace_file(
-	$conf_file ,
-	"/FcgidInitialEnv.*PHP_INI_SCAN_DIR.*/i",
-	"FcgidInitialEnv PHP_INI_SCAN_DIR " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/conf.apache.d") . "\""
-);
-
-preg_replace_file(
-	$conf_file ,
-	"/FcgidWrapper.*/i",
-	"FcgidWrapper " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/php-cgi.exe") . "\"" . " .php"
-);
+config_apache_php_module($PHPDEVSERVER_PATH , $php_version);
 
 echo "OK" . PHP_EOL;
 
@@ -139,7 +123,13 @@ echo "phpMyAdmin URL : http://localhost/phpmyadmin/" . PHP_EOL;
 if(!getenv("PHPDEVSERVER_PHP_VERSION")) {
     putenv("PHPDEVSERVER_PHP_VERSION=php56");
 }
-putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_PATH}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_PATH}\\bash"  .";{$PHPDEVSERVER_PATH}\\Apache24\\bin");
+
+$need_modify_path = false;
+if(getenv("PHPDEVSERVER_PATH") === false) {
+    $need_modify_path = true;
+}
+
+putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_PATH}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_PATH}\\bash"  .";{$PHPDEVSERVER_PATH}\\Apache24\\bin" . ";{$PHPDEVSERVER_PATH}\\bin");
 putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_PATH}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
 
 
@@ -147,7 +137,7 @@ system("setx /M PHPDEVSERVER_PHP_VERSION " .getenv("PHPDEVSERVER_PHP_VERSION"));
 system("setx /M PHPDEVSERVER_PATH " . getenv("PHPDEVSERVER_PATH"));
 system("setx /M PHP_INI_SCAN_DIR " .getenv("PHP_INI_SCAN_DIR"));
 
-if(strpos(getenv("PATH") , "%PHPDEVSERVER_PATH%") === false) {
+if($need_modify_path === true) {
     putenv("PATH=" .getenv("PATH") . ";" . "%PHPDEVSERVER_PATH%");
     system("setx /M PATH \"%PATH%\"");
 }

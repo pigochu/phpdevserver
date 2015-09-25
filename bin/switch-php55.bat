@@ -1,4 +1,5 @@
-REM Switch PHP to PHP 5.7
+@echo off
+REM Switch PHP to PHP 5.5
 
 :: BatchGotAdmin
 :-------------------------------------
@@ -25,3 +26,7 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 :--------------------------------------
 
+CD %~dp0
+php scripts\switch-php-version.php php55
+ECHO Switch to PHP 5.5 success , please restart Apache Server.
+PAUSE
