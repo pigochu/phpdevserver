@@ -1,7 +1,9 @@
 phpdevserver Change Log
 ========================
 
-0.2.0 Under Development
+0.2.0 2015-09-26
+
+- 大幅修改目錄結構是為了將來好升級，若有安裝 0.1.0 的人請重新安裝
 - auto-config.bat 現在可以自動要求 Admin 權限
 - 實作切換 PHP 5.6 及 5.5 機制，當未來有 PHP 7 的 Windows 版出來時才好升級
 - 增加 php 5.5.29 nts 64bit
