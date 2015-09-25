@@ -132,3 +132,24 @@ preg_replace_file(
 echo "OK" . PHP_EOL;
 
 echo "phpMyAdmin URL : http://localhost/phpmyadmin/" . PHP_EOL;
+
+
+
+// SET Env: PHPDEVSERVER_PHP_VERSION
+if(!getenv("PHPDEVSERVER_PHP_VERSION")) {
+    putenv("PHPDEVSERVER_PHP_VERSION=php56");
+}
+putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_PATH}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_PATH}\\bash"  .";{$PHPDEVSERVER_PATH}\\Apache24\\bin");
+putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_PATH}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
+
+
+system("setx /M PHPDEVSERVER_PHP_VERSION " .getenv("PHPDEVSERVER_PHP_VERSION"));
+system("setx /M PHPDEVSERVER_PATH " . getenv("PHPDEVSERVER_PATH"));
+system("setx /M PHP_INI_SCAN_DIR " .getenv("PHP_INI_SCAN_DIR"));
+
+if(strpos(getenv("PATH") , "%PHPDEVSERVER_PATH%") === false) {
+    putenv("PATH=" .getenv("PATH") . ";" . "%PHPDEVSERVER_PATH%");
+    system("setx /M PATH \"%PATH%\"");
+}
+
+echo "Register System Variable ... OK" . PHP_EOL;
