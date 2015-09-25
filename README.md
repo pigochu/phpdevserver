@@ -1,19 +1,18 @@
 phpdevserver
 ============
 
-PHP Dev Server 集成了 Apache 2.4 , PHP 5.6.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
+PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
 
 PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前支援以下功能
 
-- PHP 5.5.x , PHP 5.5.x 可以切換
+- PHP 5.5.x , PHP 5.6.x 可以很簡單切換
 - 所有集成的套件皆沒有重新編譯過，保證純淨
 - 沒有安裝檔，可以放到任何目錄使用然後執行一次 auto-config.bat 就可以完成所有設定
-- PHP 運作於 FASTCGI 模式，穩定
 - Xdebug enabled ， 預設支援 Netbeans IDE
 - zend-opcache enabled in Apache mode , disabled in CLI mode
 - PHP 在 apache mode 和 cli mode 有切開不同的 module 載入
 
-本套件沒有包進 MySQL，一方面是難包，一方面 MySQL 或 MariaDB 自己下載來安裝就可以了，而且更可彈性規劃資料目錄
+本套件沒有包進 MySQL，一方面是難包，一方面 MySQL 或 MariaDB 自己下載來安裝就很簡單了，而且更可彈性規劃資料目錄及使用特殊功能
 
 ## 環境需求 ##
 
@@ -25,7 +24,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 ## 安裝 ##
 
 - 將 phpdevserver 放到任何路徑，例如 C:\phpdevserver
-- 必須以**系統管理員身分**執行 auto-config.bat 會自動設定好所有參數
+- 執行 auto-config.bat 會自動設定好所有參數
 - 請注意 : auto-config.bat 會修改系統變數 PATH 及 PHP_INI_SCAN_DIR，並且會將 Apache 註冊為 Service
 
 
@@ -39,11 +38,22 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 移除系統變數 PHP_INI_SCAN_DIR
 - 現在可以刪除 phpdevserver 目錄了
 
+## 升級 ##
+
+基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
+
+## 切換 PHP 版本 ##
+
+在 phpdevserver/bin 下有 switch-php55.bat 及 switch-php56.bat ，可以用來切換 PHP 5.5 及 PHP 5.6，當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
+
+    php -v
+
+
 ## 特別目錄說明 ##
 
 - phpdevserver/Apache24/conf.d : php fcgid phpmyadmin 等設定都放這
-- phpdevserver/php/conf.apache.d : PHP 在 apache 運作會載入的模組設定都放在這
-- phpdevserver/php/conf.cli.d : PHP 在 CLI 模式載入的模組設定都放在
+- phpdevserver/phpXX/conf.apache.d : PHP 在 apache 運作會載入的模組設定都放在這
+- phpdevserver/phpXX/conf.cli.d : PHP 在 CLI 模式載入的模組設定都放在
 
 ## PHP 已開啟功能 ##
 
@@ -53,6 +63,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - opcache : 64MB enabled in apache , disabled in cli
 - bz2
 - curl
+- imagick
 - mysql + mysqli
 - mbstring
 - openssl
@@ -68,3 +79,5 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)
+- imagick 3.3.0rc2 From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+
