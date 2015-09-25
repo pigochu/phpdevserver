@@ -5,6 +5,7 @@ PHP Dev Server 集成了 Apache 2.4 , PHP 5.6.X , phpMyAdmin , win-Bash , 提供
 
 PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前支援以下功能
 
+- PHP 5.5.x , PHP 5.5.x 可以切換
 - 所有集成的套件皆沒有重新編譯過，保證純淨
 - 沒有安裝檔，可以放到任何目錄使用然後執行一次 auto-config.bat 就可以完成所有設定
 - PHP 運作於 FASTCGI 模式，穩定
@@ -33,6 +34,8 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 先不要刪除 phpdevserver 目錄
 - 先反註冊 Apache24 service , 以系統管理員執行 httpd -k uninstall
 - 移除系統變數 PATH 中關於 phpdevserver 的路徑
+- 移除系統變數 PHP_COMMAND
+- 移除系統變數 PHPDEVSERVER_PHP_VERSION
 - 移除系統變數 PHP_INI_SCAN_DIR
 - 現在可以刪除 phpdevserver 目錄了
 

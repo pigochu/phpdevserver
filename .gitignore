@@ -1,6 +1,12 @@
 /Apache24/conf/httpd.conf
 /Apache24/logs/httpd.pid
-/Apache24/logs/access.log
-/Apache24/logs/error.log
-/Apache24/logs/install.log
+/Apache24/logs/*.log
 /phpmyadmin/config.inc.php
+/nbproject/private/
+/php55/php.ini
+/php56/php.ini
+/php55/conf.apache.d
+/php55/conf.cli.d
+/php56/conf.apache.d
+/php56/conf.cli.d
+/Apache24/conf
