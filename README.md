@@ -51,31 +51,36 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 ## 特別目錄說明 ##
 
-- phpdevserver/Apache24/conf.d : php fcgid phpmyadmin 等設定都放這
+- phpdevserver/Apache24/conf.d : php fcgid phpmyadmin 等設定都放這，建議 virtual host 或 alias 設定寫設定檔於此
 - phpdevserver/phpXX/conf.apache.d : PHP 在 apache 運作會載入的模組設定都放在這
 - phpdevserver/phpXX/conf.cli.d : PHP 在 CLI 模式載入的模組設定都放在
 
-## PHP 已開啟功能 ##
+## PHP 預設已開啟功能 ##
 
 - 模組設定區分 CLI 和 Apache 模式，分別於php路徑中 conf.cli.d 及 conf.apache.d 設定
 - php.ini 預設以 php.ini-development 為主打開所有錯誤訊息方便偵錯
-- php.ini 預設時區 date.timezone = UTF
-- opcache : 64MB enabled in apache , disabled in cli
+- 預設時區 date.timezone = UTF ，請參考 05-timezone.ini
+- opcache : 64MB share memory enabled in apache mode , disabled in CLI mode
 - bz2
 - curl
+- gd2
 - imagick
 - mysql + mysqli
 - mbstring
 - openssl
 - pdo_mysql + pdo_sqlite
+- sockets
+- xdebug
+- 其他模組請參見 phpXX/ext 下的 dll，可自行新增 ini 於 conf.cli.d 或 conf.apache.d
 
-建議若要修改任何模組載入，請不要修改 php.ini，日後升級時會蓋掉 php.ini
+若要修改任何模組載入，請盡量不要修改 php.ini，建議自行新增或修改 ini 於 PHPXX 中的 conf.apache.d 及 conf.cli.d
 
 ## 集成套件來源說明 ##
 
 - Apache 2.4.16 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - PHP 5.6.13 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.5.29 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)
