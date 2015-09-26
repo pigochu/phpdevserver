@@ -1,32 +1,32 @@
 <?php
 require(dirname(__FILE__) . "/common.php");
-$PHPDEVSERVER_PATH = dirname(dirname(dirname(__FILE__)));
+$PHPDEVSERVER_HOME = dirname(dirname(dirname(__FILE__)));
 
 echo "** Auto Config phpdevserver **" . PHP_EOL . PHP_EOL;
 // copy all template config file
 echo "Configuring PHP default settings ... ";
 // copy php55 php.ini
-if(false === file_exists("{$PHPDEVSERVER_PATH}/php55/php.ini")) {
-    copy("{$PHPDEVSERVER_PATH}/php55/php.ini-development" ,"{$PHPDEVSERVER_PATH}/php55/php.ini" );
+if(false === file_exists("{$PHPDEVSERVER_HOME}/php55/php.ini")) {
+    copy("{$PHPDEVSERVER_HOME}/php55/php.ini-development" ,"{$PHPDEVSERVER_HOME}/php55/php.ini" );
 }
 // copy php55 config file
-copyfolder("{$PHPDEVSERVER_PATH}/bin/scripts/templates/php55" , "{$PHPDEVSERVER_PATH}/php55");
+copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php55" , "{$PHPDEVSERVER_HOME}/php55");
 
 // copy php56 php.ini
-if(false === file_exists("{$PHPDEVSERVER_PATH}/php56/php.ini")) {
-    copy("{$PHPDEVSERVER_PATH}/php56/php.ini-development" ,"{$PHPDEVSERVER_PATH}/php56/php.ini" );
+if(false === file_exists("{$PHPDEVSERVER_HOME}/php56/php.ini")) {
+    copy("{$PHPDEVSERVER_HOME}/php56/php.ini-development" ,"{$PHPDEVSERVER_HOME}/php56/php.ini" );
 }
 // copy php56 config file
 // copy php55 config file
-copyfolder("{$PHPDEVSERVER_PATH}/bin/scripts/templates/php56" , "{$PHPDEVSERVER_PATH}/php56");
+copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php56" , "{$PHPDEVSERVER_HOME}/php56");
 
 // replace zend-opecache path
 echo "Configuring PHP zend-opcache module ... ";
 $ini_file = array(
-	"{$PHPDEVSERVER_PATH}/php55/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_PATH}/php55/ext/php_opcache.dll" ,
-	"{$PHPDEVSERVER_PATH}/php56/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_PATH}/php56/ext/php_opcache.dll" ,
-	"{$PHPDEVSERVER_PATH}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_PATH}/php56/ext/php_xdebug.dll" ,
-	"{$PHPDEVSERVER_PATH}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_PATH}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php55/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php55/ext/php_opcache.dll" ,
+	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_opcache.dll" ,
+	"{$PHPDEVSERVER_HOME}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
 );
         
 foreach($ini_file as $k => $v) {
@@ -41,10 +41,10 @@ echo "OK" . PHP_EOL;
 // replace xdebug path
 echo "Configuring PHP xdebug module ... ";
 $ini_file = array(
-	"{$PHPDEVSERVER_PATH}/php55/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_PATH}/php55/ext/php_xdebug.dll" ,
-	"{$PHPDEVSERVER_PATH}/php55/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_PATH}/php55/ext/php_xdebug.dll" ,
-	"{$PHPDEVSERVER_PATH}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_PATH}/php56/ext/php_xdebug.dll" ,
-	"{$PHPDEVSERVER_PATH}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_PATH}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php55/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php55/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php55/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php55/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
 );
 foreach($ini_file as $k => $v) {
 	preg_replace_file(
@@ -57,8 +57,8 @@ echo "OK" . PHP_EOL;
 
 // copy phpMyAdmin config.sample.php to config.php
 echo "Configuring phpMyAdmin ... ";
-$conf_file = "{$PHPDEVSERVER_PATH}/phpmyadmin/config.inc.php";
-$sample_file = "{$PHPDEVSERVER_PATH}/phpmyadmin/config.sample.inc.php";
+$conf_file = "{$PHPDEVSERVER_HOME}/phpmyadmin/config.inc.php";
+$sample_file = "{$PHPDEVSERVER_HOME}/phpmyadmin/config.sample.inc.php";
 if(!file_exists($conf_file)) {
 	copy($sample_file , $conf_file);
 	preg_replace_file(
@@ -73,13 +73,13 @@ echo "OK" . PHP_EOL;
 
 echo "Configuring Apache24 ... ";
 // copy Apache24 config file
-copyfolder("{$PHPDEVSERVER_PATH}/bin/scripts/templates/Apache24" , "{$PHPDEVSERVER_PATH}/Apache24");
-$conf_file = "{$PHPDEVSERVER_PATH}/Apache24/conf/httpd.conf";
+copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/Apache24" , "{$PHPDEVSERVER_HOME}/Apache24");
+$conf_file = "{$PHPDEVSERVER_HOME}/Apache24/conf/httpd.conf";
 if(file_exists($conf_file)) {
 	preg_replace_file(
 		$conf_file ,
 		"/%__PHPDEVSERVER__%/i",
-		cpath($PHPDEVSERVER_PATH)
+		cpath($PHPDEVSERVER_HOME)
 	);
 } 
 echo "OK" . PHP_EOL;
@@ -90,25 +90,25 @@ $php_version = @getenv("PHPDEVSERVER_PHP_VERSION");
 if($php_version === "") {
     $php_version = "php56";
 }
-config_apache_php_module($PHPDEVSERVER_PATH , $php_version);
+config_apache_php_module($PHPDEVSERVER_HOME , $php_version);
 
 echo "OK" . PHP_EOL;
 
 
 echo "Configuring phpMyAdmin as Apache alias path ... ";
-$conf_file = "{$PHPDEVSERVER_PATH}/Apache24/conf.d/51-phpmyadmin.conf";
+$conf_file = "{$PHPDEVSERVER_HOME}/Apache24/conf.d/51-phpmyadmin.conf";
 
 preg_replace_file(
 	$conf_file ,
 	"/Alias.*\\/phpmyadmin.*/",
-	"Alias /phpmyadmin " . "\"" . cpath("{$PHPDEVSERVER_PATH}/phpmyadmin") . "\""
+	"Alias /phpmyadmin " . "\"" . cpath("{$PHPDEVSERVER_HOME}/phpmyadmin") . "\""
 );
 
 
 preg_replace_file(
 	$conf_file ,
 	"/<Directory \\\".*\\\">/i",
-	"<Directory \"" . cpath("{$PHPDEVSERVER_PATH}/phpmyadmin") . "\">"
+	"<Directory \"" . cpath("{$PHPDEVSERVER_HOME}/phpmyadmin") . "\">"
 );
 echo "OK" . PHP_EOL;
 
@@ -126,8 +126,8 @@ if(getenv("PHPDEVSERVER_PATH") === false) {
     $need_modify_path = true;
 }
 
-putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_PATH}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_PATH}\\bash"  .";{$PHPDEVSERVER_PATH}\\Apache24\\bin" . ";{$PHPDEVSERVER_PATH}\\bin");
-putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_PATH}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
+putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_HOME}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_HOME}\\bash"  .";{$PHPDEVSERVER_HOME}\\Apache24\\bin" . ";{$PHPDEVSERVER_HOME}\\bin");
+putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_HOME}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
 
 
 system("setx /M PHPDEVSERVER_PHP_VERSION " .getenv("PHPDEVSERVER_PHP_VERSION"));
@@ -140,3 +140,13 @@ if($need_modify_path === true) {
 }
 
 echo "Register System Variable ... OK" . PHP_EOL;
+
+$startup_path = getenv("ProgramData") . "\\Microsoft\\Windows\\Start Menu\\Programs\\StartUp" ;
+$apachemon_path = "{$PHPDEVSERVER_HOME}\\Apache24\\bin\\ApacheMonitor.exe";
+if(file_exists($startup_path)) {
+    // Make ApacheMonitor Link to StartUp
+    system("MKLINK \"{$startup_path}\\ApacheMonitor\"  \"$apachemon_path\" ");
+    // echo "MKLINK \"$apachemon_path\"  \"{$startup_path}\\ApacheMonitor\"";
+    echo "Make ApacheMonitor link to Boot StartUp ... OK" . PHP_EOL;
+}
+
