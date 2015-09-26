@@ -1,9 +1,10 @@
 phpdevserver Change Log
 ========================
 
-0.2.1 Under Development
+0.2.1 2015-09-26
 -----------------------
 
+- auto-config.bat 會自動將 ApacheMonitor 建立 StartUp 連結於開機時啟動
 - 預設載入 php_sockets.dll
 
 0.2.0 2015-09-26
