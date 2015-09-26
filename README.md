@@ -25,7 +25,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - 將 phpdevserver 放到任何路徑，例如 C:\phpdevserver
 - 執行 auto-config.bat 會自動設定好所有參數
-- 請注意 : auto-config.bat 會修改系統變數 PATH 及 PHP_INI_SCAN_DIR，並且會將 Apache 註冊為 Service
+- 請注意 : auto-config.bat 會修改系統變數 PATH 及 PHP\_INI\_SCAN\_DIR，並且會將 Apache 註冊為 Service
 
 
 ## 反安裝 ##
@@ -34,8 +34,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 先反註冊 Apache24 service , 以系統管理員執行 httpd -k uninstall
 - 修改系統變數 PATH ，將 %PHPDEVSERVER_PATH% 拿掉
 - 移除系統變數 PHPDEVSERVER_PATH
-- 移除系統變數 PHPDEVSERVER_PHP_VERSION
-- 移除系統變數 PHP_INI_SCAN_DIR
+- 移除系統變數 PHPDEVSERVER\_PHP\_VERSION
+- 移除系統變數 PHP\_INI\_SCAN_DIR
+- 移除 ApacheMonitor 連結於 StartUP(以 Win10 為例可能會在 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp[啟動])
 - 現在可以刪除 phpdevserver 目錄了
 
 ## 升級 ##
