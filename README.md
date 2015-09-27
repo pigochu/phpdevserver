@@ -85,5 +85,5 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)
-- imagick 3.3.0rc2 From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
-
+- imagick 3.3.0rc2 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+- composer : From [getcomposer.org](https://getcomposer.org )
