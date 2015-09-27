@@ -26,7 +26,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 將 phpdevserver 放到任何路徑，例如 C:\phpdevserver
 - 執行 auto-config.bat 會自動設定好所有參數
 - 請注意 : auto-config.bat 會修改系統變數 PATH 及 PHP\_INI\_SCAN\_DIR，並且會將 Apache 註冊為 Service
-
+- 安裝完成後可以發現 Windows 右下角可以找到 ApacheMonitor 看看是否有變綠色代表 Apache 有成功運作
+- 預設的 URL : http://localhost
+- phpMyAdmin URL : http://localhost/phpmyadmin/
 
 ## 反安裝 ##
 
