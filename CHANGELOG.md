@@ -6,6 +6,7 @@ phpdevserver Change Log
 
 - 加入完整 ImageMagick 檔案，可以直接執行 convert 進行轉檔
 - 修復 php imagick support format no value
+- 修復 session 預設儲存於 C:\Windows 的問題，現在會存於環境變數所指定的位置，如 C:\Windows\Temp
 
 
 0.2.2 2015-09-27
