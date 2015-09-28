@@ -87,7 +87,25 @@ function config_apache_php_module($PHPDEVSERVER_PATH , $php_version){
             "/FcgidInitialEnv.*PHP_INI_SCAN_DIR.*/i",
             "FcgidInitialEnv PHP_INI_SCAN_DIR " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/conf.apache.d") . "\""
     );
+            
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidInitialEnv.*MAGICK_HOME.*/i",
+            "FcgidInitialEnv MAGICK_HOME " . "\"" . cpath("{$PHPDEVSERVER_PATH}/ImageMagick") . "\""
+    );
 
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidInitialEnv\\s+TEMP .*/i",
+            "FcgidInitialEnv TEMP " . "\"" . cpath(getenv("SystemRoot") . "\Temp") . "\""
+    );
+    
+    preg_replace_file(
+            $conf_file ,
+            "/FcgidInitialEnv\\s+TMP .*/i",
+            "FcgidInitialEnv TMP " . "\"" . cpath(getenv("SystemRoot") . "\Temp") . "\""
+    );
+            
     preg_replace_file(
             $conf_file ,
             "/FcgidWrapper.*/i",
