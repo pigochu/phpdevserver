@@ -35,7 +35,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
 
-- 0.2.2 之前的版本升級必須刪除 phpdevserver/conf.d/50-php.conf，再執行一次 auto-config.bat 重新設定即可
+- 0.2.3 之前的版本升級必須刪除 phpdevserver/conf.d/50-php.conf，再執行一次 auto-config.bat 重新設定即可
 
 
 ## 切換 PHP 版本 ##
