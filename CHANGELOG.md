@@ -1,6 +1,13 @@
 phpdevserver Change Log
 ========================
 
+0.2.3 2015-09-28
+------------------------
+
+- 加入完整 ImageMagick 檔案，可以直接執行 convert 進行轉檔
+- 修復 php imagick support format no value
+
+
 0.2.2 2015-09-27
 ------------------------
 

@@ -11,6 +11,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - Xdebug enabled ， 預設支援 Netbeans IDE
 - zend-opcache enabled in Apache mode , disabled in CLI mode
 - PHP 在 apache mode 和 cli mode 有切開不同的 module 載入
+- php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
 
 本套件沒有包進 MySQL，一方面是難包，一方面 MySQL 或 MariaDB 自己下載來安裝就很簡單了，而且更可彈性規劃資料目錄及使用特殊功能
 
@@ -30,6 +31,19 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 預設的 URL : http://localhost
 - phpMyAdmin URL : http://localhost/phpmyadmin/
 
+## 升級 ##
+
+基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
+
+
+## 切換 PHP 版本 ##
+
+在 phpdevserver/bin 下有 switch-php55.bat 及 switch-php56.bat ，可以用來切換 PHP 5.5 及 PHP 5.6，當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
+
+    php -v
+
+
+
 ## 反安裝 ##
 
 - 先不要刪除 phpdevserver 目錄
@@ -38,18 +52,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 移除系統變數 PHPDEVSERVER_PATH
 - 移除系統變數 PHPDEVSERVER\_PHP\_VERSION
 - 移除系統變數 PHP\_INI\_SCAN_DIR
+- 移除系統變數 MAGICK\_HOME
 - 移除 ApacheMonitor 連結於 StartUP(以 Win10 為例可能會在 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp[啟動])
 - 現在可以刪除 phpdevserver 目錄了
-
-## 升級 ##
-
-基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
-
-## 切換 PHP 版本 ##
-
-在 phpdevserver/bin 下有 switch-php55.bat 及 switch-php56.bat ，可以用來切換 PHP 5.5 及 PHP 5.6，當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
-
-    php -v
 
 
 ## 特別目錄說明 ##

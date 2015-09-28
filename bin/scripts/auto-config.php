@@ -126,13 +126,20 @@ if(getenv("PHPDEVSERVER_PATH") === false) {
     $need_modify_path = true;
 }
 
-putenv("PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_HOME}\\".getenv("PHPDEVSERVER_PHP_VERSION") . ";{$PHPDEVSERVER_HOME}\\bash"  .";{$PHPDEVSERVER_HOME}\\Apache24\\bin" . ";{$PHPDEVSERVER_HOME}\\bin");
+putenv(
+    "PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_HOME}\\".getenv("PHPDEVSERVER_PHP_VERSION")
+    . ";{$PHPDEVSERVER_HOME}\\bash"
+    . ";{$PHPDEVSERVER_HOME}\\Apache24\\bin"
+    . ";{$PHPDEVSERVER_HOME}\\bin"
+    . ";{$PHPDEVSERVER_HOME}\\ImageMagick"
+);
 putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_HOME}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
-
+putenv("MAGICK_HOME={$PHPDEVSERVER_HOME}\\ImageMagick");
 
 system("setx /M PHPDEVSERVER_PHP_VERSION " .getenv("PHPDEVSERVER_PHP_VERSION"));
-system("setx /M PHPDEVSERVER_PATH " . getenv("PHPDEVSERVER_PATH"));
-system("setx /M PHP_INI_SCAN_DIR " .getenv("PHP_INI_SCAN_DIR"));
+system("setx /M PHPDEVSERVER_PATH \"" . getenv("PHPDEVSERVER_PATH")) . "\"";
+system("setx /M PHP_INI_SCAN_DIR \"" .getenv("PHP_INI_SCAN_DIR")) . "\"";
+system("setx /M MAGICK_HOME \"" .getenv("MAGICK_HOME")) ."\"";
 
 if($need_modify_path === true) {
     putenv("PATH=" .getenv("PATH") . ";" . "%PHPDEVSERVER_PATH%");
