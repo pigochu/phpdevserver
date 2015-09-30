@@ -105,10 +105,10 @@ function config_apache_php_module($PHPDEVSERVER_PATH , $php_version){
             "/FcgidInitialEnv\\s+TMP .*/i",
             "FcgidInitialEnv TMP " . "\"" . cpath(getenv("SystemRoot") . "\Temp") . "\""
     );
-            
+	
     preg_replace_file(
             $conf_file ,
-            "/FcgidWrapper.*/i",
+            "/FcgidWrapper\\s+.*\\s+\\.php/i",
             "FcgidWrapper " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/php-cgi.exe") . "\"" . " .php"
     );
 }

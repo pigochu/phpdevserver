@@ -87,7 +87,7 @@ echo "OK" . PHP_EOL;
 // Replace all php fcgid setting
 echo "Configuring PHP as Apache fcgid module ... ";
 $php_version = @getenv("PHPDEVSERVER_PHP_VERSION");
-if($php_version === "") {
+if(!$php_version) {
     $php_version = "php56";
 }
 config_apache_php_module($PHPDEVSERVER_HOME , $php_version);
