@@ -122,6 +122,7 @@ if(!$ORIG_PATH) {
         $ORIG_PATH = "";
     }
 }
+
 // CHECK IF NEED Modify PATH
 $paths = explode(";" , $ORIG_PATH);
 $need_modify_path = true;
@@ -162,7 +163,9 @@ system("setx /M MAGICK_HOME \"" .getenv("MAGICK_HOME")) ."\"";
 
 if($need_modify_path === true) {
     putenv("PATH=" .getenv("PATH") . ";" . "%PHPDEVSERVER_PATH%");
-    system("setx /M PATH \"{$ORIG_PATH};%PHPDEVSERVER_PATH%\"");
+    system( escapeshellcmd ( "setx /M PATH \"{$ORIG_PATH};%PHPDEVSERVER_PATH%\"") );
+    
+    echo str_replace("%" , "%%" , "setx /M PATH \"{$ORIG_PATH};%PHPDEVSERVER_PATH%\"");
     // $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path' , $ORIG_PATH.";%PHPDEVSERVER_PATH%" , "REG_EXPAND_SZ");
 }
 
