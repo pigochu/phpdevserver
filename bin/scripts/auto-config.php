@@ -114,6 +114,25 @@ echo "OK" . PHP_EOL;
 
 
 
+$registry = new Registry();
+$ORIG_PATH = $registry->read('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path');
+if(!$ORIG_PATH) {
+    $ORIG_PATH = getenv("PATH");
+    if(!$ORIG_PATH) {
+        $ORIG_PATH = "";
+    }
+}
+// CHECK IF NEED Modify PATH
+$paths = explode(";" , $ORIG_PATH);
+$need_modify_path = true;
+foreach($paths as $p) {
+    if(strpos($p , '%PHPDEVSERVER_PATH%') !== false) {
+        $need_modify_path = false;
+        break;
+    }
+}
+
+
 
 
 // SET Env: PHPDEVSERVER_PHP_VERSION
@@ -121,10 +140,6 @@ if(!getenv("PHPDEVSERVER_PHP_VERSION")) {
     putenv("PHPDEVSERVER_PHP_VERSION=php56");
 }
 
-$need_modify_path = false;
-if(getenv("PHPDEVSERVER_PATH") === false) {
-    $need_modify_path = true;
-}
 
 putenv(
     "PHPDEVSERVER_PATH=" ."{$PHPDEVSERVER_HOME}\\".getenv("PHPDEVSERVER_PHP_VERSION")
@@ -136,6 +151,10 @@ putenv(
 putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_HOME}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
 putenv("MAGICK_HOME={$PHPDEVSERVER_HOME}\\ImageMagick");
 
+// $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PHPDEVSERVER_PHP_VERSION' , getenv("PHPDEVSERVER_PHP_VERSION") , "REG_SZ");
+// $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PHPDEVSERVER_PATH' , getenv("PHPDEVSERVER_PATH") , "REG_EXPAND_SZ");
+// $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PHP_INI_SCAN_DIR' , getenv("PHP_INI_SCAN_DIR") , "REG_SZ");
+// $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\MAGICK_HOME' , getenv("MAGICK_HOME") , "REG_SZ");
 system("setx /M PHPDEVSERVER_PHP_VERSION " .getenv("PHPDEVSERVER_PHP_VERSION"));
 system("setx /M PHPDEVSERVER_PATH \"" . getenv("PHPDEVSERVER_PATH")) . "\"";
 system("setx /M PHP_INI_SCAN_DIR \"" .getenv("PHP_INI_SCAN_DIR")) . "\"";
@@ -143,7 +162,8 @@ system("setx /M MAGICK_HOME \"" .getenv("MAGICK_HOME")) ."\"";
 
 if($need_modify_path === true) {
     putenv("PATH=" .getenv("PATH") . ";" . "%PHPDEVSERVER_PATH%");
-    system("setx /M PATH \"%PATH%\"");
+    system("setx /M PATH \"{$ORIG_PATH};%PHPDEVSERVER_PATH%\"");
+    // $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\Path' , $ORIG_PATH.";%PHPDEVSERVER_PATH%" , "REG_EXPAND_SZ");
 }
 
 echo "Register System Variable ... OK" . PHP_EOL;

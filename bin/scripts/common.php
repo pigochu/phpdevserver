@@ -112,3 +112,45 @@ function config_apache_php_module($PHPDEVSERVER_PATH , $php_version){
             "FcgidWrapper " . "\"" . cpath("{$PHPDEVSERVER_PATH}/{$php_version}/php-cgi.exe") . "\"" . " .php"
     );
 }
+
+
+class Registry {
+    /**
+     * @var COM
+     */
+    private $shell;
+    
+    public function __construct() {
+        $this->shell = new COM('WScript.Shell');
+    }
+    
+    public function read($key) {
+        return $this->shell->regRead($key);
+    }
+    
+    public function write($key , $value , $type="REG_EXPAND_SZ") {
+        try{
+            $result = $this->shell->RegWrite($key , $value , $type);
+            return($result);
+        }
+        catch(Exception $e){
+            echo "Write Registry Key : {$key} error." .PHP_EOL;
+            echo "Exception Code " . $e->getCode() . PHP_EOL;
+            echo "Exception Message : " .$e->getMessage() . PHP_EOL;
+        }
+        return false;
+    }
+    
+    public function delete($key) {
+        try{
+            $result = $this->shell->RegDelete($registry);
+            return($result);
+        }
+        catch(Exception $e){
+            echo "Delete Registry Key : {$key} error." .PHP_EOL;
+            echo "Exception Code " . $e->getCode() . PHP_EOL;
+            echo "Exception Message : " .$e->getMessage() . PHP_EOL;
+        }
+        return false;
+    }
+}
