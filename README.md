@@ -91,7 +91,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - Apache 2.4.16 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
-- PHP 5.6.13 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.14 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.29 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
