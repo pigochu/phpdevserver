@@ -31,6 +31,8 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 預設的 URL : http://localhost
 - phpMyAdmin URL : http://localhost/phpmyadmin/
 
+> 如果無法正常啟動 Apache 必須檢查一下是否 80port 被占用，如 skype 預設也會用 80 port ，解決辦法是把 skype 的 80 port 關掉，或修改 Apache 的 80port 為其他 port
+
 ## 升級 ##
 
 基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
