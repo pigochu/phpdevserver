@@ -1,5 +1,5 @@
-phpdevserver
-============
+phpdevserver 0.3.0
+==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
 
@@ -12,6 +12,12 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - zend-opcache enabled in Apache mode , disabled in CLI mode
 - PHP 在 apache mode 和 cli mode 有切開不同的 module 載入
 - php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
+- PHP 7.0 版本為 RC5 , 本套件正在測試中 , 目前狀況如下
+  - php_mysql 正式被移除了，所以不會支援 mysql function，僅能使用 mysqli or PDO
+  - imagick 目前不支援 , 待官方正式編譯好後才會支援
+  - xdebug 目前不支援 , 待官方正式編譯好後才會支援
+- 本套件集成的 Apache 2.4.17 初次內建支援 HTTP/2 模組，預設是關閉，未測試能否運作
+
 
 本套件沒有包進 MySQL，一方面是難包，一方面 MySQL 或 MariaDB 自己下載來安裝就很簡單了，而且更可彈性規劃資料目錄及使用特殊功能
 
@@ -33,14 +39,29 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 ## 升級 ##
 
-基本上可以下載最新版來覆蓋掉原始目錄，當然最好的做法是用 git 來更新，然後重新 RUN 一次 auto-config.bat
+請依照以下步驟升級
+
+- 先不要用 git 或覆蓋目錄的方式取代 phpdevserver
+- 停止 Apache 服務
+- 將 ApacheMonitor 退出
+- 現在可以用 git 更新整個 phpdevserver 或直接下載回來取代
+- 重新執行 auto-config.bat 就會自動升級並設定
+- 重啟 Apache Service
+
+有安裝 0.2.3 之前版本要升級的請注意 :
 
 - 0.2.3 之前的版本升級必須刪除 phpdevserver/conf.d/50-php.conf，再執行一次 auto-config.bat 重新設定即可
 
 
 ## 切換 PHP 版本 ##
 
-在 phpdevserver/bin 下有 switch-php55.bat 及 switch-php56.bat ，可以用來切換 PHP 5.5 及 PHP 5.6，當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
+在 phpdevserver/bin 下有以下批次檔，可以用來切換 php 版本，也會一併修改 Apache 設定
+
+- switch-php55.bat
+- switch-php56.bat
+- switch-php70.bat
+
+當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
 
     php -v
 
@@ -75,7 +96,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - curl
 - gd2
 - imagick
-- mysql + mysqli
+- mysql + mysqli (注意 : PHP7.0 正式移除 mysql extension)
 - mbstring
 - openssl
 - pdo_mysql + pdo_sqlite
@@ -87,13 +108,13 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 ## 集成套件來源說明 ##
 
-- Apache 2.4.16 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
+- Apache 2.4.17 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
-- PHP 5.6.13 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 5.5.29 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.14 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.5.30 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.0 RC5 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- phpMyAdmin 4.5.0.2 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)
 - imagick 3.3.0rc2 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )
