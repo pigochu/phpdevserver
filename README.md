@@ -1,11 +1,11 @@
 phpdevserver
 ============
 
-PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
+PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
 
 PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前支援以下功能
 
-- PHP 5.5.x , PHP 5.6.x 可以很簡單切換
+- PHP 版本可以很簡單切換
 - 所有集成的套件皆沒有重新編譯過，保證純淨
 - 沒有安裝檔，可以放到任何目錄使用然後執行一次 auto-config.bat 就可以完成所有設定
 - Xdebug enabled ， 預設支援 Netbeans IDE
@@ -91,6 +91,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - PHP 5.6.13 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.29 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.0 RC5 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.4.15 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)

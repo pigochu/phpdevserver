@@ -9,6 +9,8 @@
 /php55/conf.cli.d
 /php56/conf.apache.d
 /php56/conf.cli.d
+/php70/conf.apache.d
+/php70/conf.cli.d
 /Apache24/conf/*.*
 /Apache24/conf.d
 /Apache24/conf/magic

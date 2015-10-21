@@ -12,21 +12,27 @@ if(false === file_exists("{$PHPDEVSERVER_HOME}/php55/php.ini")) {
 // copy php55 config file
 copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php55" , "{$PHPDEVSERVER_HOME}/php55");
 
+
 // copy php56 php.ini
 if(false === file_exists("{$PHPDEVSERVER_HOME}/php56/php.ini")) {
     copy("{$PHPDEVSERVER_HOME}/php56/php.ini-development" ,"{$PHPDEVSERVER_HOME}/php56/php.ini" );
 }
 // copy php56 config file
-// copy php55 config file
 copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php56" , "{$PHPDEVSERVER_HOME}/php56");
+
+// copy php70 php.ini
+if(false === file_exists("{$PHPDEVSERVER_HOME}/php70/php.ini")) {
+    copy("{$PHPDEVSERVER_HOME}/php70/php.ini-development" ,"{$PHPDEVSERVER_HOME}/php70/php.ini" );
+}
+// copy php70 config file
+copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php70" , "{$PHPDEVSERVER_HOME}/php70");
 
 // replace zend-opecache path
 echo "Configuring PHP zend-opcache module ... ";
 $ini_file = array(
 	"{$PHPDEVSERVER_HOME}/php55/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php55/ext/php_opcache.dll" ,
 	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_opcache.dll" ,
-	"{$PHPDEVSERVER_HOME}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
-	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php70/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php70/ext/php_opcache.dll" ,
 );
         
 foreach($ini_file as $k => $v) {
@@ -45,6 +51,8 @@ $ini_file = array(
 	"{$PHPDEVSERVER_HOME}/php55/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php55/ext/php_xdebug.dll" ,
 	"{$PHPDEVSERVER_HOME}/php56/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
 	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php70/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php70/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php70/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php70/ext/php_xdebug.dll" ,
 );
 foreach($ini_file as $k => $v) {
 	preg_replace_file(
