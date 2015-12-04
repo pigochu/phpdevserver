@@ -1977,23 +1977,19 @@ function bindCodeMirrorToInlineEditor() {
             codemirror_inline_editor.refresh();
             codemirror_inline_editor.focus();
             $(codemirror_inline_editor.getWrapperElement())
-                .bind('keydown', catchKeypressesFromSqlTextboxes);
+                .bind('keydown', catchKeypressesFromSqlInlineEdit);
         } else {
             $inline_editor
                 .focus()
-                .bind('keydown', catchKeypressesFromSqlTextboxes);
+                .bind('keydown', catchKeypressesFromSqlInlineEdit);
         }
     }
 }
 
-function catchKeypressesFromSqlTextboxes(event) {
+function catchKeypressesFromSqlInlineEdit(event) {
     // ctrl-enter is 10 in chrome and ie, but 13 in ff
     if (event.ctrlKey && (event.keyCode == 13 || event.keyCode == 10)) {
-        if ($('#sql_query_edit').length > 0) {
-            $("#sql_query_edit_save").trigger('click');
-        } else if ($('#sqlquery').length > 0) {
-            $("#button_submit_query").trigger('click');
-        }
+        $("#sql_query_edit_save").trigger('click');
     }
 }
 
@@ -2671,7 +2667,7 @@ jQuery.fn.PMA_confirm = function (question, url, callbackFn, openCallback) {
         }
     ];
 
-    $('<div/>', {'id': 'confirm_dialog'})
+    $('<div/>', {'id': 'confirm_dialog', 'title': PMA_messages.strConfirm})
     .prepend(question)
     .dialog({
         buttons: button_options,
@@ -2837,7 +2833,7 @@ AJAX.registerOnload('functions.js', function () {
                         // Redirect to table structure page on creation of new table
                         var params_12 = 'ajax_request=true&ajax_page_request=true';
                         if (! (history && history.pushState)) {
-                            params_12 += PMA_Microhistory.menus.getRequestParam();
+                            params_12 += PMA_MicroHistory.menus.getRequestParam();
                         }
                         tblStruct_url = 'tbl_structure.php?server=' + data._params.server +
                             '&db='+ data._params.db + '&token=' + data._params.token +
@@ -3971,7 +3967,7 @@ AJAX.registerOnload('functions.js', function () {
      * Load version information asynchronously.
      */
     if ($('li.jsversioncheck').length > 0) {
-        $.getJSON('version_check.php', {}, PMA_current_version);
+        $.getJSON('version_check.php', {'server' : PMA_commonParams.get('server')}, PMA_current_version);
     }
 
     if ($('#is_git_revision').length > 0) {
@@ -4196,13 +4192,10 @@ AJAX.registerOnload('functions.js', function () {
         if (typeof CodeMirror != 'undefined') {
             codemirror_editor = PMA_getSQLEditor($elm);
             codemirror_editor.focus();
-            $(codemirror_editor.getWrapperElement())
-                .bind('keydown', catchKeypressesFromSqlTextboxes);
             codemirror_editor.on("blur", updateQueryParameters);
         } else {
             // without codemirror
             $elm.focus()
-                .bind('keydown', catchKeypressesFromSqlTextboxes)
                 .bind('blur', updateQueryParameters);
         }
     }
@@ -4766,7 +4759,7 @@ AJAX.registerOnload('functions.js', function(){
      * method is selected
      * Used in user_password.php (Change Password link on index.php)
      */
-    $(document).on("change", 'input[type=radio][name="pw_hash"]', function() {
+    $(document).on("change", 'select#select_authentication_plugin_cp', function() {
         if (this.value === 'sha256_password') {
             $('#ssl_reqd_warning_cp').show();
         } else {

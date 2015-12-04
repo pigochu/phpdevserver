@@ -108,8 +108,28 @@ abstract class Statement
          */
         $query = '';
 
-        foreach (static::$CLAUSES as $clause) {
+        /**
+         * Clauses which were built already.
+         *
+         * It is required to keep track of built clauses because some fields,
+         * for example `join` is used by multiple clauses (`JOIN`, `LEFT JOIN`,
+         * `LEFT OUTER JOIN`, etc.). The same happens for `VALUE` and `VALUES`.
+         *
+         * A clause is considered built just after fields' value
+         * (`$this->field`) was used in building.
+         *
+         * @var array
+         */
+        $built = array();
 
+        /**
+         * Statement's clauses.
+         *
+         * @var array
+         */
+        $clauses = $this->getClauses();
+
+        foreach ($clauses as $clause) {
             /**
              * The name of the clause.
              *
@@ -143,6 +163,15 @@ abstract class Statement
             // The field is empty, there is nothing to be built.
             if (empty($this->$field)) {
                 continue;
+            }
+
+            // Checking if this field was already built.
+            if ($type & 1) {
+                if (!empty($built[$field])) {
+                    continue;
+                }
+
+                $built[$field] = true;
             }
 
             // Checking if the name of the clause should be added.
@@ -190,7 +219,6 @@ abstract class Statement
         $parsedOptions = empty(static::$OPTIONS);
 
         for (; $list->idx < $list->count; ++$list->idx) {
-
             /**
              * Token parsed at this moment.
              *
@@ -201,6 +229,13 @@ abstract class Statement
             // End of statement.
             if ($token->type === Token::TYPE_DELIMITER) {
                 break;
+            }
+
+            // Checking if this closing bracket is the pair for a bracket
+            // outside the statement.
+            if (($token->value === ')') && ($parser->brackets > 0)) {
+                --$parser->brackets;
+                continue;
             }
 
             // Only keywords are relevant here. Other parts of the query are
@@ -247,7 +282,8 @@ abstract class Statement
             ) {
                 if (!empty($parsedClauses[$token->value])) {
                     $parser->error(
-                        __('This type of clause was previously parsed.'), $token
+                        __('This type of clause was previously parsed.'),
+                        $token
                     );
                     break;
                 }
@@ -339,6 +375,16 @@ abstract class Statement
     public function after(Parser $parser, TokensList $list, Token $token)
     {
 
+    }
+
+    /**
+     * Gets the clauses of this statement.
+     *
+     * @return array
+     */
+    public function getClauses()
+    {
+        return static::$CLAUSES;
     }
 
     /**

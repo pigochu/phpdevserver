@@ -186,20 +186,31 @@ class BufferedQuery
         $loopLen = $end ? $len : $len - 16;
 
         for (; $i < $loopLen; ++$i) {
+            /**
+             * Handling backslash.
+             *
+             * Even if the next character is a special character that should be
+             * treated differently, because of the preceding backslash, it will
+             * be ignored.
+             */
+            if ($this->query[$i] === '\\') {
+                $this->current .= $this->query[$i] . $this->query[++$i];
+                continue;
+            }
 
             /*
              * Handling special parses statuses.
              */
             if ($this->status === static::STATUS_STRING_SINGLE_QUOTES) {
                 // Single-quoted strings like 'foo'.
-                if (($this->query[$i - 1] != '\\') && ($this->query[$i] === '\'')) {
+                if ($this->query[$i] === '\'') {
                     $this->status = 0;
                 }
                 $this->current .= $this->query[$i];
                 continue;
             } elseif ($this->status === static::STATUS_STRING_DOUBLE_QUOTES) {
                 // Double-quoted strings like "bar".
-                if (($this->query[$i - 1] != '\\') && ($this->query[$i] === '"')) {
+                if ($this->query[$i] === '"') {
                     $this->status = 0;
                 }
                 $this->current .= $this->query[$i];
@@ -272,6 +283,10 @@ class BufferedQuery
              *     `strtoupper(substr($this->query, $i, 9)) === 'DELIMITER'`
              *
              * This optimization makes the code about 3 times faster.
+             *
+             * `DELIMITER` is not being considered a keyword. The only context
+             * it has a special meaning is when it is the beginning of a
+             * statement. This is the reason for the last condition.
              */
             if (($i + 9 < $len)
                 && (($this->query[$i    ] === 'D') || ($this->query[$i    ] === 'd'))
@@ -284,8 +299,8 @@ class BufferedQuery
                 && (($this->query[$i + 7] === 'E') || ($this->query[$i + 7] === 'e'))
                 && (($this->query[$i + 8] === 'R') || ($this->query[$i + 8] === 'r'))
                 && (Context::isWhitespace($this->query[$i + 9]))
+                && (trim($this->current) === '')
             ) {
-
                 // Saving the current index to be able to revert any parsing
                 // done in this block.
                 $iBak = $i;
@@ -307,14 +322,12 @@ class BufferedQuery
                     && ((($i < $len) && (Context::isWhitespace($this->query[$i])))
                     || (($i === $len) && ($end)))
                 ) {
-
                     // Saving the delimiter.
                     $this->setDelimiter($delimiter);
 
                     // Whether this statement should be returned or not.
                     $ret = '';
                     if (!empty($this->options['parse_delimiter'])) {
-
                         // Appending the `DELIMITER` statement that was just
                         // found to the current statement.
                         $ret = trim(
@@ -351,7 +364,6 @@ class BufferedQuery
                 && (($this->delimiterLen === 1)
                 || (substr($this->query, $i, $this->delimiterLen) === $this->delimiter))
             ) {
-
                 // Saving the statement that just ended.
                 $ret = $this->current;
 

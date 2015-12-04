@@ -63,6 +63,7 @@ $js_messages['strDeleteCentralColumnWarning'] = __('Do you really want to delete
 $js_messages['strDropRTEitems'] = __('Do you really want to delete the selected items?');
 $js_messages['strDropPartitionWarning'] = __('Do you really want to DROP the selected partition(s)? This will also DELETE the data related to the selected partition(s)!');
 $js_messages['strTruncatePartitionWarning'] = __('Do you really want to TRUNCATE the selected partition(s)?');
+$js_messages['strResetSlaveWarning'] = __('Do you really want to RESET SLAVE?');
 $js_messages['strChangeColumnCollation'] = __(
     'This operation will attempt to convert your data to the new collation. In '
     . 'rare cases, especially where a character doesn\'t exist in the new '
@@ -293,8 +294,8 @@ $js_messages['strGo'] = __('Go');
 $js_messages['strCancel'] = __('Cancel');
 
 /* For page-related settings */
-$js_messages['strPageSettings'] = _('Page-related settings');
-$js_messages['strApply'] = _('Apply');
+$js_messages['strPageSettings'] = __('Page-related settings');
+$js_messages['strApply'] = __('Apply');
 
 /* For Ajax Notifications */
 $js_messages['strLoading'] = __('Loading…');

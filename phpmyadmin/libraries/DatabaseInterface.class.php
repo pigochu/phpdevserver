@@ -387,7 +387,8 @@ class PMA_DatabaseInterface
                     )
                     . '%\'';
             } else {
-                $sql_where_table = 'AND t.`TABLE_NAME` = \''
+                $sql_where_table = 'AND t.`TABLE_NAME` '
+                    . PMA_Util::getCollateForIS() . ' = \''
                     . PMA_Util::sqlAddSlashes($table) . '\'';
             }
         } else {
@@ -489,7 +490,7 @@ class PMA_DatabaseInterface
                     `CREATE_OPTIONS`     AS `Create_options`,
                     `TABLE_COMMENT`      AS `Comment`
                 FROM `information_schema`.`TABLES` t
-                WHERE ' . (PMA_IS_WINDOWS ? '' : 'BINARY') . ' `TABLE_SCHEMA`
+                WHERE `TABLE_SCHEMA` ' . PMA_Util::getCollateForIS() . '
                     IN (\'' . implode("', '", $this_databases) . '\')
                     ' . $sql_where_table;
         }
@@ -1527,8 +1528,8 @@ class PMA_DatabaseInterface
      * @param boolean $full     whether to return full info or only column names
      * @param mixed   $link     mysql link resource
      *
-     * @return false|array   array indexed by column names or,
-     *                        if $column is given, flat array description
+     * @return array array indexed by column names or,
+     *               if $column is given, flat array description
      */
     public function getColumns($database, $table, $column = null, $full = false,
         $link = null
@@ -1536,7 +1537,7 @@ class PMA_DatabaseInterface
         $sql = $this->getColumnsSql($database, $table, $column, $full);
         $fields = $this->fetchResult($sql, 'Field', null, $link);
         if (! is_array($fields) || count($fields) == 0) {
-            return null;
+            return array();
         }
         // Check if column is a part of multiple-column index and set its 'Key'.
         $indexes = PMA_Index::getFromTable($table, $database);

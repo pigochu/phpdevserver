@@ -99,7 +99,6 @@ class OptionsArray extends Component
         $state = 0;
 
         for (; $list->idx < $list->count; ++$list->idx) {
-
             /**
              * Token parsed at this moment.
              *
@@ -146,7 +145,9 @@ class OptionsArray extends Component
                         $parser->error(
                             sprintf(
                                 __('This option conflicts with "%1$s".'),
-                                $ret->options[$lastOptionId]
+                                is_array($ret->options[$lastOptionId])
+                                ? $ret->options[$lastOptionId]['name']
+                                : $ret->options[$lastOptionId]
                             ),
                             $token
                         );
@@ -198,7 +199,7 @@ class OptionsArray extends Component
                 }
             } elseif ($state === 1) {
                 $state = 2;
-                if ($token->value === '=') {
+                if ($token->token === '=') {
                     $ret->options[$lastOptionId]['equals'] = true;
                     continue;
                 }

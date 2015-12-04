@@ -314,6 +314,11 @@ class CreateStatement extends Statement
                 . Expression::build($this->name) . ' '
                 . ParameterDefinition::build($this->parameters) . ' '
                 . $tmp . ' ' . TokensList::build($this->body);
+        } else {
+            return 'CREATE '
+                . OptionsArray::build($this->options) . ' '
+                . Expression::build($this->name) . ' '
+                . TokensList::build($this->body);
         }
         return '';
     }
@@ -395,7 +400,6 @@ class CreateStatement extends Statement
              * Handles partitions.
              */
             for (; $list->idx < $list->count; ++$list->idx) {
-
                 /**
                  * Token parsed at this moment.
                  *
@@ -428,7 +432,6 @@ class CreateStatement extends Statement
                     --$list->idx; // `getNextOfType` also advances one position.
                     $this->subpartitionsNum = $token->value;
                 } elseif (!empty($field)) {
-
                     /*
                      * Handling the content of `PARTITION BY` and `SUBPARTITION BY`.
                      */
@@ -499,7 +502,7 @@ class CreateStatement extends Statement
                 $token = $list->tokens[$list->idx];
                 $this->body[] = $token;
             }
-        } else if ($this->options->has('VIEW')) {
+        } elseif ($this->options->has('VIEW')) {
             $token = $list->getNext(); // Skipping whitespaces and comments.
 
             // Parsing columns list.
@@ -518,7 +521,7 @@ class CreateStatement extends Statement
                 }
                 $this->body[] = $token;
             }
-        } else if ($this->options->has('TRIGGER')) {
+        } elseif ($this->options->has('TRIGGER')) {
             // Parsing the time and the event.
             $this->entityOptions = OptionsArray::parse(
                 $parser,
@@ -547,6 +550,14 @@ class CreateStatement extends Statement
 
             for (; $list->idx < $list->count; ++$list->idx) {
                 $token = $list->tokens[$list->idx];
+                $this->body[] = $token;
+            }
+        } else {
+            for (; $list->idx < $list->count; ++$list->idx) {
+                $token = $list->tokens[$list->idx];
+                if ($token->type === Token::TYPE_DELIMITER) {
+                    break;
+                }
                 $this->body[] = $token;
             }
         }

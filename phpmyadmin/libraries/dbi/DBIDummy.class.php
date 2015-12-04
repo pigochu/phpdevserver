@@ -26,6 +26,10 @@ $GLOBALS['dummy_queries'] = array(
         'result' => array(array('pma_test@localhost')),
     ),
     array(
+        'query' => "SHOW VARIABLES LIKE 'lower_case_table_names'",
+        'result' => array(array('lower_case_table_names', '1'))
+    ),
+    array(
         'query' => 'SELECT 1 FROM mysql.user LIMIT 1',
         'result' => array(array('1')),
     ),
@@ -264,7 +268,7 @@ $GLOBALS['dummy_queries'] = array(
             . ' `CHECKSUM` AS `Checksum`, `CREATE_OPTIONS` AS `Create_options`,'
             . ' `TABLE_COMMENT` AS `Comment`'
             . ' FROM `information_schema`.`TABLES` t'
-            . ' WHERE BINARY `TABLE_SCHEMA` IN (\'pma_test\')'
+            . ' WHERE `TABLE_SCHEMA` IN (\'pma_test\')'
             . ' AND t.`TABLE_NAME` = \'table1\' ORDER BY Name ASC',
         'columns' => array(
             'TABLE_CATALOG', 'TABLE_SCHEMA', 'TABLE_NAME', 'TABLE_TYPE', 'ENGINE',
@@ -511,7 +515,7 @@ $GLOBALS['dummy_queries'] = array(
             . "(SELECT DB_first_level FROM ( SELECT DISTINCT "
             . "SUBSTRING_INDEX(SCHEMA_NAME, '_', 1) DB_first_level "
             . "FROM INFORMATION_SCHEMA.SCHEMATA WHERE TRUE ) t ORDER BY "
-            . "DB_first_level ASC LIMIT 0, 100) t2 WHERE 1 = LOCATE("
+            . "DB_first_level ASC LIMIT 0, 100) t2 WHERE TRUE AND 1 = LOCATE("
             . "CONCAT(DB_first_level, '_'), CONCAT(SCHEMA_NAME, '_')) "
             . "ORDER BY SCHEMA_NAME ASC",
         'result' => array(
@@ -634,7 +638,7 @@ $GLOBALS['dummy_queries'] = array(
             . "`CREATE_OPTIONS` AS `Create_options`, "
             . "`TABLE_COMMENT` AS `Comment` "
             . "FROM `information_schema`.`TABLES` t "
-            . "WHERE BINARY `TABLE_SCHEMA` IN ('db') "
+            . "WHERE `TABLE_SCHEMA` IN ('db') "
             . "AND t.`TABLE_NAME` = 'table' ORDER BY Name ASC",
         'result' => array()
     ),
@@ -644,6 +648,15 @@ $GLOBALS['dummy_queries'] = array(
     ),
     array(
         'query' => "SELECT @@have_partitioning;",
+        'result' => array()
+    ),
+    array(
+        'query' => "SELECT @@lower_case_table_names",
+        'result' => array()
+    ),
+    array(
+        'query' => "SELECT `PLUGIN_NAME`, `PLUGIN_DESCRIPTION` "
+            . "FROM `information_schema`.`PLUGINS` WHERE `PLUGIN_TYPE` = 'AUTHENTICATION';",
         'result' => array()
     )
 );

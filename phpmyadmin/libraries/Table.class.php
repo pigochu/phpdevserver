@@ -1262,6 +1262,18 @@ class PMA_Table
      */
     function rename($new_name, $new_db = null)
     {
+        $lowerCaseTableNames = PMA_Util::cacheGet(
+            'lower_case_table_names',
+            function () {
+                return $GLOBALS['dbi']->fetchValue(
+                    "SELECT @@lower_case_table_names"
+                );
+            }
+        );
+        if ($lowerCaseTableNames) {
+            $new_name = strtolower($new_name);
+        }
+
         if (null !== $new_db && $new_db !== $this->getDbName()) {
             // Ensure the target is valid
             if (! $GLOBALS['pma']->databases->exists($new_db)) {
@@ -1461,7 +1473,12 @@ class PMA_Table
             PMA_Util::backquote($this->_name)
         );
         $move_columns_sql_result = $this->_dbi->tryQuery($move_columns_sql_query);
-        return $this->_dbi->getFieldsMeta($move_columns_sql_result);
+        if ($move_columns_sql_result !== false) {
+            return $this->_dbi->getFieldsMeta($move_columns_sql_result);
+        } else {
+            // unsure how to reproduce but it was seen on the reporting server
+            return array();
+        }
     }
 
     /**
@@ -1926,9 +1943,9 @@ class PMA_Table
                     . PMA_Util::backquote($GLOBALS['cfgRelation']['db'])
                     . '.' . PMA_Util::backquote($cfgRelation['table_info'])
                     . ' WHERE db_name  = \''
-                    . PMA_Util::sqlAddSlashes($this->db_name) . '\''
+                    . PMA_Util::sqlAddSlashes($this->_db_name) . '\''
                     . ' AND table_name = \''
-                    . PMA_Util::sqlAddSlashes($this->name) . '\'';
+                    . PMA_Util::sqlAddSlashes($this->_name) . '\'';
             } elseif ($disp != $display_field) {
                 $upd_query = 'UPDATE '
                     . PMA_Util::backquote($GLOBALS['cfgRelation']['db'])
@@ -1936,9 +1953,9 @@ class PMA_Table
                     . ' SET display_field = \''
                     . PMA_Util::sqlAddSlashes($display_field) . '\''
                     . ' WHERE db_name  = \''
-                    . PMA_Util::sqlAddSlashes($this->db_name) . '\''
+                    . PMA_Util::sqlAddSlashes($this->_db_name) . '\''
                     . ' AND table_name = \''
-                    . PMA_Util::sqlAddSlashes($this->name) . '\'';
+                    . PMA_Util::sqlAddSlashes($this->_name) . '\'';
             }
         } elseif ($display_field != '') {
             $upd_query = 'INSERT INTO '
@@ -2028,9 +2045,9 @@ class PMA_Table
                     . PMA_Util::backquote($GLOBALS['cfgRelation']['db'])
                     . '.' . PMA_Util::backquote($cfgRelation['relation'])
                     . ' WHERE master_db  = \''
-                    . PMA_Util::sqlAddSlashes($this->db_name) . '\''
+                    . PMA_Util::sqlAddSlashes($this->_db_name) . '\''
                     . ' AND master_table = \''
-                    . PMA_Util::sqlAddSlashes($this->name) . '\''
+                    . PMA_Util::sqlAddSlashes($this->_name) . '\''
                     . ' AND master_field = \''
                     . PMA_Util::sqlAddSlashes($master_field) . '\'';
             } // end if... else....
