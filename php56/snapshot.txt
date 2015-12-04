@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Wed, 30 Sep 2015 21:52:07 +0000
+Thu, 26 Nov 2015 03:18:18 +0000
 
-Version: 5.6.14
+Version: 5.6.16
 Branch: HEAD
 Build: C:\php-sdk\php56\vc11\x64\obj\Release
 
