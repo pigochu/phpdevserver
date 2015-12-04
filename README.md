@@ -1,4 +1,4 @@
-phpdevserver 0.3.0
+phpdevserver 0.3.1
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
@@ -12,10 +12,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - zend-opcache enabled in Apache mode , disabled in CLI mode
 - PHP 在 apache mode 和 cli mode 有切開不同的 module 載入
 - php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
-- PHP 7.0 版本為 RC5 , 本套件正在測試中 , 目前狀況如下
+- PHP 7.0 目前狀況如下
   - php_mysql 正式被移除了，所以不會支援 mysql function，僅能使用 mysqli or PDO
   - imagick 目前不支援 , 待官方正式編譯好後才會支援
-  - xdebug 目前不支援 , 待官方正式編譯好後才會支援
 - 本套件集成的 Apache 2.4.17 初次內建支援 HTTP/2 模組，預設是關閉，未測試能否運作
 
 
@@ -47,10 +46,6 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 現在可以用 git 更新整個 phpdevserver 或直接下載回來取代
 - 重新執行 auto-config.bat 就會自動升級並設定
 - 重啟 Apache Service
-
-有安裝 0.2.3 之前版本要升級的請注意 :
-
-- 0.2.3 之前的版本升級必須刪除 phpdevserver/conf.d/50-php.conf，再執行一次 auto-config.bat 重新設定即可
 
 
 ## 切換 PHP 版本 ##
@@ -110,11 +105,11 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - Apache 2.4.17 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
-- PHP 5.6.14 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.16 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.30 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.0.0 RC5 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.0 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.5.0.2 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
-- Xdebug 2.3.3 : From [xdebug.org](http://xdebug.org/)
+- phpMyAdmin 4.5.2.0 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- Xdebug 2.4.0 RC2 : From [xdebug.org](http://xdebug.org/)
 - imagick 3.3.0rc2 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )
