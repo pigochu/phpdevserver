@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Thu, 15 Oct 2015 00:32:56 +0000
+Thu, 03 Dec 2015 18:07:16 +0000
 
-Version: 7.0.0RC5
+Version: 7.0.0
 Branch: HEAD
 Build: C:\php-sdk\php70dev\vc14\x64\obj\Release
 
