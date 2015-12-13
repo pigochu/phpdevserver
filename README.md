@@ -1,4 +1,4 @@
-phpdevserver 0.3.1
+phpdevserver 0.3.2
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供開發 PHP 所需的環境
@@ -14,7 +14,6 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
 - PHP 7.0 目前狀況如下
   - php_mysql 正式被移除了，所以不會支援 mysql function，僅能使用 mysqli or PDO
-  - imagick 目前不支援 , 待官方正式編譯好後才會支援
 - 本套件集成的 Apache 2.4.17 初次內建支援 HTTP/2 模組，預設是關閉，未測試能否運作
 
 
@@ -110,6 +109,6 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - PHP 7.0.0 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.5.2.0 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
-- Xdebug 2.4.0 RC2 : From [xdebug.org](http://xdebug.org/)
-- imagick 3.3.0rc2 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+- Xdebug 2.4.0 RC3 : From [xdebug.org](http://xdebug.org/)
+- imagick 3.4.0rc3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )

@@ -1,5 +1,99 @@
                                                          -*- coding: utf-8 -*-
 
+Changes with Apache 2.4.18
+
+  *) mod_ssl: for all ssl_engine_vars.c lookups, fall back to master connection
+     if conn_rec itself holds no valid SSLConnRec*. Fixes PR58666.
+     [Stefan Eissing]
+
+  *) mod_http2: connection level window for flow control is set to protocol
+     maximum of 2GB-1, preventing window exhaustion when sending data on many
+     streams with higher cumulative window size. 
+     Reducing write frequency unless push promises need to be flushed.
+     [Stefan Eissing]
+  
+  *) mod_http2: required minimum version of libnghttp2 is 1.2.1
+     [Stefan Eissing]
+  
+  *) mod_proxy_fdpass: Fix AH01153 error when using the default configuration.
+     In earlier version of httpd, you can explicitelly set the 'flusher' parameter
+     to 'flush' as a workaround. (i.e. flusher=flush)
+     Add documentation for the 'flusher' parameter when defining a proxy worker.
+     [Christophe Jaillet]
+
+  *) mod_ssl: For the "SSLStaplingReturnResponderErrors off" case, make sure
+     to only staple responses with certificate status "good". [Kaspar Brand]
+
+  *) mod_http2: new directive 'H2PushPriority' to allow priority specifications
+     on server pushed streams according to their content-type. 
+     [Stefan Eissing]
+     
+  *) mod_http2: fixes crash on connection abort for a busy connection.
+     fixes crash on a request that did not produce any response.
+     [Stefan Eissing]
+
+  *) mod_http2: trailers are sent after reponse body if set in request_rec
+     trailers_out before the end-of-request bucket is sent through the 
+     output filters. [Stefan Eissing]
+
+  *) mod_http2: incoming trailers (headers after request body) are properly
+     forwarded to the processing engine. [Stefan Eissing]
+
+  *) mod_http2: new directive 'H2Push' to en-/disable HTTP/2 server
+     pushes a server/virtual host. Pushes are initiated by the presence
+     of 'Link:' headers with relation 'preload' on a response. [Stefan Eissing]
+     
+  *) mod_http2: write performance of http2 improved for larger resources,
+     especially static files. [Stefan Eissing]
+     
+  *) core: if the first HTTP/1.1 request on a connection goes to a server that
+     prefers different protocols, these protocols are announced in a Upgrade:
+     header on the response, mentioning the preferred protocols.
+     [Stefan Eissing]
+     
+  *) mod_http2: new directives 'H2TLSWarmUpSize' and 'H2TLSCoolDownSecs'
+     to control TLS record sizes during connection lifetime.
+     [Stefan Eissing]
+     
+  *) mod_http2: new directive 'H2ModernTLSOnly' to enforce security
+     requirements of RFC 7540 on TLS connections. [Stefan Eissing]
+     
+  *) core: add ap_get_protocol_upgrades() to retrieve the list of protocols
+     that a client could possibly upgrade to. Use in first request on a 
+     connection to announce protocol choices. [Stefan Eissing]
+
+  *) mod_http2: reworked deallocation on connection shutdown and worker
+     abort. Separate parent pool for all workers. worker threads are joined
+     on planned worker shutdown. [Yann Ylavic, Stefan Eissing]
+     
+  *) mod_ssl: when receiving requests for other virtual hosts than the handshake
+     server, the SSL parameters are checked for equality. With equal 
+     configuration, requests are passed for processing. Any change will trigger
+     the old behaviour of "421 Misdirected Request".
+     SSL now remembers the cipher suite that was used for the last handshake.
+     This is compared against for any vhost/directory cipher specification. 
+     Detailed examination of renegotiation is only done when these do not
+     match.
+     Renegotiation is 403ed when a master connection is present. Exact reason
+     is given additionally in a request note. [Stefan Eissing]
+
+  *) core: Fix scoreboard crash (SIGBUS) on hardware requiring strict 64bit
+     alignment (SPARC64, PPC64).  [Yann Ylavic]
+
+  *) mod_cache: Accept HT (Horizontal Tab) when parsing cache related header
+     fields as described in RFC7230. [Christophe Jaillet]
+
+  *) core/util_script: making REDIRECT_URL a full URL is now opt-in
+     via new 'QualifyRedirectURL' directive.
+
+  *) core: Limit to ten the number of tolerated empty lines between request,
+     and consume them before the pipelining check to avoid possible response
+     delay when reading the next request without flushing.  [Yann Ylavic]
+
+  *) mod_ssl: Extend expression parser registration to support ssl variables
+     in any expression using mod_rewrite syntax "%{SSL:VARNAME}" or function
+     syntax "ssl(VARNAME)". [Rainer Jung]
+
 Changes with Apache 2.4.17
 
   *) mod_http2: added donated HTTP/2 implementation via core module. Similar
@@ -8,6 +102,9 @@ Changes with Apache 2.4.17
   *) mod_proxy: don't recyle backend announced "Connection: close" connections
      to avoid reusing it should the close be effective after some new request
      is ready to be sent.  [Yann Ylavic]
+
+  *) mod_ssl: Make the output filter more friendly with deferred write and
+     response pipelining. [Yann Ylavic, Joe Orton]
 
   *) mod_substitute: Allow to configure the patterns merge order with the new
      SubstituteInheritBefore on|off directive.  PR 57641
