@@ -1,13 +1,13 @@
 phpdevserver Change Log
 ========================
 
-0.3.2 2015-12-
+0.3.2 2015-12-13
 ------------------
 
-- 升級 Apache 至 2.4.18 (@todo)
-- 升級 php-imagick 至 3.4.0rc3 (@todo : php70 ok)
+- 升級 Apache 至 2.4.18
+- 升級 php-imagick 至 3.4.0rc3
 - PHP 7.0 加入 php-imagick 3.4.0rc3 (必須執行一次 auto-config.bat 會自動設定)
-- 升級 xdebug 至 2.4.0 RC3 (@todo)
+- 升級 xdebug 至 2.4.0 RC3
 - composer 更新到最新版
 
 0.3.1 2015-12-04

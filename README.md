@@ -14,7 +14,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
 - PHP 7.0 目前狀況如下
   - php_mysql 正式被移除了，所以不會支援 mysql function，僅能使用 mysqli or PDO
-- 本套件集成的 Apache 2.4.17 初次內建支援 HTTP/2 模組，預設是關閉，未測試能否運作
+
 
 
 本套件沒有包進 MySQL，一方面是難包，一方面 MySQL 或 MariaDB 自己下載來安裝就很簡單了，而且更可彈性規劃資料目錄及使用特殊功能
@@ -102,7 +102,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 ## 集成套件來源說明 ##
 
-- Apache 2.4.17 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
+- Apache 2.4.18 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - PHP 5.6.16 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.30 64bit : From [windows.php.net](http://windows.php.net/download/)
@@ -110,5 +110,5 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.5.2.0 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.4.0 RC3 : From [xdebug.org](http://xdebug.org/)
-- imagick 3.4.0rc3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+- imagick 3.4.0 RC3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )
