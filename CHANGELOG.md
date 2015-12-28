@@ -1,6 +1,13 @@
 phpdevserver Change Log
 ========================
 
+0.3.3 Under Development
+------------------
+
+- composer 升級至最新版
+- 升級 phpmyadmin 至 4.5.3.1
+
+
 0.3.2 2015-12-13
 ------------------
 
