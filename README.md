@@ -23,7 +23,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 ## 環境需求 ##
 
 - Windows 7 64bit 以上，如果有加入 Windows AD Server 應該是不能用
-- [Microsoft Visual C++ 2008 Redistributable(x64)](http://https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : 系統若內建則不需要
+- [Microsoft Visual C++ 2008 Redistributable(x64)](https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : 系統若內建則不需要
 - [Microsoft Visual C++ 2012 Redistributable(x64)](https://www.microsoft.com/zh-TW/download/details.aspx?id=30679) : 系統若內建則不需要
 - [Microsoft Visual C++ 2015 Redistributable(x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145) : 系統若內建則不需要
 
