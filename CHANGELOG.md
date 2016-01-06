@@ -7,6 +7,8 @@ phpdevserver Change Log
 - composer 升級至最新版
 - 升級 phpmyadmin 至 4.5.3.1
 - 升級 PHP 至 7.0.1
+- php_fileinfo 預設載入
+- php_intl 預設載入
 
 0.3.2 2015-12-13
 ------------------
