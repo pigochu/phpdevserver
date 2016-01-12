@@ -6,7 +6,7 @@ PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-B
 PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前支援以下功能
 
 - PHP 版本可以很簡單切換
-- 所有集成的套件皆沒有重新編譯過，保證純淨
+- 所有集成的套件皆來自官方提供，沒有重新編譯過，保證純淨
 - 沒有安裝檔，可以放到任何目錄使用然後執行一次 auto-config.bat 就可以完成所有設定
 - Xdebug enabled ， 預設支援 Netbeans IDE
 - zend-opcache enabled in Apache mode , disabled in CLI mode
