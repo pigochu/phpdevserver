@@ -1,4 +1,4 @@
-phpdevserver 0.3.3
+phpdevserver 0.3.4
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
@@ -109,7 +109,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - PHP 5.5.31 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.2 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.5.3.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
-- Xdebug 2.4.0 RC3 : From [xdebug.org](http://xdebug.org/)
+- phpMyAdmin 4.5.4.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- Xdebug 2.4.0 RC4 : From [xdebug.org](http://xdebug.org/)
 - imagick 3.4.0 RC5 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )
