@@ -5,6 +5,7 @@ phpdevserver Change Log
 ------------------
 
 - composer 升級至最新版
+- 升級 PHP70 至 7.0.3
 - 升級 phpmyadmin 至 4.5.4.1
 - 升級 php-xdebug 至 2.4.0 RC4
 
