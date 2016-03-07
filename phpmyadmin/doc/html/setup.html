@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; phpMyAdmin 4.5.4.1 documentation</title>
+    <title>Installation &mdash; phpMyAdmin 4.5.5.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '4.5.4.1',
+        VERSION:     '4.5.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="copyright" title="Copyright" href="copyright.html" />
-    <link rel="top" title="phpMyAdmin 4.5.4.1 documentation" href="index.html" />
+    <link rel="top" title="phpMyAdmin 4.5.5.1 documentation" href="index.html" />
     <link rel="next" title="Configuration" href="config.html" />
     <link rel="prev" title="Requirements" href="require.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="require.html" title="Requirements"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">phpMyAdmin 4.5.4.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">phpMyAdmin 4.5.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -260,19 +260,26 @@ webserver or limit access by web server configuration, see
 <div class="section" id="verifying-phpmyadmin-releases">
 <span id="verify"></span><h2>Verifying phpMyAdmin releases<a class="headerlink" href="#verifying-phpmyadmin-releases" title="Permalink to this headline">¶</a></h2>
 <p>Since July 2015 all phpMyAdmin releases are cryptographically signed by the
-releasing developer, who is currently Marc Delisle. His key id is
+releasing developer, who through January 2016 was Marc Delisle. His key id is
 0x81AF644A, his PGP fingerprint is:</p>
 <div class="highlight-console"><div class="highlight"><pre><span class="go">436F F188 4B1A 0C3F DCBF 0D79 FEFC 65D1 81AF 644A</span>
 </pre></div>
 </div>
-<p>and you can get more identification information from <a class="reference external" href="https://keybase.io/lem9">https://keybase.io/lem9</a>.  You should verify that the signature matches
+<p>and you can get more identification information from <a class="reference external" href="https://keybase.io/lem9">https://keybase.io/lem9</a>.</p>
+<p>Beginning in January 2016, the release manager is Isaac Bennetch. His key id is
+0x8259BD92, and his PGP fingerprint is:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="go">3D06 A59E CE73 0EB7 1B51 1C17 CE75 2F17 8259 BD92</span>
+</pre></div>
+</div>
+<p>and you can get more identification information from <a class="reference external" href="https://keybase.io/ibennetch">https://keybase.io/ibennetch</a>.</p>
+<p>You should verify that the signature matches
 the archive you have downloaded. This way you can be sure that you are using
 the same code that was released.</p>
 <p>Each archive is accompanied with <tt class="docutils literal"><span class="pre">.asc</span></tt> files which contains the PGP signature
 for it. Once you have both of them in the same folder, you can verify the signature:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.4.9-all-languages.zip.asc
-<span class="go">gpg: Signature made Fri Jun 12 13:09:58 2015 CEST using RSA key ID 81AF644A</span>
-<span class="go">gpg: Can&#39;t check signature: No public key</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.5.4.1-all-languages.zip.asc
+<span class="go">gpg: Signature made Fri 29 Jan 2016 08:59:37 AM EST using RSA key ID 8259BD92</span>
+<span class="go">gpg: Can&#39;t check signature: public key not found</span>
 </pre></div>
 </div>
 <p>As you can see gpg complains that it does not know the public key. At this
@@ -286,9 +293,9 @@ point you should do one of the following steps:</p>
 <ul class="simple">
 <li>Download and import the key from one of the key servers:</li>
 </ul>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --keyserver hkp://pgp.mit.edu --recv-keys 81AF644A
-<span class="go">gpg: requesting key 81AF644A from hkp server pgp.mit.edu</span>
-<span class="go">gpg: key 81AF644A: public key &quot;Marc Delisle &lt;marc@infomarc.info&gt;&quot; imported</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --keyserver hkp://pgp.mit.edu --recv-keys 8259BD92
+<span class="go">gpg: requesting key 8259BD92 from hkp server pgp.mit.edu</span>
+<span class="go">gpg: key 8259BD92: public key &quot;Isaac Bennetch &lt;bennetch@gmail.com&gt;&quot; imported</span>
 <span class="go">gpg: no ultimately trusted keys found</span>
 <span class="go">gpg: Total number processed: 1</span>
 <span class="go">gpg:               imported: 1  (RSA: 1)</span>
@@ -297,12 +304,13 @@ point you should do one of the following steps:</p>
 <p>This will improve the situation a bit - at this point you can verify that the
 signature from the given key is correct but you still can not trust the name used
 in the key:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.4.9-all-languages.zip.asc
-<span class="go">gpg: Signature made Fri Jun 12 13:09:58 2015 CEST using RSA key ID 81AF644A</span>
-<span class="go">gpg: Good signature from &quot;Marc Delisle &lt;marc@infomarc.info&gt;&quot; [unknown]</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.5.4.1-all-languages.zip.asc
+<span class="go">gpg: Signature made Fri 29 Jan 2016 08:59:37 AM EST using RSA key ID 8259BD92</span>
+<span class="go">gpg: Good signature from &quot;Isaac Bennetch &lt;bennetch@gmail.com&gt;&quot;</span>
+<span class="go">gpg:                 aka &quot;Isaac Bennetch &lt;isaac@bennetch.org&gt;&quot;</span>
 <span class="go">gpg: WARNING: This key is not certified with a trusted signature!</span>
 <span class="go">gpg:          There is no indication that the signature belongs to the owner.</span>
-<span class="go">Primary key fingerprint: 436F F188 4B1A 0C3F DCBF  0D79 FEFC 65D1 81AF 644A</span>
+<span class="go">Primary key fingerprint: 3D06 A59E CE73 0EB7 1B51  1C17 CE75 2F17 8259 BD92</span>
 </pre></div>
 </div>
 <p>The problem here is that anybody could issue the key with this name.  You need to
@@ -311,19 +319,19 @@ Handbook covers this topic in the chapter <a class="reference external" href="ht
 keyring</a>. The most reliable method is to meet the developer in person and
 exchange key fingerprints, however you can also rely on the web of trust. This way
 you can trust the key transitively though signatures of others, who have met
-the developer in person. For example you can see how <a class="reference external" href="http://pgp.cs.uu.nl/mk_path.cgi?FROM=00411886&amp;TO=81AF644A">Marc&#8217;s key links to
+the developer in person. For example you can see how <a class="reference external" href="http://pgp.cs.uu.nl/mk_path.cgi?FROM=00411886&amp;TO=8259BD92">Isaac&#8217;s key links to
 Linus&#8217;s key</a>.</p>
 <p>Once the key is trusted, the warning will not occur:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.4.9-all-languages.zip.asc
-<span class="go">gpg: Signature made Fri Jun 12 13:09:58 2015 CEST using RSA key ID 81AF644A</span>
-<span class="go">gpg: Good signature from &quot;Marc Delisle &lt;marc@infomarc.info&gt;&quot; [full]</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.5.4.1-all-languages.zip.asc
+<span class="go">gpg: Signature made Fri 29 Jan 2016 08:59:37 AM EST using RSA key ID 8259BD92</span>
+<span class="go">gpg: Good signature from &quot;Isaac Bennetch &lt;bennetch@gmail.com&gt;&quot; [full]</span>
 </pre></div>
 </div>
 <p>Should the signature be invalid (the archive has been changed), you would get a
 clear error regardless of the fact that the key is trusted or not:</p>
-<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.4.9-all-languages.zip.asc
-<span class="go">gpg: Signature made Fri Jun 12 13:09:58 2015 CEST using RSA key ID 81AF644A</span>
-<span class="go">gpg: BAD signature from &quot;Marc Delisle &lt;marc@infomarc.info&gt;&quot; [unknown]</span>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> gpg --verify phpMyAdmin-4.5.4.1-all-languages.zip.asc
+<span class="go">gpg: Signature made Fri 29 Jan 2016 08:59:37 AM EST using RSA key ID 8259BD92</span>
+<span class="go">gpg: BAD signature from &quot;Isaac Bennetch &lt;bennetch@gmail.com&gt;&quot; [unknown]</span>
 </pre></div>
 </div>
 </div>
@@ -898,6 +906,21 @@ can authenticate. This can be done using the <strong class="program">htpasswd</s
 </li>
 </ul>
 </div>
+<div class="section" id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="users-with-column-specific-privileges-are-unable-to-browse">
+<h3>Users with column-specific privileges are unable to &#8220;Browse&#8221;<a class="headerlink" href="#users-with-column-specific-privileges-are-unable-to-browse" title="Permalink to this headline">¶</a></h3>
+<p>If a user has only column-specific privileges on some (but not all) columns in a table, &#8220;Browse&#8221;
+will fail with an error message.</p>
+<p>As a workaround, a bookmarked query with the same name as the table can be created, this will
+run when using the &#8220;Browse&#8221; link instead. <a class="reference external" href="https://github.com/phpmyadmin/phpmyadmin/issues/11922">Issue 11922</a>.</p>
+</div>
+<div class="section" id="trouble-logging-back-in-after-logging-out-using-http-authentication">
+<h3>Trouble logging back in after logging out using &#8216;http&#8217; authentication<a class="headerlink" href="#trouble-logging-back-in-after-logging-out-using-http-authentication" title="Permalink to this headline">¶</a></h3>
+<p>When using the &#8216;http&#8217; <tt class="docutils literal"><span class="pre">auth_type</span></tt>, it can be impossible to log back in (when the logout comes
+manually or after a period of inactivity). <a class="reference external" href="https://github.com/phpmyadmin/phpmyadmin/issues/11898">Issue 11898</a>.</p>
+</div>
+</div>
 </div>
 
 
@@ -941,6 +964,11 @@ can authenticate. This can be done using the <strong class="program">htpasswd</s
 </ul>
 </li>
 <li><a class="reference internal" href="#securing-your-phpmyadmin-installation">Securing your phpMyAdmin installation</a></li>
+<li><a class="reference internal" href="#known-issues">Known issues</a><ul>
+<li><a class="reference internal" href="#users-with-column-specific-privileges-are-unable-to-browse">Users with column-specific privileges are unable to &#8220;Browse&#8221;</a></li>
+<li><a class="reference internal" href="#trouble-logging-back-in-after-logging-out-using-http-authentication">Trouble logging back in after logging out using &#8216;http&#8217; authentication</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -985,7 +1013,7 @@ can authenticate. This can be done using the <strong class="program">htpasswd</s
         <li class="right" >
           <a href="require.html" title="Requirements"
              >previous</a> |</li>
-        <li><a href="index.html">phpMyAdmin 4.5.4.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">phpMyAdmin 4.5.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

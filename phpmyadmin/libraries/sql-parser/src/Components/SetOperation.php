@@ -85,14 +85,17 @@ class SetOperation extends Component
             }
 
             // No keyword is expected.
-            if (($token->type === Token::TYPE_KEYWORD) && ($token->flags & Token::FLAG_KEYWORD_RESERVED) && ($state == 0)) {
+            if (($token->type === Token::TYPE_KEYWORD)
+                && ($token->flags & Token::FLAG_KEYWORD_RESERVED)
+                && ($state == 0)
+            ) {
                 break;
             }
 
             if ($state === 0) {
                 if ($token->token === '=') {
                     $state = 1;
-                } else if ($token->value !== ',') {
+                } elseif ($token->value !== ',') {
                     $expr->column .= $token->token;
                 }
             } elseif ($state === 1) {
@@ -100,11 +103,10 @@ class SetOperation extends Component
                     $parser,
                     $list,
                     array(
-                        'noAlias' => true,
+                        'breakOnAlias' => true,
                     )
                 );
                 if ($tmp == null) {
-                    $expr = null;
                     break;
                 }
                 $expr->column = trim($expr->column);

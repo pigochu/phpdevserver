@@ -116,11 +116,12 @@ function PMA_handleRedirectAndReload(data) {
 /**
  * Creates an SQL editor which supports auto completing etc.
  *
- * @param $textarea jQuery object wrapping the textarea to be made the editor
- * @param options   optional options for CodeMirror
- * @param resize    optional resizing ('vertical', 'horizontal', 'both')
+ * @param $textarea   jQuery object wrapping the textarea to be made the editor
+ * @param options     optional options for CodeMirror
+ * @param resize      optional resizing ('vertical', 'horizontal', 'both')
+ * @param lintOptions additional options for lint
  */
-function PMA_getSQLEditor($textarea, options, resize) {
+function PMA_getSQLEditor($textarea, options, resize, lintOptions) {
     if ($textarea.length > 0 && typeof CodeMirror !== 'undefined') {
 
         // merge options for CodeMirror
@@ -140,6 +141,7 @@ function PMA_getSQLEditor($textarea, options, resize) {
                 lint: {
                     "getAnnotations": CodeMirror.sqlLint,
                     "async": true,
+                    "lintOptions": lintOptions
                 }
             });
         }
@@ -236,6 +238,24 @@ function escapeHtml(unsafe) {
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    } else {
+        return false;
+    }
+}
+
+function escapeJsString(unsafe) {
+    if (typeof(unsafe) != 'undefined') {
+        return unsafe
+            .toString()
+            .replace("\000", '')
+            .replace('\\', '\\\\')
+            .replace('\'', '\\\'')
+            .replace("&#039;", "\\\&#039;")
+            .replace('"', '\"')
+            .replace("&quot;", "\&quot;")
+            .replace("\n", '\n')
+            .replace("\r", '\r')
+            .replace(/<\/script/gi, '</\' + \'script')
     } else {
         return false;
     }
@@ -872,6 +892,9 @@ AJAX.registerOnload('functions.js', function () {
                             updateTimeout = window.setTimeout(UpdateIdleTime, 2000);
                         }
                     } else { //timeout occurred
+                        if(isStorageSupported('sessionStorage')){
+                            window.sessionStorage.clear();
+                        }
                         window.location.reload(true);
                         clearInterval(IncInterval);
                     }
@@ -1835,7 +1858,7 @@ AJAX.registerOnload('functions.js', function () {
         var $inner_sql = $(this).parent().prev().find('code.sql');
         var old_text   = $inner_sql.html();
 
-        var new_content = "<textarea name=\"sql_query_edit\" id=\"sql_query_edit\">" + sql_query + "</textarea>\n";
+        var new_content = "<textarea name=\"sql_query_edit\" id=\"sql_query_edit\">" + escapeHtml(sql_query) + "</textarea>\n";
         new_content    += getForeignKeyCheckboxLoader();
         new_content    += "<input type=\"submit\" id=\"sql_query_edit_save\" class=\"button btnSave\" value=\"" + PMA_messages.strGo + "\"/>\n";
         new_content    += "<input type=\"button\" id=\"sql_query_edit_discard\" class=\"button btnDiscard\" value=\"" + PMA_messages.strCancel + "\"/>\n";
@@ -4741,30 +4764,6 @@ function PMA_ignorePhpErrors(clearPrevErrors){
     var $pmaErrors = $('#pma_errors');
     $pmaErrors.fadeOut( "slow");
     $pmaErrors.remove();
-}
-
-/**
- * checks whether browser supports web storage
- *
- * @param type the type of storage i.e. localStorage or sessionStorage
- *
- * @returns bool
- */
-function isStorageSupported(type)
-{
-    try {
-        window[type].setItem('PMATest', 'test');
-        // Check whether key-value pair was set successfully
-        if (window[type].getItem('PMATest') === 'test') {
-            // Supported, remove test variable from storage
-            window[type].removeItem('PMATest');
-            return true;
-        }
-    } catch(error) {
-        // Not supported
-        PMA_ajaxShowMessage(PMA_messages.strNoLocalStorage, false);
-    }
-    return false;
 }
 
 /**

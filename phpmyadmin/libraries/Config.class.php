@@ -114,7 +114,7 @@ class PMA_Config
      */
     public function checkSystem()
     {
-        $this->set('PMA_VERSION', '4.5.4.1');
+        $this->set('PMA_VERSION', '4.5.5.1');
         /**
          * @deprecated
          */
@@ -774,8 +774,8 @@ class PMA_Config
         PMA_Util::configureCurl($handle);
         curl_setopt($handle, CURLOPT_FOLLOWLOCATION, 0);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, '2');
+        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, '1');
         curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
         curl_setopt($handle, CURLOPT_TIMEOUT, 5);
         curl_setopt($handle, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
@@ -813,7 +813,7 @@ class PMA_Config
     public function loadDefaults()
     {
         $cfg = array();
-        if (! file_exists($this->default_source)) {
+        if (! @file_exists($this->default_source)) {
             $this->error_config_default_file = true;
             return false;
         }
@@ -1166,12 +1166,12 @@ class PMA_Config
             return false;
         }
 
-        if (! file_exists($this->getSource())) {
+        if (! @file_exists($this->getSource())) {
             $this->source_mtime = 0;
             return false;
         }
 
-        if (! is_readable($this->getSource())) {
+        if (! @is_readable($this->getSource())) {
             // manually check if file is readable
             // might be bug #3059806 Supporting running from CIFS/Samba shares
 
@@ -1370,7 +1370,7 @@ class PMA_Config
                 $pma_absolute_uri .= '@';
             }
             // Add hostname
-            $pma_absolute_uri .= $url['host'];
+            $pma_absolute_uri .= urlencode($url['host']);
             // Add port, if it not the default one
             // (or 80 for https which is most likely a bug)
             if (! empty($url['port'])
