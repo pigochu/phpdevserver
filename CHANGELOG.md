@@ -1,11 +1,16 @@
 phpdevserver Change Log
 ========================
 
-0.3.5 Under Development
+0.3.5 2016-03-29
 -----------------------
 
 - composer 升級至最新版
 - 升級 phpMyAdmin 至 4.5.5.1
+- 升級 PHP70 至 7.0.4
+- 升級 PHP56 至 5.6.19
+- 升級 PHP55 至 5.5.33
+- PHP70/56/55 都加入 extension : php-apcu
+- php-xdebug 升級至 2.4.0 正式版
 
 0.3.4 2016-02-19
 ------------------
