@@ -109,7 +109,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - PHP 5.5.33 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.4 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.5.5.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- phpMyAdmin 4.6.0 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.4.0 : From [xdebug.org](http://xdebug.org/)
 - imagick 3.4.0 RC5 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - composer : From [getcomposer.org](https://getcomposer.org )
