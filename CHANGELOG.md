@@ -1,6 +1,12 @@
 phpdevserver Change Log
 ========================
 
+0.3.6 Under Development
+-----------------------
+
+- auto-config 加入 apache service uninstall 之後再 install
+
+
 0.3.5 2016-03-29
 -----------------------
 
