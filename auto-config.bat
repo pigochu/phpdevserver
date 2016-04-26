@@ -37,6 +37,9 @@ SET PHP_INI_SCAN_DIR=%WORKING_DIRECTORY%\php56\conf.cli.d
 "%WORKING_DIRECTORY%\php56\php" -c "%WORKING_DIRECTORY%\php56"  -dextension_dir=ext -dextension=php_com_dotnet.dll "%WORKING_DIRECTORY%\bin\scripts\auto-config.php"
 SET PHP_INI_SCAN_DIR=%ORIG_PHP_INI_SCAN_DIR%
 
+ECHO UnRegister Apache24 as Service
+%WORKING_DIRECTORY%\Apache24\bin\httpd -k uninstall
+
 ECHO Register Apache24 as Service
 %WORKING_DIRECTORY%\Apache24\bin\httpd -k install
 
