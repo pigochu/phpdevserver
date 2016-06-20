@@ -72,6 +72,11 @@ define('PHPMYADMIN', true);
 require_once './libraries/vendor_config.php';
 
 /**
+ * Load gettext functions.
+ */
+require_once GETTEXT_INC;
+
+/**
  * Activate autoloader
  */
 require_once './libraries/autoloader.php';
@@ -143,6 +148,8 @@ $variables_whitelist = array (
     'PMA_PHP_SELF',
     'variables_whitelist',
     'key',
+    /* gettext globals */
+    'text_domains', 'default_domain', 'LC_CATEGORIES', 'EMULATEGETTEXT', 'CURRENTLOCALE',
 );
 
 foreach (get_defined_vars() as $key => $value) {
@@ -472,11 +479,6 @@ if (PMA_isValid($_REQUEST['sql_query'])) {
 /* loading language file                       LABEL_loading_language_file    */
 
 /**
- * Load gettext functions.
- */
-require_once GETTEXT_INC;
-
-/**
  * lang detection is done here
  */
 $language = LanguageManager::getInstance()->selectLanguage();
@@ -729,9 +731,7 @@ if (! defined('PMA_MINIMUM_COMMON')) {
 
         if (! $auth_plugin->authCheck()) {
             /* Force generating of new session on login */
-            if ($token_provided) {
-                PMA_secureSession();
-            }
+            PMA_secureSession();
             $auth_plugin->auth();
         } else {
             $auth_plugin->authSetUser();
@@ -879,7 +879,15 @@ if (! defined('PMA_MINIMUM_COMMON')) {
         }
 
         if (! $controllink) {
-            $controllink = $userlink;
+            /*
+             * Open separate connection for control queries, this is needed
+             * to avoid problems with table locking used in main connection
+             * and phpMyAdmin issuing queries to configuration storage, which
+             * is not locked by that time.
+             */
+            $controllink = $GLOBALS['dbi']->connect(
+                $cfg['Server']['user'], $cfg['Server']['password'], false
+            );
         }
 
         $auth_plugin->storeUserCredentials();

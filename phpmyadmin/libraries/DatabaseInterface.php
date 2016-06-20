@@ -203,11 +203,31 @@ class DatabaseInterface
         }
         $dbgInfo['query'] = htmlspecialchars($query);
         $dbgInfo['time'] = $time;
-        // Get and slightly format backtrace
-        $dbgInfo['trace'] = debug_backtrace();
+        // Get and slightly format backtrace, this is used
+        // in the javascript console.
+        // Strip call to _dbgQuery
+        $dbgInfo['trace'] = array_slice(debug_backtrace(), 1);
         foreach ($dbgInfo['trace'] as $key => $step) {
             if (isset($step['file'])) {
                 $dbgInfo['trace'][$key]['file'] = Error::relPath($step['file']);
+            }
+            // We don't need object value in console and it's too big
+            if (isset($step['object'])) {
+                unset($dbgInfo['trace'][$key]['object']);
+            }
+            // Convert args to string as that's what the client would do anyway
+            if (isset($step['args'])) {
+                $simplified = array();
+                foreach ($step['args'] as $akey => $aval) {
+                    if (is_object($aval)) {
+                        $simplified[$akey] = '<Class:' . get_class($aval) . '>';
+                    } elseif (is_array($aval)) {
+                        $simplified[$akey] = var_export($aval, true);
+                    } else {
+                        $simplified[$akey] = $aval;
+                    }
+                }
+                $dbgInfo['trace'][$key]['args'] = $simplified;
             }
         }
         $dbgInfo['hash'] = md5($query);
@@ -2151,7 +2171,7 @@ class DatabaseInterface
                     );
             } else {
                 /* InnoDB constraints, see
-                 * http://dev.mysql.com/doc/refman/5.0/en/
+                 * https://dev.mysql.com/doc/refman/5.0/en/
                  *  innodb-foreign-key-constraints.html
                  */
                 $error .= ' - ' . $error_message .
@@ -2351,9 +2371,21 @@ class DatabaseInterface
         $user, $password, $is_controluser = false, $server = null,
         $auxiliary_connection = false
     ) {
+        $error_count = $GLOBALS['error_handler']->countErrors();
         $result = $this->_extension->connect(
             $user, $password, $is_controluser, $server, $auxiliary_connection
         );
+
+        /* Any errors from connection? */
+        if ($GLOBALS['error_handler']->countErrors() > $error_count) {
+            $errors = $GLOBALS['error_handler']->sliceErrors($error_count);
+            foreach ($errors as $error) {
+                trigger_error(
+                    $error->getMessage(),
+                    E_USER_ERROR
+                );
+            }
+        }
 
         if ($result) {
             if (! $auxiliary_connection && ! $is_controluser) {

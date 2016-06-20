@@ -216,7 +216,7 @@ From Wikipedia, the free encyclopedia
     mcrypt
       the MCrypt PHP extension.	
 
-      .. seealso:: <http://php.net/mcrypt>
+      .. seealso:: <https://php.net/mcrypt>
 
     MIME
       Multipurpose Internet Mail Extensions is
@@ -229,6 +229,10 @@ From Wikipedia, the free encyclopedia
 
       .. seealso:: <http://www.wikipedia.org/wiki/module>
 
+    mod_proxy_fcgi
+      an Apache module implmenting a Fast CGI interface; PHP can be run as a CGI module, FastCGI, or
+      directly as an Apache module.
+
     MySQL
       a multithreaded, multi-user, SQL (Structured Query Language) Database Management System (DBMS).	
 
@@ -237,12 +241,12 @@ From Wikipedia, the free encyclopedia
     mysqli
       the improved MySQL client PHP extension.	
 
-      .. seealso:: <http://php.net/mysqli>
+      .. seealso:: <https://php.net/mysqli>
 
     mysql
       the MySQL client PHP extension.	
 
-      .. seealso:: <http://php.net/mysql>
+      .. seealso:: <https://php.net/mysql>
 
     OpenDocument
       open standard for office documents.	
@@ -270,7 +274,7 @@ From Wikipedia, the free encyclopedia
       Perl Compatible Regular Expressions is the perl-compatible regular
       expression functions for PHP	
 
-      .. seealso:: <http://php.net/pcre>
+      .. seealso:: <https://php.net/pcre>
 
     PHP
       short for "PHP: Hypertext Preprocessor", is an open-source, reflective
@@ -310,7 +314,7 @@ From Wikipedia, the free encyclopedia
     Storage Engines
       handlers for different table types	
 
-      .. seealso:: <http://dev.mysql.com/doc/en/storage-engines.html>
+      .. seealso:: <https://dev.mysql.com/doc/en/storage-engines.html>
 
     socket
       a form of inter-process communication.	

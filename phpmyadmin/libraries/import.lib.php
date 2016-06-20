@@ -239,8 +239,6 @@ function PMA_importRunQuery($sql = '', $full = '', &$sql_data = array())
                     $sql_data['valid_queries'] = 0;
                     unset($sql_data['valid_full']);
                     for ($i = 0; $i < $count; $i++) {
-                        print_r($queries[$i]);
-
                         PMA_executeQuery(
                             $queries[$i],
                             $fulls[$i],
@@ -1038,7 +1036,7 @@ function PMA_buildSQL($db_name, &$tables, &$analyses = null,
          * syntax is lacking or nonexisting for views, triggers,
          * functions, and procedures.
          *
-         * See: http://bugs.mysql.com/bug.php?id=15287
+         * See: https://bugs.mysql.com/bug.php?id=15287
          *
          * To the best of my knowledge this is still an issue.
          *

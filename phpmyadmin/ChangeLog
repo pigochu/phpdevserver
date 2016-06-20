@@ -1,6 +1,54 @@
 phpMyAdmin - ChangeLog
 ======================
 
+4.6.2 (2016-05-25)
+- issue        [security] User SQL queries can be revealed through URL GET parameters, see PMASA-2016-14
+- issue        [security] Self XSS vulneratbility, see PMASA-2016-16
+- issue #12225 Use https for documentation links
+- issue #12234 Fix schema export with too many tables
+- issue #12240 Avoid parsing non JSON responses as JSON
+- issue #12244 Avoid using too log URLs when getting javascripts
+- issue #12118 Fixed setting mixed case languages
+- issue #12229 Avoid storing objects in session when debugging SQL
+- issue #12249 Fix cookie path on IIS
+- issue #11705 Fix occassional 200 errors on Windows
+- issue #12219 Fix locking issues when importing SQL
+- issue #12231 Avoid confusing warning when mysql extension is missing
+- issue        Improve handling of logout
+- issue        Safer handling of sessions during authentication
+- issue #12209 Fix server selection on main page
+- issue #12192 Avoid storing full error data in session
+- issue #12082 Fixed export of ARCHIVE tables with keys
+- issue #11565 Add session reload for config authentication
+- issue #12229 Do not fail on errors stored in session
+- issue #12248 Fix loading of APC based upload progress bar
+
+4.6.1 (2016-05-02)
+- issue #12120 PMA_Util not found in insert_edit.lib.php
+- issue #12118 Fixed activation of some languages
+- issue #12121 Fixed error in 3NF step of normalization
+- issue #12135 Fix offering JSON datatype in incompatible MySQL versions
+- issue #12132 Can not open table with JSON field
+- issue #12125 Cannot highlight a column if I scroll down from the top of the table
+- issue #12154 Fixed possible PHP error in SQL parser
+- issue #12029 Fixed SQL quoting in SQL export
+- issue #12129 Improve performance of database structure page
+- issue #12159 Fix PHP error if user did unpack new version over old one
+- issue #12165 Fix parsing of expression 0
+- issue #12146 Document setup with Google Cloud SQL
+- issue #12197 Fix parsing of queries with double \
+- issue #12202 Fixed setting of language from user configuration
+- issue #12200 Fixed check for ndb version
+- issue #12206 Fixed loading of configuration file
+- issue #12204 Check if sessions are working and report failures
+- issue #12211 non-clickable initial letter for users / and can't modify users with MySQL 5.7.12
+- issue #12215 Fixed config tab persistence errors
+- issue #12217 Fixed javascript erros on user creation
+- issue #12144 Fixed parsing of some AS clauses
+- issue #12205 Fixed parsing of FULL OUTER JOIN queries
+- issue #12171 Fixed editing of VIEW structure
+- issue #12208 Avoid printing executed queries on import
+
 4.6.0.0 (2016-03-22)
 + issue #11456 Disabled storage engines
 + issue #11479 Allow setting routine wise privileges
@@ -158,7 +206,7 @@ phpMyAdmin - ChangeLog
 - issue        [security] XSS vulnerability in SQL editor, see PMASA-2016-9
 
          --- Older ChangeLogs can be found on our project website ---
-                     http://www.phpmyadmin.net/old-stuff/ChangeLogs/
+                     https://www.phpmyadmin.net/old-stuff/ChangeLogs/
 
 # vim: et ts=4 sw=4 sts=4
 # vim: ft=changelog fenc=utf-8

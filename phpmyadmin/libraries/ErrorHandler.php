@@ -80,11 +80,15 @@ class ErrorHandler
     /**
      * returns array with all errors
      *
+     * @param $check bool Whether to check for session errors
+     *
      * @return Error[]
      */
-    protected function getErrors()
+    public function getErrors($check=true)
     {
-        $this->checkSavedErrors();
+        if ($check) {
+            $this->checkSavedErrors();
+        }
         return $this->errors;
     }
 
@@ -97,6 +101,20 @@ class ErrorHandler
     public function getCurrentErrors()
     {
         return $this->errors;
+    }
+
+    /**
+     * Pops recent erros from the storage
+     *
+     * @param int $count Old error count
+     *
+     * @return Error[]
+     */
+    public function sliceErrors($count)
+    {
+        $errors = $this->getErrors(false);
+        $this->errors = array_splice($errors, 0, $count);
+        return array_splice($errors, $count);
     }
 
     /**
@@ -179,21 +197,6 @@ class ErrorHandler
             $this->dispFatalError($error);
             exit;
         }
-    }
-
-
-    /**
-     * log error to configured log facility
-     *
-     * @param Error $error the error
-     *
-     * @return bool
-     *
-     * @todo finish!
-     */
-    protected function logError($error)
-    {
-        return error_log($error->getMessage());
     }
 
     /**
@@ -386,11 +389,13 @@ class ErrorHandler
     /**
      * return count of errors
      *
+     * @param $check bool Whether to check for session errors
+     *
      * @return integer number of errors occurred
      */
-    public function countErrors()
+    public function countErrors($check=true)
     {
-        return count($this->getErrors());
+        return count($this->getErrors($check));
     }
 
     /**

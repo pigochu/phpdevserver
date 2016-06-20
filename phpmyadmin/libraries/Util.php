@@ -208,8 +208,10 @@ class Util
         if (array_key_exists($class, $sprites)) {
             $is_sprite = true;
             $url = (defined('PMA_TEST_THEME') ? '../' : '') . 'themes/dot.gif';
-        } else {
+        } elseif (isset($GLOBALS['pmaThemeImage'])) {
             $url = $GLOBALS['pmaThemeImage'] . $image;
+        } else {
+            $url = './themes/pmahomme/' . $image;
         }
 
         // set class attribute
@@ -480,7 +482,7 @@ class Util
                 $mysql = '5.5';
             }
         }
-        $url = 'http://dev.mysql.com/doc/refman/'
+        $url = 'https://dev.mysql.com/doc/refman/'
             . $mysql . '/' . $lang . '/' . $link . '.html';
         if (! empty($anchor)) {
             $url .= '#' . $anchor;
@@ -538,7 +540,7 @@ class Util
         /* Check if we have built local documentation */
         if (defined('TESTSUITE')) {
             /* Provide consistent URL for testsuite */
-            return PMA_linkURL('http://docs.phpmyadmin.net/en/latest/' . $url);
+            return PMA_linkURL('https://docs.phpmyadmin.net/en/latest/' . $url);
         } elseif (@file_exists('doc/html/index.html')) {
             if (defined('PMA_SETUP')) {
                 return '../doc/html/' . $url;
@@ -547,7 +549,7 @@ class Util
             }
         } else {
             /* TODO: Should link to correct branch for released versions */
-            return PMA_linkURL('http://docs.phpmyadmin.net/en/latest/' . $url);
+            return PMA_linkURL('https://docs.phpmyadmin.net/en/latest/' . $url);
         }
     }
 
@@ -2745,7 +2747,7 @@ class Util
                 sprintf(
                     __('The %s functionality is affected by a known bug, see %s'),
                     $functionality,
-                    PMA_linkURL('http://bugs.mysql.com/') . $bugref
+                    PMA_linkURL('https://bugs.mysql.com/') . $bugref
                 )
             );
         }
@@ -3254,8 +3256,13 @@ class Util
         if (($engine == 'INNODB') || ($engine == 'PBXT')) {
             return true;
         } elseif ($engine == 'NDBCLUSTER' || $engine == 'NDB') {
-            $ndbver = $GLOBALS['dbi']->fetchValue("SELECT @@ndb_version_string");
-            return ($ndbver >= 7.3);
+            $ndbver = strtolower(
+                $GLOBALS['dbi']->fetchValue("SELECT @@ndb_version_string")
+            );
+            if (substr($ndbver, 0, 4) == 'ndb-') {
+                $ndbver = substr($ndbver, 4);
+            }
+            return version_compare($ndbver, 7.3, '>=');
         } else {
             return false;
         }

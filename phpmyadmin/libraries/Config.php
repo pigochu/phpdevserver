@@ -101,7 +101,7 @@ class Config
      */
     public function checkSystem()
     {
-        $this->set('PMA_VERSION', '4.6.0');
+        $this->set('PMA_VERSION', '4.6.2');
         /**
          * @deprecated
          */
@@ -1018,8 +1018,14 @@ class Config
             }
         } else {
             // read language from settings
-            if (isset($config_data['lang']) && PMA_langSet($config_data['lang'])) {
-                $this->setCookie('pma_lang', $GLOBALS['lang']);
+            if (isset($config_data['lang'])) {
+                $language = LanguageManager::getInstance()->getLanguage(
+                    $config_data['lang']
+                );
+                if ($language !== false) {
+                    $language->activate();
+                    $this->setCookie('pma_lang', $language->getCode());
+                }
             }
         }
 
@@ -1393,7 +1399,7 @@ class Config
             $parsed_url = parse_url(PMA_getenv('REQUEST_URI'));
         }
 
-        $cookie_path = $parsed_url['path'];
+        $cookie_path = str_replace('\\', '/', $parsed_url['path']);
 
         /* Remove filename */
         if (substr($cookie_path, -4) == '.php') {
