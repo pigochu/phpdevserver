@@ -4,6 +4,7 @@ phpdevserver Change Log
 0.3.6 Under Development
 -----------------------
 
+- composer 升級至最新版
 - auto-config 加入 apache service uninstall 之後再 install
 
 
