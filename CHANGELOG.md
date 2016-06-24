@@ -4,9 +4,11 @@ phpdevserver Change Log
 0.3.6 Under Development
 -----------------------
 
-- composer 升級至最新版
+- composer 1.1.2
 - auto-config 加入 apache service uninstall 之後再 install
 - 升級 PHP70 至 7.0.8
+- 升級 PHP70 的 php-apcu 至 5.1.5
+- 升級 phpMyAdmin 至 4.6.3
 
 0.3.5 2016-03-29
 -----------------------
