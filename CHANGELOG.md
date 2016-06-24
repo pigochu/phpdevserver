@@ -6,7 +6,7 @@ phpdevserver Change Log
 
 - composer 升級至最新版
 - auto-config 加入 apache service uninstall 之後再 install
-- 升級 PHP70 至 7.0.7
+- 升級 PHP70 至 7.0.8
 
 0.3.5 2016-03-29
 -----------------------
