@@ -13,7 +13,7 @@ if (! defined('PHPMYADMIN')) {
 define('LINE_COUNTS', true);
 $LINE_COUNT = array();
 
-$LINE_COUNT["server_variables.js"] = 155;
+$LINE_COUNT["server_variables.js"] = 160;
 $LINE_COUNT["cross_framing_protection.js"] = 14;
 $LINE_COUNT["tbl_zoom_plot_jqplot.js"] = 645;
 $LINE_COUNT["tbl_relation.js"] = 234;
