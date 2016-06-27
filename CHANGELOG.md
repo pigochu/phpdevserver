@@ -4,7 +4,7 @@ phpdevserver Change Log
 0.3.6 Under Development
 -----------------------
 
-- composer 1.1.2
+- composer 1.1.3
 - auto-config 加入 apache service uninstall 之後再 install
 - 升級 PHP70 至 7.0.8
 - 升級 PHP70 的 php-apcu 至 5.1.5

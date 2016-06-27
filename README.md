@@ -101,6 +101,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 若要修改任何模組載入，請盡量不要修改 php.ini，建議自行新增或修改 ini 於 PHPXX 中的 conf.apache.d 及 conf.cli.d
 
+
 ## 集成套件來源說明 ##
 
 - Apache 2.4.18 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
@@ -112,4 +113,4 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - phpMyAdmin 4.6.3 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Xdebug 2.4.0 : From [xdebug.org](http://xdebug.org/)
 - imagick 3.4.0 RC5 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
-- composer : From [getcomposer.org](https://getcomposer.org )
+- composer 1.1.3 : From [getcomposer.org](https://getcomposer.org )
