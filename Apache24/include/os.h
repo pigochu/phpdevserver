@@ -44,6 +44,34 @@
 #define PLATFORM "Win32"
 #endif
 
+/* With all the different binary packages from third parties available 
+ * using many different versions of Visual Studio, it would be nice to
+ * allow the user to know just which compiler the server was built on
+ * allowing them to make a more informed choice when finding third party
+ * modules to extend their server. 
+ */
+#if _MSC_VER
+#   if _MSC_VER == 1200 /* (Visual Studio 6) */
+#   define MSVC_COMPILER "Visual Studio 6"
+#   elif _MSC_VER == 1300 /* (Visual Studio .Net) */
+#   define MSVC_COMPILER "Visual Studio .Net"
+#   elif _MSC_VER == 1310 /* (Visual Studio .Net 2003) */
+#   define MSVC_COMPILER "Visual Studio .Net 2003"
+#   elif _MSC_VER == 1400 /* (Visual Studio 2005) */
+#   define MSVC_COMPILER "Visual Studio 2005"
+#   elif _MSC_VER == 1500 /* (Visual Studio 2008) */
+#   define MSVC_COMPILER "Visual Studio 2008"
+#   elif _MSC_VER == 1600 /* (Visual Studio 2010) */
+#   define MSVC_COMPILER "Visual Studio 2010"
+#   elif _MSC_VER == 1700 /* (Visual Studio 2012) */
+#   define MSVC_COMPILER "Visual Studio 2012"
+#   elif _MSC_VER == 1800 /* (Visual Studio 2013) */
+#   define MSVC_COMPILER "Visual Studio 2013"
+#   elif _MSC_VER == 1900 /* (Visual Studio 2015) */
+#   define MSVC_COMPILER "Visual Studio 2015"
+#   endif
+#endif
+
 /* Define command-line rewriting for this platform, handled by core.
  * For Windows, this is currently handled inside the WinNT MPM.
  * XXX To support a choice of MPMs, extract common platform behavior

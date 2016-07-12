@@ -83,13 +83,22 @@ echo "Configuring Apache24 ... ";
 // copy Apache24 config file
 copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/Apache24" , "{$PHPDEVSERVER_HOME}/Apache24");
 $conf_file = "{$PHPDEVSERVER_HOME}/Apache24/conf/httpd.conf";
+/*
 if(file_exists($conf_file)) {
 	preg_replace_file(
 		$conf_file ,
 		"/%__PHPDEVSERVER__%/i",
 		cpath($PHPDEVSERVER_HOME)
 	);
+}*/
+if(file_exists($conf_file)) {
+	preg_replace_file(
+		$conf_file ,
+		'/Define SRVROOT \"\/Apache24\"/i',
+		'Define SRVROOT "' . cpath($PHPDEVSERVER_HOME) . '/Apache24"'
+	);
 } 
+
 echo "OK" . PHP_EOL;
 
 // Replace all php fcgid setting
