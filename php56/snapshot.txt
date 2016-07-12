@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Thu, 03 Mar 2016 04:35:37 +0000
+Wed, 22 Jun 2016 19:38:37 +0000
 
-Version: 5.6.19
+Version: 5.6.23
 Branch: HEAD
 Build: C:\php-sdk\php56\vc11\x64\obj\Release
 
@@ -109,9 +109,9 @@ Module: php_interbase.dll
 
 Module: php_intl.dll
 ===========================
-	icuuc56.dll
-	icuin56.dll
-	icuio56.dll
+	icuuc57.dll
+	icuin57.dll
+	icuio57.dll
 	msvcr110.dll
 	msvcp110.dll
 
