@@ -1,4 +1,4 @@
-phpdevserver 0.3.6
+phpdevserver 0.4.0
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
@@ -44,7 +44,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 停止 Apache 服務
 - 將 ApacheMonitor 退出
 - 現在可以用 git 更新整個 phpdevserver 或直接下載回來取代
-- 重新執行 auto-config.bat 就會自動升級並設定
+- 重新執行 auto-config.bat 就會自動升級並設定所有環境變數及網站設定檔
 - 重啟 Apache Service
 
 
@@ -106,11 +106,13 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - Apache 2.4.18 64bit : From [www.apachelounge.com](http://www.apachelounge.com/download/)
 - mod_fcgid-2.3.9-win64-V14 : From [www.apachelounge.com](http://www.apachelounge.com/download/)
-- PHP 5.6.19 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 5.5.33 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.23 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.5.37 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.8 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.6.3 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
-- Xdebug 2.4.0 : From [xdebug.org](http://xdebug.org/)
-- imagick 3.4.0 RC5 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+- Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
+- php-xdebug 2.4.0 : From [xdebug.org](http://xdebug.org/)
+- php-imagick 3.4.3 RC1 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
+- php-apcu 4.0.11/5.1.5 : From [PECL](https://pecl.php.net/package/APCu)
 - composer 1.1.3 : From [getcomposer.org](https://getcomposer.org )

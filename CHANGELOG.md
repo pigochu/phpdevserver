@@ -1,14 +1,21 @@
 phpdevserver Change Log
 ========================
 
-0.3.6 Under Development
+0.4.0 2016-07-12
 -----------------------
 
-- composer 1.1.3
 - auto-config 加入 apache service uninstall 之後再 install
+- 升級 composer 至 1.1.3
+- 升級 PHP55 至 5.5.37
+- 升級 PHP56 至 5.6.23
 - 升級 PHP70 至 7.0.8
 - 升級 PHP70 的 php-apcu 至 5.1.5
+- 升級 PHP55/PHP56 的 php-apcu 至 4.0.11
+- 升級 php-imagick 至 3.4.3 RC1
 - 升級 phpMyAdmin 至 4.6.3
+- 升級 Imagick 至 6.9.3-7
+- 因 LICENSE 問題，Imagick 改為放完整的檔案(包含 include,lib)，並修改 MAGICK_HOME 環境變數
+- 請務必執行一次 auto-config.bat 升級才能確保 MAGICK_HOME 是正確的
 
 0.3.5 2016-03-29
 -----------------------
