@@ -155,10 +155,10 @@ putenv(
     . ";{$PHPDEVSERVER_HOME}\\bash"
     . ";{$PHPDEVSERVER_HOME}\\Apache24\\bin"
     . ";{$PHPDEVSERVER_HOME}\\bin"
-    . ";{$PHPDEVSERVER_HOME}\\ImageMagick"
+    . ";{$PHPDEVSERVER_HOME}\\ImageMagick\\bin"
 );
 putenv("PHP_INI_SCAN_DIR={$PHPDEVSERVER_HOME}\\" . getenv("PHPDEVSERVER_PHP_VERSION") .'\conf.cli.d' );
-putenv("MAGICK_HOME={$PHPDEVSERVER_HOME}\\ImageMagick");
+putenv("MAGICK_HOME={$PHPDEVSERVER_HOME}\\ImageMagick\\bin");
 
 // $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PHPDEVSERVER_PHP_VERSION' , getenv("PHPDEVSERVER_PHP_VERSION") , "REG_SZ");
 // $registry->write('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\PHPDEVSERVER_PATH' , getenv("PHPDEVSERVER_PATH") , "REG_EXPAND_SZ");

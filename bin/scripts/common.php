@@ -91,7 +91,7 @@ function config_apache_php_module($PHPDEVSERVER_PATH , $php_version){
     preg_replace_file(
             $conf_file ,
             "/FcgidInitialEnv.*MAGICK_HOME.*/i",
-            "FcgidInitialEnv MAGICK_HOME " . "\"" . cpath("{$PHPDEVSERVER_PATH}/ImageMagick") . "\""
+            "FcgidInitialEnv MAGICK_HOME " . "\"" . cpath("{$PHPDEVSERVER_PATH}/ImageMagick/bin") . "\""
     );
 
     preg_replace_file(
