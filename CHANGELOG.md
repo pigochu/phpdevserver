@@ -1,11 +1,13 @@
 phpdevserver Change Log
 ========================
 
+
 0.4.1 Under Development
 -----------------------
 
 - Apache24 來源改為 http://www.apachehaus.com/
 - Apache24 升級至 2.4.23
+- 升級 composer 至 1.2.0
 
 0.4.0 2016-07-12
 -----------------------
