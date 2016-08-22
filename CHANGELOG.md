@@ -2,12 +2,17 @@ phpdevserver Change Log
 ========================
 
 
-0.4.1 Under Development
+0.4.1 2016-08-22
 -----------------------
 
 - Apache24 來源改為 http://www.apachehaus.com/
 - Apache24 升級至 2.4.23
 - 升級 composer 至 1.2.0
+- 升級 PHP70 至 7.0.10
+- 升級 PHP56 至 5.6.25
+- 升級 PHP55 至 5.5.38
+- 升級 phpmyadmin 至 4.6.4
+- 升級 php-xdebug 至 2.4.1
 
 0.4.0 2016-07-12
 -----------------------
