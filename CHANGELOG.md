@@ -1,6 +1,10 @@
 phpdevserver Change Log
 ========================
 
+0.4.2 Under Development
+
+- 升級 composer 至 1.2.1
+
 
 0.4.1 2016-08-22
 -----------------------
