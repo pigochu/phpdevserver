@@ -4,6 +4,7 @@ phpdevserver Change Log
 0.4.2 Under Development
 
 - 升級 composer 至 1.2.1
+- Apache24 缺少相關設定檔導致無法執行auto-config.bat
 
 
 0.4.1 2016-08-22
