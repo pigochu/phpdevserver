@@ -1,11 +1,14 @@
 phpdevserver Change Log
 ========================
 
-0.4.2 Under Development
+0.4.2 2016-10-07
 
 - 升級 composer 至 1.2.1
 - Apache24 缺少相關設定檔導致無法執行auto-config.bat
 - PHP70 的 apcu 升級至 5.1.6
+- 升級 PHP70 至 7.0.11
+- 升級 PHP56 至 5.6.26
+
 
 
 0.4.1 2016-08-22
