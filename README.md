@@ -106,7 +106,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 - Apache 2.4.23 64bit : From [http://www.apachehaus.com/](http://www.apachehaus.com/cgi-bin/download.plx)
 - Mod FCGID 2.3.9 for Apache 2.4.x x64 : From [www.apachehaus.com](http://www.apachehaus.com/cgi-bin/download.plx)
-- PHP 5.6.26 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.27 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.12 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)

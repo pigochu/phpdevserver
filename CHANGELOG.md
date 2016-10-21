@@ -4,6 +4,7 @@ phpdevserver Change Log
 0.4.3 2016-XX-XX
 
 - 升級 PHP70 至 7.0.12
+- 升級 PHP56 至 5.6.27
 
 
 0.4.2 2016-10-07
