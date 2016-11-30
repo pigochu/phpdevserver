@@ -15,3 +15,4 @@
 /Apache24/conf/*.*
 /Apache24/conf.d
 /Apache24/conf/magic
+/phpmyadmin/.user.ini

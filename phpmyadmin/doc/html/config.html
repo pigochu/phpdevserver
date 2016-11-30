@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuration &mdash; phpMyAdmin 4.6.4 documentation</title>
+    <title>Configuration &mdash; phpMyAdmin 4.6.5.1 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '4.6.4',
+        VERSION:     '4.6.5.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="copyright" title="Copyright" href="copyright.html" />
-    <link rel="top" title="phpMyAdmin 4.6.4 documentation" href="index.html" />
+    <link rel="top" title="phpMyAdmin 4.6.5.1 documentation" href="index.html" />
     <link rel="next" title="User Guide" href="user.html" />
     <link rel="prev" title="Installation" href="setup.html" /> 
   </head>
@@ -41,7 +41,7 @@
         <li class="right" >
           <a href="setup.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">phpMyAdmin 4.6.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">phpMyAdmin 4.6.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -92,9 +92,8 @@ modified.</p>
 </tr>
 </tbody>
 </table>
-<div class="deprecated">
-<p><span class="versionmodified">Deprecated since version 4.6.0: </span>This setting is no longer available since phpMyAdmin 4.6.0. Please
-adjust your webserver instead.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 4.6.5: </span>This setting was not available in phpMyAdmin 4.6.0 - 4.6.4.</p>
 </div>
 <p>Sets here the complete <a class="reference internal" href="glossary.html#term-url"><em class="xref std std-term">URL</em></a> (with full path) to your phpMyAdmin
 installation&#8217;s directory. E.g.
@@ -112,7 +111,7 @@ fails to detect your path, please post a bug report on our bug tracker so
 we can improve the code.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="faq.html#faq1-40"><em>1.40 When accessing phpMyAdmin via an Apache reverse proxy, cookie login does not work.</em></a></p>
+<p class="last"><a class="reference internal" href="faq.html#faq1-40"><em>1.40 When accessing phpMyAdmin via an Apache reverse proxy, cookie login does not work.</em></a>, <a class="reference internal" href="faq.html#faq2-5"><em>2.5 Each time I want to insert or change a row or drop a database or a table, an error 404 (page not found) is displayed or, with HTTP or cookie authentication, I&#8217;m asked to log in again. What&#8217;s wrong?</em></a>, <a class="reference internal" href="faq.html#faq4-7"><em>4.7 Authentication window is displayed more than once, why?</em></a>, <a class="reference internal" href="faq.html#faq5-16"><em>5.16 With Internet Explorer, I get &#8220;Access is denied&#8221; Javascript errors. Or I cannot make phpMyAdmin work under Windows.</em></a></p>
 </div>
 </dd></dl>
 
@@ -2458,6 +2457,27 @@ See also <span class="target" id="index-70"></span><a class="reference internal"
 matching the <a class="reference internal" href="glossary.html#term-ip"><em class="xref std std-term">IP</em></a> or the hostname of the MySQL server
 to the given regular expression. The regular expression must be enclosed
 with a delimiter character.</p>
+<p>It is recommended to include start and end symbols in the regullar
+expression, so that you can avoid partial matches on the string.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span class="c1">// Allow connection to three listed servers:</span>
+<span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;ArbitraryServerRegexp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;/^(server|another|yetdifferent)$/&#39;</span><span class="p">;</span>
+
+<span class="c1">// Allow connection to range of IP addresses:</span>
+<span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;ArbitraryServerRegexp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;@^192\.168\.0\.[0-9]{1,}$@&#39;</span><span class="p">;</span>
+
+<span class="c1">// Allow connection to server name ending with -mysql:</span>
+<span class="nv">$cfg</span><span class="p">[</span><span class="s1">&#39;ArbitraryServerRegexp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;@^[^:]\-mysql$@&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The whole server name is matched, it can include port as well. Due to
+way MySQL is permissive in connection parameters, it is possible to use
+connection strings as <tt class="docutils literal"><span class="pre">`server:3306-mysql`</span></tt>. This can be used to
+bypass regullar expression by the suffix, while connecting to another
+server.</p>
+</div>
 </dd></dl>
 
 <dl class="option">
@@ -5115,7 +5135,7 @@ server certificates and tell phpMyAdmin to use them:</p>
         <li class="right" >
           <a href="setup.html" title="Installation"
              >previous</a> |</li>
-        <li><a href="index.html">phpMyAdmin 4.6.4 documentation</a> &raquo;</li> 
+        <li><a href="index.html">phpMyAdmin 4.6.5.1 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
