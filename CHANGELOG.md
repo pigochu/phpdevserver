@@ -1,10 +1,13 @@
 phpdevserver Change Log
 ========================
 
-0.4.6 under development
+0.5.0 2016-12-05
 -----------------------
-
+- 新增可切換 PHP71 : switch-php71
+- **新增 PHP 7.1.0**
+- **升級時請記得要先執行 auto-config才能讓 PHP7.1 各種環境設定好**
 - 升級 composer 至 1.2.3
+- 升級 php-xdebug 至 2.5.0 stable
 
 
 0.4.5 2016-11-30

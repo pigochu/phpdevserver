@@ -27,19 +27,29 @@ if(false === file_exists("{$PHPDEVSERVER_HOME}/php70/php.ini")) {
 // copy php70 config file
 copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php70" , "{$PHPDEVSERVER_HOME}/php70");
 
+
+// copy php71 php.ini
+if(false === file_exists("{$PHPDEVSERVER_HOME}/php71/php.ini")) {
+    copy("{$PHPDEVSERVER_HOME}/php71/php.ini-development" ,"{$PHPDEVSERVER_HOME}/php71/php.ini" );
+}
+// copy php71 config file
+copyfolder("{$PHPDEVSERVER_HOME}/bin/scripts/templates/php71" , "{$PHPDEVSERVER_HOME}/php71");
+
+
 // replace zend-opecache path
 echo "Configuring PHP zend-opcache module ... ";
 $ini_file = array(
 	"{$PHPDEVSERVER_HOME}/php55/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php55/ext/php_opcache.dll" ,
 	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_opcache.dll" ,
 	"{$PHPDEVSERVER_HOME}/php70/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php70/ext/php_opcache.dll" ,
+	"{$PHPDEVSERVER_HOME}/php71/conf.apache.d/10-opcache.ini"    => "{$PHPDEVSERVER_HOME}/php71/ext/php_opcache.dll" ,
 );
         
 foreach($ini_file as $k => $v) {
     preg_replace_file(
 	$k ,
 	'/zend_extension.*=.*/i',
-	"zend_extension = " . realpath($v)
+	"zend_extension = " . realpath($v) . PHP_EOL
     );
 }
 echo "OK" . PHP_EOL;
@@ -53,12 +63,14 @@ $ini_file = array(
 	"{$PHPDEVSERVER_HOME}/php56/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php56/ext/php_xdebug.dll" ,
 	"{$PHPDEVSERVER_HOME}/php70/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php70/ext/php_xdebug.dll" ,
 	"{$PHPDEVSERVER_HOME}/php70/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php70/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php71/conf.cli.d/11-xdebug.ini"       => "{$PHPDEVSERVER_HOME}/php71/ext/php_xdebug.dll" ,
+	"{$PHPDEVSERVER_HOME}/php71/conf.apache.d/11-xdebug.ini"    => "{$PHPDEVSERVER_HOME}/php71/ext/php_xdebug.dll" ,
 );
 foreach($ini_file as $k => $v) {
 	preg_replace_file(
 		$k ,
 		'/zend_extension.*=.*/i',
-		"zend_extension = " . realpath($v)
+		"zend_extension = " . realpath($v) . PHP_EOL
 	);
 }
 echo "OK" . PHP_EOL;
