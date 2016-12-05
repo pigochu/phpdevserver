@@ -1,7 +1,7 @@
-phpdevserver 0.4.5
+phpdevserver 0.5.0
 ==================
 
-PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
+PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X/7.1.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
 
 PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前支援以下功能
 
@@ -12,7 +12,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - zend-opcache enabled in Apache mode , disabled in CLI mode
 - PHP 在 apache mode 和 cli mode 有切開不同的 module 載入
 - php\_imagick 模組及轉檔命令檔(可執行 %MAGICK\_HOME%\convert.exe)
-- PHP 7.0 目前狀況如下
+- PHP 7.x 目前狀況如下
   - php_mysql 正式被移除了，所以不會支援 mysql function，僅能使用 mysqli or PDO
 - 只要找的到的官方 pecl dll 都可以自己加入。 
 
@@ -55,6 +55,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - switch-php55.bat
 - switch-php56.bat
 - switch-php70.bat
+- switch-php71.bat
 
 當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
 
@@ -73,6 +74,16 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - 移除系統變數 MAGICK\_HOME
 - 移除 ApacheMonitor 連結於 StartUP(以 Win10 為例可能會在 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp[啟動])
 - 現在可以刪除 phpdevserver 目錄了
+
+## 性能問題 ##
+
+由於預設有載入 xdebug，所以不管 cli 或 apache 模式都會比較慢，若覺得不需要 xdebug ，請自行將以下 xdebug 設定檔內載入的那一行註解即可
+
+ - php[56~71]/conf.apache.d/11-xdebug.ini
+ - php[56~71]/conf.cli.d/11-xdebug.ini
+
+
+記得要重開 apache 服務才會生效
 
 
 ## 特別目錄說明 ##
@@ -109,10 +120,11 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - PHP 5.6.28 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.13 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.1.0 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.6.5.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
-- php-xdebug 2.5.0 RC1 : From [xdebug.org](http://xdebug.org/)
+- php-xdebug 2.5.0 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 RC1 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
-- php-apcu 4.0.11/5.1.6 : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.2.2 : From [getcomposer.org](https://getcomposer.org )
+- php-apcu 4.0.11(php 5.x)/5.1.6(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
+- composer 1.2.3 : From [getcomposer.org](https://getcomposer.org )

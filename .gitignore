@@ -6,12 +6,15 @@
 /php55/php.ini
 /php56/php.ini
 /php70/php.ini
+/php71/php.ini
 /php55/conf.apache.d
 /php55/conf.cli.d
 /php56/conf.apache.d
 /php56/conf.cli.d
 /php70/conf.apache.d
 /php70/conf.cli.d
+/php71/conf.apache.d
+/php71/conf.cli.d
 /Apache24/conf/*.*
 /Apache24/conf.d
 /Apache24/conf/magic
