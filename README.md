@@ -115,4 +115,4 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - php-xdebug 2.5.0 RC1 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 RC1 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - php-apcu 4.0.11/5.1.6 : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.2.2 : From [getcomposer.org](https://getcomposer.org )
+- composer 1.2.3 : From [getcomposer.org](https://getcomposer.org )
