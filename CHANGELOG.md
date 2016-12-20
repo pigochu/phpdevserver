@@ -7,6 +7,7 @@ phpdevserver Change Log
 - 升級 composer 至 1.2.4
 - 升級 PHP70 至 7.0.14
 - 升級 PHP56 至 5.6.29
+- 升級 Apache 至 2.4.25
   
 
 
