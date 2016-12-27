@@ -1,4 +1,4 @@
-phpdevserver 0.5.0
+phpdevserver 0.5.1
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X/7.1.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
@@ -59,7 +59,13 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
 
-    php -v
+~~~
+php -v
+~~~
+
+> 切換後可能發生的問題 :
+> 
+> session 可能讀取錯誤，如果原本是 PHP70 以上產生的 session file ，會和 PHP55~PHP56 的格式稍有不同，若發生此錯誤，刪除 session 檔案即可(**可自己寫 phpinfo() 查看 session 到底放甚麼地方**)，若是程式中是使用 db 存 session ，也是一樣將 session table 整個清掉才會正常。
 
 
 
@@ -84,6 +90,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 
 記得要重開 apache 服務才會生效
+
 
 
 ## 特別目錄說明 ##
@@ -115,11 +122,11 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 ## 集成套件來源說明 ##
 
-- Apache 2.4.23 64bit : From [http://www.apachehaus.com/](http://www.apachehaus.com/cgi-bin/download.plx)
+- Apache 2.4.25 64bit : From [http://www.apachehaus.com/](http://www.apachehaus.com/cgi-bin/download.plx)
 - Mod FCGID 2.3.9 for Apache 2.4.x x64 : From [www.apachehaus.com](http://www.apachehaus.com/cgi-bin/download.plx)
-- PHP 5.6.28 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.29 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.0.13 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.14 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.1.0 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.6.5.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
@@ -127,4 +134,4 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - php-xdebug 2.5.0 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 RC1 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - php-apcu 4.0.11(php 5.x)/5.1.6(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.2.3 : From [getcomposer.org](https://getcomposer.org )
+- composer 1.3.0 : From [getcomposer.org](https://getcomposer.org )
