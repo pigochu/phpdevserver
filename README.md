@@ -59,7 +59,13 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 當切換成功後，必須重啟 Apache 使之生效，如果要讓 CLI 模式也生效，必須重新打開 DOS Console ，然後執行以下命令看看 PHP 版本有沒有切換成功
 
-    php -v
+~~~
+php -v
+~~~
+
+> 切換後可能發生的問題 :
+> 
+> session 可能讀取錯誤，如果原本是 PHP70 以上產生的 session file ，會和 PHP55~PHP56 的格式稍有不同，若發生此錯誤，刪除 session 檔案即可(**可自己寫 phpinfo() 查看 session 到底放甚麼地方**)，若是程式中是使用 db 存 session ，也是一樣將 session table 整個清掉才會正常。
 
 
 
@@ -84,6 +90,7 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 
 
 記得要重開 apache 服務才會生效
+
 
 
 ## 特別目錄說明 ##
@@ -127,4 +134,4 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 - php-xdebug 2.5.0 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 RC1 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - php-apcu 4.0.11(php 5.x)/5.1.6(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.2.3 : From [getcomposer.org](https://getcomposer.org )
+- composer 1.3.0 : From [getcomposer.org](https://getcomposer.org )
