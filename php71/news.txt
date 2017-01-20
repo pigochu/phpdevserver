@@ -1,5 +1,100 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+19 Jan 2017, PHP 7.1.1
+
+- Core:
+  . Fixed bug #73792 (invalid foreach loop hangs script). (Dmitry)
+  . Fixed bug #73686 (Adding settype()ed values to ArrayObject results in
+    references). (Nikita, Laruence)
+  . Fixed bug #73663 ("Invalid opcode 65/16/8" occurs with a variable created
+    with list()). (Laruence)
+  . Fixed bug #73727 (ZEND_MM_BITSET_LEN is "undefined symbol" in
+    zend_bitset.h). (Nikita)
+  . Fixed bug #73753 (unserialized array pointer not advancing). (David Walker)
+  . Fixed bug #73783 (SIG_IGN doesn't work when Zend Signals is enabled).
+    (David Walker)
+  . Fixed bug #73825 (Heap out of bounds read on unserialize in
+    finish_nested_data()). (Stas)
+  . Fixed bug #73831 (NULL Pointer Dereference while unserialize php object).
+    (Stas)
+  . Fixed bug #73832 (Use of uninitialized memory in unserialize()). (Stas)
+
+- CLI:
+  . Fixed bug #72555 (CLI output(japanese) on Windows). (Anatol)
+
+- COM:
+  . Fixed bug #73679 (DOTNET read access violation using invalid codepage).
+    (Anatol)
+
+- DOM:
+  . Fixed bug #67474 (getElementsByTagNameNS filter on default ns). (aboks)
+
+- EXIF:
+  . Bug bug #73737 (FPE when parsing a tag format). (Stas)
+
+- GD:
+  . Fixed bug #73869 (Signed Integer Overflow gd_io.c). (cmb)
+  . Fixed bug #73868 (DOS vulnerability in gdImageCreateFromGd2Ctx()). (cmb)
+
+- Mbstring:
+  . Fixed bug #73646 (mb_ereg_search_init null pointer dereference).
+    (Laruence)
+
+- Mysqli:
+  . Fixed bug #73462 (Persistent connections don't set $connect_errno).
+    (darkain)
+
+- Mysqlnd:
+  . Optimized handling of BIT fields - less memory copies and lower memory
+    usage. (Andrey)
+  . Fixed bug #73800 (sporadic segfault with MYSQLI_OPT_INT_AND_FLOAT_NATIVE). 
+	(vanviegen)
+
+- Opcache:
+  . Fixed bug #73789 (Strange behavior of class constants in switch/case block).
+    (Laruence)
+  . Fixed bug #73746 (Method that returns string returns UNKNOWN:0 instead).
+    (Laruence)
+  . Fixed bug #73654 (Segmentation fault in zend_call_function). (Nikita)
+  . Fixed bug #73668 ("SIGFPE Arithmetic exception" in opcache when divide by
+    minus 1). (Nikita)
+  . Fixed bug #73847 (Recursion when a variable is redefined as array). (Nikita)
+
+- PDO_Firebird:
+  . Fixed bug #72931 (PDO_FIREBIRD with Firebird 3.0 not work on returning
+    statement). (Dorin Marcoci)
+
+- Phar:
+  . Fixed bug #73773 (Seg fault when loading hostile phar). (Stas)
+  . Fixed bug #73768 (Memory corruption when loading hostile phar). (Stas)
+  . Fixed bug #73764 (Crash while loading hostile phar archive). (Stas)
+
+- phpdbg:
+  . Fixed bug #73794 (Crash (out of memory) when using run and # command
+    separator). (Bob)
+  . Fixed bug #73704 (phpdbg shows the wrong line in files with shebang). (Bob)
+
+- SQLite3:
+  . Reverted fix for bug #73530	(Unsetting result set may reset other result
+    set). (cmb)
+
+- Standard:
+  . Fixed bug #73594 (dns_get_record does not populate $additional out
+    parameter). (Bruce Weirdan)
+  . Fixed bug #70213 (Unserialize context shared on double class lookup).
+    (Taoguang Chen)
+  . Fixed bug #73154 (serialize object with __sleep function crash). (Nikita)
+  . Fixed bug #70490 (get_browser function is very slow). (Nikita)
+  . Fixed bug #73265 (Loading browscap.ini at startup causes high memory usage).
+    (Nikita)
+  . Add subject to mail log. (tomsommer)
+  . Fixed bug #31875 (get_defined_functions additional param to exclude
+	disabled functions). (willianveiga)
+
+- Zlib
+  . Fixed bug #73373 (deflate_add does not verify that output was not truncated).
+    (Matt Bonneau)
+
 01 Dec 2016, PHP 7.1.0
 
 - Core:
