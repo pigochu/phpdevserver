@@ -133,5 +133,5 @@ php -v
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
 - php-xdebug 2.5.0 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 RC2 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
-- php-apcu 4.0.11(php 5.x)/5.1.6(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
+- php-apcu 4.0.11(php 5.x)/5.1.8(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
 - composer 1.3.1 : From [getcomposer.org](https://getcomposer.org )

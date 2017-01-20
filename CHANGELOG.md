@@ -7,6 +7,7 @@ phpdevserver Change Log
 - 升級 PHP56 至 5.6.30
 - 升級 PHP70 至 7.0.15
 - 升級 PHP71 至 7.1.1
+- 升級 php-imagick 至 3.4.3 RC2
 
 
 0.5.2 2017-01-09
