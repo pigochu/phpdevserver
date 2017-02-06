@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuration &#8212; phpMyAdmin 4.6.5.2 documentation</title>
+    <title>Configuration &#8212; phpMyAdmin 4.6.6 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '4.6.5.2',
+        VERSION:     '4.6.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,8 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
-    <link rel="top" title="phpMyAdmin 4.6.5.2 documentation" href="index.html" />
+    <link rel="top" title="phpMyAdmin 4.6.6 documentation" href="index.html" />
     <link rel="next" title="User Guide" href="user.html" />
     <link rel="prev" title="Installation" href="setup.html" /> 
   </head>
@@ -41,7 +43,7 @@
         <li class="right" >
           <a href="setup.html" title="Installation"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.5.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.6 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -1091,7 +1093,7 @@ remember that the Variable in <code class="file docutils literal"><span class="p
 <p class="first admonition-title">Note</p>
 <p class="last">For auto-upgrade functionality to work, your
 <code class="docutils literal"><span class="pre">$cfg['Servers'][$i]['controluser']</span></code> must have ALTER privilege on
-<code class="docutils literal"><span class="pre">phpmyadmin</span></code> database. See the <a class="reference external" href="https://dev.mysql.com/doc/mysql/en/grant.html">MySQL documentation for GRANT</a> on how to
+<code class="docutils literal"><span class="pre">phpmyadmin</span></code> database. See the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/grant.html">MySQL documentation for GRANT</a> on how to
 <code class="docutils literal"><span class="pre">GRANT</span></code> privileges to a user.</p>
 </div>
 </dd></dl>
@@ -2494,7 +2496,7 @@ server.</p>
 </tbody>
 </table>
 <p>The public key for the reCaptcha service that can be obtained from
-<a class="reference external" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>.</p>
+<a class="reference external" href="https://www.google.com/recaptcha/intro/">https://www.google.com/recaptcha/intro/</a>.</p>
 <p>reCaptcha will be then used in <a class="reference internal" href="setup.html#cookie"><span class="std std-ref">Cookie authentication mode</span></a>.</p>
 </dd></dl>
 
@@ -2512,7 +2514,7 @@ server.</p>
 </tbody>
 </table>
 <p>The private key for the reCaptcha service that can be obtain from
-<a class="reference external" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a>.</p>
+<a class="reference external" href="https://www.google.com/recaptcha/intro/">https://www.google.com/recaptcha/intro/</a>.</p>
 <p>reCaptcha will be then used in <a class="reference internal" href="setup.html#cookie"><span class="std std-ref">Cookie authentication mode</span></a>.</p>
 </dd></dl>
 
@@ -3026,6 +3028,21 @@ You can additionally hide more information by using
 </dd></dl>
 
 <dl class="option">
+<dt id="cfg_ShowPhpInfo">
+<code class="descname">$cfg['ShowPhpInfo']</code><a class="headerlink" href="#cfg_ShowPhpInfo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Default value:</th><td class="field-body">false</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="option">
 <dt id="cfg_ShowChgPassword">
 <code class="descname">$cfg['ShowChgPassword']</code><a class="headerlink" href="#cfg_ShowChgPassword" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
@@ -3053,10 +3070,22 @@ You can additionally hide more information by using
 </tr>
 </tbody>
 </table>
-<p>Defines whether to display the
+<p>Defines whether to display the <span class="guilabel">PHP information</span> and
 <span class="guilabel">Change password</span> links and form for creating database or not at
 the starting main (right) frame. This setting does not check MySQL commands
 entered directly.</p>
+<p>Please note that to block the usage of <code class="docutils literal"><span class="pre">phpinfo()</span></code> in scripts, you have to
+put this in your <code class="file docutils literal"><span class="pre">php.ini</span></code>:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="na">disable_functions</span> <span class="o">=</span> <span class="s">phpinfo()</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Enabling phpinfo page will leak quite a lot of information about server
+setup. Is it not recommended to enable this on shared installations.</p>
+<p class="last">This might also make easier some remote attacks on your installations,
+so enable this only when needed.</p>
+</div>
 <p>Also note that enabling the <span class="guilabel">Change password</span> link has no effect
 with config authentication mode: because of the hard coded password value
 in the configuration file, end users can&#8217;t be allowed to change their
@@ -3749,12 +3778,12 @@ locale/<em>code</em>/LC_MESSAGES/phpmyadmin.mo.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Default value:</th><td class="field-body"><code class="docutils literal"><span class="pre">'utf8_general_ci'</span></code></td>
+<tr class="field-even field"><th class="field-name">Default value:</th><td class="field-body"><code class="docutils literal"><span class="pre">'utf8mb4_general_ci'</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>Defines the default connection collation to use, if not user-defined.
-See the <a class="reference external" href="https://dev.mysql.com/doc/mysql/en/charset-charsets.html">MySQL documentation for charsets</a>
+See the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html">MySQL documentation for charsets</a>
 for list of possible values.</p>
 </dd></dl>
 
@@ -5004,7 +5033,7 @@ displayed in the console&#8217;s Debug SQL tab.</p>
 </tbody>
 </table>
 <p>Enable to let server present itself as demo server.
-This is used for &lt;<a class="reference external" href="https://demo.phpmyadmin.net/">https://demo.phpmyadmin.net/</a>&gt;.</p>
+This is used for <a class="reference external" href="https://www.phpmyadmin.net/try/">phpMyAdmin demo server</a>.</p>
 </dd></dl>
 
 </div>
@@ -5134,12 +5163,12 @@ server certificates and tell phpMyAdmin to use them:</p>
         <li class="right" >
           <a href="setup.html" title="Installation"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.5.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.6 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; <a href="copyright.html">Copyright</a> 2012 - 2016, The phpMyAdmin devel team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>
