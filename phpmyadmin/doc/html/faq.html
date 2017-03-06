@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>FAQ - Frequently Asked Questions &#8212; phpMyAdmin 4.6.5.2 documentation</title>
+    <title>FAQ - Frequently Asked Questions &#8212; phpMyAdmin 4.6.6 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '4.6.5.2',
+        VERSION:     '4.6.6',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,8 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
-    <link rel="top" title="phpMyAdmin 4.6.5.2 documentation" href="index.html" />
+    <link rel="top" title="phpMyAdmin 4.6.6 documentation" href="index.html" />
     <link rel="next" title="Developers Information" href="developers.html" />
     <link rel="prev" title="Import and export" href="import_export.html" /> 
   </head>
@@ -41,7 +43,7 @@
         <li class="right" >
           <a href="import_export.html" title="Import and export"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.5.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.6 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -138,7 +140,7 @@ and after execution of your <a class="reference internal" href="glossary.html#te
 </div>
 <div class="section" id="i-have-lost-my-mysql-root-password-what-can-i-do">
 <span id="faq1-12"></span><h3>1.12 I have lost my MySQL root password, what can I do?<a class="headerlink" href="#i-have-lost-my-mysql-root-password-what-can-i-do" title="Permalink to this headline">¶</a></h3>
-<p>The MySQL manual explains how to <a class="reference external" href="https://dev.mysql.com/doc/mysql/en/resetting-permissions.html">reset the permissions</a>.</p>
+<p>The MySQL manual explains how to <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html">reset the permissions</a>.</p>
 </div>
 <div class="section" id="faq1-13">
 <span id="id2"></span><h3>1.13 (withdrawn).<a class="headerlink" href="#faq1-13" title="Permalink to this headline">¶</a></h3>
@@ -148,8 +150,8 @@ and after execution of your <a class="reference internal" href="glossary.html#te
 </div>
 <div class="section" id="i-have-problems-with-mysql-user-column-names">
 <span id="faq1-15"></span><h3>1.15 I have problems with <em>mysql.user</em> column names.<a class="headerlink" href="#i-have-problems-with-mysql-user-column-names" title="Permalink to this headline">¶</a></h3>
-<p>In previous MySQL versions, the <code class="docutils literal"><span class="pre">User</span></code> and <code class="docutils literal"><span class="pre">Password``columns</span> <span class="pre">were</span>
-<span class="pre">named</span> <span class="pre">``user</span></code> and <code class="docutils literal"><span class="pre">password</span></code>. Please modify your column names to
+<p>In previous MySQL versions, the <code class="docutils literal"><span class="pre">User</span></code> and <code class="docutils literal"><span class="pre">Password</span></code> columns were
+named <code class="docutils literal"><span class="pre">user</span></code> and <code class="docutils literal"><span class="pre">password</span></code>. Please modify your column names to
 align with current standards.</p>
 </div>
 <div class="section" id="i-cannot-upload-big-dump-files-memory-http-or-timeout-problems">
@@ -201,7 +203,7 @@ generally caused by using MySQL version 4.1 or newer. MySQL changed
 the authentication hash and your PHP is trying to use the old method.
 The proper solution is to use the <a class="reference external" href="https://www.php.net/mysqli">mysqli extension</a> with the proper client library to match
 your MySQL installation. More
-information (and several workarounds) are located in the <a class="reference external" href="https://dev.mysql.com/doc/mysql/en/old-client.html">MySQL
+information (and several workarounds) are located in the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/old-client.html">MySQL
 Documentation</a>.</p>
 </div>
 <div class="section" id="faq1-18">
@@ -272,7 +274,7 @@ should work.</p>
 </div>
 <div class="section" id="i-get-empty-page-when-i-want-to-view-huge-page-eg-db-structure-php-with-plenty-of-tables">
 <span id="faq1-27"></span><h3>1.27 I get empty page when I want to view huge page (eg. db_structure.php with plenty of tables).<a class="headerlink" href="#i-get-empty-page-when-i-want-to-view-huge-page-eg-db-structure-php-with-plenty-of-tables" title="Permalink to this headline">¶</a></h3>
-<p>This was caused by a <a class="reference external" href="https://bugs.php.net/21079">PHP bug</a> that occur when
+<p>This was caused by a <a class="reference external" href="https://bugs.php.net/bug.php?id=21079">PHP bug</a> that occur when
 GZIP output buffering is enabled. If you turn off it (by
 <span class="target" id="index-3"></span><a class="reference internal" href="config.html#cfg_OBGzip"><code class="xref config config-option docutils literal"><span class="pre">$cfg['OBGzip']</span></code></a> in <code class="file docutils literal"><span class="pre">config.inc.php</span></code>), it should work.
 This bug will has been fixed in PHP 5.0.0.</p>
@@ -405,25 +407,36 @@ configuration variable.</p>
 most scenarios, however you might want to adjust at least following
 parameters:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_vars">suhosin.request.max_vars</a> should
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-request-max-vars">suhosin.request.max_vars</a> should
 be increased (eg. 2048)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_vars">suhosin.post.max_vars</a> should be
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-post-max-vars">suhosin.post.max_vars</a> should be
 increased (eg. 2048)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_array_index_length">suhosin.request.max_array_index_length</a>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-request-max-array-index-length">suhosin.request.max_array_index_length</a>
 should be increased (eg. 256)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_array_index_length">suhosin.post.max_array_index_length</a>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-post-max-array-index-length">suhosin.post.max_array_index_length</a>
 should be increased (eg. 256)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.request.max_totalname_length">suhosin.request.max_totalname_length</a>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-request-max-totalname-length">suhosin.request.max_totalname_length</a>
 should be increased (eg. 8192)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.post.max_totalname_length">suhosin.post.max_totalname_length</a> should be
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-post-max-totalname-length">suhosin.post.max_totalname_length</a> should be
 increased (eg. 8192)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.get.max_value_length">suhosin.get.max_value_length</a>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-get-max-value-length">suhosin.get.max_value_length</a>
 should be increased (eg. 1024)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#suhosin.sql.bailout_on_error">suhosin.sql.bailout_on_error</a>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-sql-bailout-on-error">suhosin.sql.bailout_on_error</a>
 needs to be disabled (the default)</li>
-<li><a class="reference external" href="http://www.hardened-php.net/suhosin/configuration.html#logging_configuration">suhosin.log.*</a> should not
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#logging-configuration">suhosin.log.*</a> should not
 include <a class="reference internal" href="glossary.html#term-sql"><span class="xref std std-term">SQL</span></a>, otherwise you get big
 slowdown</li>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-sql-union">suhosin.sql.union</a> must be disabled (which is the default).</li>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-sql-multiselect">suhosin.sql.multiselect</a> must be disabled (which is the default).</li>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-sql-comment">suhosin.sql.comment</a> must be disabled (which is the default).</li>
+</ul>
+<p>To further improve security, we also recommend these modifications:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-executor-include-max-traversal">suhosin.executor.include.max_traversal</a> should be
+enabled as a mitigation against local file inclusion attacks. We suggest
+setting this to 2 as <code class="docutils literal"><span class="pre">../</span></code> is used with the ReCaptcha library.</li>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-cookie-encrypt">suhosin.cookie.encrypt</a> should be enabled.</li>
+<li><a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-executor-disable-emodifier">suhosin.executor.disable_emodifier</a> should be enabled.</li>
 </ul>
 <p>You can also disable the warning using the <span class="target" id="index-5"></span><a class="reference internal" href="config.html#cfg_SuhosinDisableWarning"><code class="xref config config-option docutils literal"><span class="pre">$cfg['SuhosinDisableWarning']</span></code></a>.</p>
 </div>
@@ -1944,12 +1957,12 @@ attempts.</p>
         <li class="right" >
           <a href="import_export.html" title="Import and export"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.5.2 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">phpMyAdmin 4.6.6 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; <a href="copyright.html">Copyright</a> 2012 - 2016, The phpMyAdmin devel team.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.9.
     </div>
   </body>
 </html>
