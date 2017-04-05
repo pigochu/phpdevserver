@@ -127,7 +127,7 @@ php -v
 - PHP 5.6.30 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.0.16 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.1.2 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.1.3 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.7.0 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)

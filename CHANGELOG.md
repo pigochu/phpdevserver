@@ -3,6 +3,7 @@ phpdevserver Change Log
 
 0.5.5
 -----------------------
+- 升級 PHP71 至 7.1.3
 - 升級 composer 至 1.4.1
 - 升級 phpmyadmin 至 4.7.0
 
