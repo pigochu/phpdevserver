@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Tue, 14 Feb 2017 21:42:45 +0000
+Tue, 11 Apr 2017 20:12:04 +0000
 
-Version: 7.1.2
+Version: 7.1.4
 Branch: HEAD
 Build: C:\php-sdk\php71\vc14\x64\obj\Release
 
@@ -132,6 +132,7 @@ Module: php_com_dotnet.dll
 Module: php_curl.dll
 ===========================
 	libssh2.dll
+	nghttp2.dll
 	libeay32.dll
 	ssleay32.dll
 	normaliz.dll
