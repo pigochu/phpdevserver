@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Tue, 11 Apr 2017 20:12:04 +0000
+Tue, 09 May 2017 20:21:41 +0000
 
-Version: 7.1.4
+Version: 7.1.5
 Branch: HEAD
 Build: C:\php-sdk\php71\vc14\x64\obj\Release
 
@@ -143,8 +143,8 @@ Module: php_curl.dll
 	api-ms-win-crt-convert-l1-1-0.dll
 	api-ms-win-crt-filesystem-l1-1-0.dll
 	api-ms-win-crt-runtime-l1-1-0.dll
-	api-ms-win-crt-utility-l1-1-0.dll
 	api-ms-win-crt-time-l1-1-0.dll
+	api-ms-win-crt-utility-l1-1-0.dll
 	api-ms-win-crt-environment-l1-1-0.dll
 
 Module: php_enchant.dll
