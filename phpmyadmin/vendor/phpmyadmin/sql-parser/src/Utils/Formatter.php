@@ -340,6 +340,10 @@ class Formatter
             $curr = $list->tokens[$list->idx];
 
             if ($curr->type === Token::TYPE_WHITESPACE) {
+                // Keep linebreaks after comments
+                if (strpos($curr->token, "\n") !== false && $prev !== null && $prev->type === Token::TYPE_COMMENT) {
+                    $lineEnded = true;
+                }
                 // Whitespaces are skipped because the formatter adds its own.
                 continue;
             }
@@ -378,7 +382,7 @@ class Formatter
                 if ($tmp = static::isClause($curr)) {
                     if ($tmp == 2 || $this->options['clause_newline']) {
                         $lineEnded = true;
-                        if ($this->options['parts_newline']) {
+                        if ($this->options['parts_newline'] && $indent > 0) {
                             --$indent;
                         }
                     }
@@ -442,11 +446,6 @@ class Formatter
 
                 // Finishing the line.
                 if ($lineEnded) {
-                    if ($indent < 0) {
-                        // TODO: Make sure this never occurs and delete it.
-                        $indent = 0;
-                    }
-
                     $ret .= $this->options['line_ending']
                         . str_repeat($this->options['indentation'], $indent);
 
