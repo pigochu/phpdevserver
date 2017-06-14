@@ -27,27 +27,25 @@ trait FilesystemAdapterTrait
     {
         if (!isset($directory[0])) {
             $directory = sys_get_temp_dir().'/symfony-cache';
+        } else {
+            $directory = realpath($directory) ?: $directory;
         }
         if (isset($namespace[0])) {
             if (preg_match('#[^-+_.A-Za-z0-9]#', $namespace, $match)) {
                 throw new InvalidArgumentException(sprintf('Namespace contains "%s" but only characters in [-+_.A-Za-z0-9] are allowed.', $match[0]));
             }
-            $directory .= '/'.$namespace;
+            $directory .= DIRECTORY_SEPARATOR.$namespace;
         }
-        if (!file_exists($dir = $directory.'/.')) {
+        if (!file_exists($directory)) {
             @mkdir($directory, 0777, true);
         }
-        if (false === $dir = realpath($dir) ?: (file_exists($dir) ? $dir : false)) {
-            throw new InvalidArgumentException(sprintf('Cache directory does not exist (%s)', $directory));
-        }
-        $dir .= DIRECTORY_SEPARATOR;
+        $directory .= DIRECTORY_SEPARATOR;
         // On Windows the whole path is limited to 258 chars
-        if ('\\' === DIRECTORY_SEPARATOR && strlen($dir) > 234) {
+        if ('\\' === DIRECTORY_SEPARATOR && strlen($directory) > 234) {
             throw new InvalidArgumentException(sprintf('Cache directory too long (%s)', $directory));
         }
 
-        $this->directory = $dir;
-        $this->tmp = $this->directory.uniqid('', true);
+        $this->directory = $directory;
     }
 
     /**
@@ -81,19 +79,21 @@ trait FilesystemAdapterTrait
 
     private function write($file, $data, $expiresAt = null)
     {
-        if (false === @file_put_contents($this->tmp, $data)) {
-            return false;
-        }
-        if (null !== $expiresAt) {
-            @touch($this->tmp, $expiresAt);
-        }
+        set_error_handler(__CLASS__.'::throwError');
+        try {
+            if (null === $this->tmp) {
+                $this->tmp = $this->directory.uniqid('', true);
+            }
+            file_put_contents($this->tmp, $data);
 
-        if (@rename($this->tmp, $file)) {
-            return true;
-        }
-        @unlink($this->tmp);
+            if (null !== $expiresAt) {
+                touch($this->tmp, $expiresAt);
+            }
 
-        return false;
+            return rename($this->tmp, $file);
+        } finally {
+            restore_error_handler();
+        }
     }
 
     private function getFile($id, $mkdir = false)
@@ -106,5 +106,21 @@ trait FilesystemAdapterTrait
         }
 
         return $dir.substr($hash, 2, 20);
+    }
+
+    /**
+     * @internal
+     */
+    public static function throwError($type, $message, $file, $line)
+    {
+        throw new \ErrorException($message, 0, $type, $file, $line);
+    }
+
+    public function __destruct()
+    {
+        parent::__destruct();
+        if (null !== $this->tmp && file_exists($this->tmp)) {
+            unlink($this->tmp);
+        }
     }
 }
