@@ -1,5 +1,39 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+7 Jun 2017, PHP 7.1.6
+
+- Core:
+  . Fixed bug #74600 (crash (SIGSEGV) in _zend_hash_add_or_update_i).
+    (Laruence)
+  . Fixed bug #74546 (SIGILL in ZEND_FETCH_CLASS_CONSTANT_SPEC_CONST_CONST).
+    (Laruence)
+  . Fixed bug #74589 (__DIR__ wrong for unicode character). (Anatol)
+
+- intl:
+  . Fixed bug #74468 (wrong reflection on Collator::sortWithSortKeys). (villfa)
+
+- MySQLi:
+  . Fixed bug #74547 (mysqli::change_user() doesn't accept null as $database
+    argument w/strict_types). (Anatol)
+
+- Opcache:
+  . Fixed bug #74596 (SIGSEGV with opcache.revalidate_path enabled). (Laruence)
+
+- phar:
+  . Fixed bug #51918 (Phar::webPhar() does not handle requests sent through PUT
+    and DELETE method). (Christian Weiske)
+
+- Readline:
+  . Fixed bug #74490 (readline() moves the cursor to the beginning of the line).
+    (Anatol)
+
+- Standard:
+  . Fixed bug #74510 (win32/sendmail.c anchors CC header but not BCC).
+    (Damian Wadley, Anatol)
+
+- xmlreader:
+  . Fixed bug #74457 (Wrong reflection on XMLReader::expand). (villfa)
+
 11 May 2017, PHP 7.1.5
 
 - Core:
@@ -15,6 +49,7 @@ PHP                                                                        NEWS
     (Matt Ficken)
   . Fixed bug #74337 (php-cgi.exe crash on facebook callback).
     (Anton Serbulov)
+  . Patch for bug #74216 was reverted. (Anatol)
 
 - Date:
   . Fixed bug #74404 (Wrong reflection on DateTimeZone::getTransitions).
@@ -32,6 +67,10 @@ PHP                                                                        NEWS
 - GD:
   . Fixed bug #74343 (compile fails on solaris 11 with system gd2 library).
     (krakjoe)
+
+- MySQLi:
+  . Fixed bug #74432 (mysqli_connect adding ":3306" to $host if $port parameter
+    not given). (Anatol)
 
 - MySQLnd:
   . Fixed bug #74376 (Invalid free of persistent results on error/connection
@@ -57,6 +96,8 @@ PHP                                                                        NEWS
     key). (Jakub Zelenka)
   . Fixed bug #74341 (openssl_x509_parse fails to parse ASN.1 UTCTime without
     seconds). (Moritz Fain)
+  . Fixed bug #73808 (iv length warning too restrictive for aes-128-ccm).
+    (Jakub Zelenka)
 
 - phar:
   . Fixed bug #74383 (phar method parameters reflection correction). 
