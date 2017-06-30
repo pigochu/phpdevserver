@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6
+class ComposerStaticInit4d6d68ac59130bda4ed389c4c6bc4cf3
 {
     public static $files = array (
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
@@ -26,6 +26,7 @@ class ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Cache\\' => 10,
             'PhpMyAdmin\\SqlParser\\' => 21,
@@ -51,6 +52,10 @@ class ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6
         'ReCaptcha\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
+        ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
         'Psr\\Log\\' => 
         array (
@@ -98,9 +103,9 @@ class ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit241d90fc15f4a3706239389eb06f1ff6::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4d6d68ac59130bda4ed389c4c6bc4cf3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4d6d68ac59130bda4ed389c4c6bc4cf3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4d6d68ac59130bda4ed389c4c6bc4cf3::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,5 +1,13 @@
 # Change Log
 
+## [4.1.7] - 2017-06-06
+
+* Fixed setting combination SQL Modes.
+
+## [4.1.6] - 2017-06-01
+
+* Fixed building query with GROUP BY clause.
+
 ## [4.1.5] - 2017-05-15
 
 * Fixed invalid lexing of queries with : in strings.

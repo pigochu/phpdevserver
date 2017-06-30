@@ -1,7 +1,12 @@
+# Version 3.3
+
+* Released on 2017-06-01.
+* Add support for switching locales for Loader instance.
+
 # Version 3.2
 
 * Released on 2017-05-23.
-* Vairous fixes when handling corrupted mo files.
+* Various fixes when handling corrupted mo files.
 
 # Version 3.1
 
