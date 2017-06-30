@@ -23,9 +23,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 ## 環境需求 ##
 
 - Windows 7 64bit 以上，如果有加入 Windows AD Server 應該是不能用
-- [Microsoft Visual C++ 2008 Redistributable(x64)](https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : 系統若內建則不需要
-- [Microsoft Visual C++ 2012 Redistributable(x64)](https://www.microsoft.com/zh-TW/download/details.aspx?id=30679) : 系統若內建則不需要
-- [Microsoft Visual C++ 2015 Redistributable(x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145) : 系統若內建則不需要
+- [Microsoft Visual C++ 2008 Redistributable(x64)](https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : PHP 5.5 需要，系統若內建則不需要安裝
+- [Microsoft Visual C++ 2012 Redistributable(x64)](https://www.microsoft.com/zh-TW/download/details.aspx?id=30679) : PHP 5.6 需要，系統若內建則不需要
+- [Microsoft Visual C++ 2015 Redistributable(x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145) : PHP 7.0+ 需要，系統若內建則不需要
 
 ## 安裝 ##
 
@@ -129,7 +129,7 @@ php -v
 - PHP 7.0.20 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.1.6 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.7.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- phpMyAdmin 4.7.2 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
 - php-xdebug 2.5.4 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
