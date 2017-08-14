@@ -1,4 +1,4 @@
-phpdevserver 0.5.7
+phpdevserver 0.5.8
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X/7.1.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
@@ -23,9 +23,9 @@ PHP 本身會設定為 FASTCGI 的方式運作穩定性高。這個套件目前�
 ## 環境需求 ##
 
 - Windows 7 64bit 以上，如果有加入 Windows AD Server 應該是不能用
-- [Microsoft Visual C++ 2008 Redistributable(x64)](https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : 系統若內建則不需要
-- [Microsoft Visual C++ 2012 Redistributable(x64)](https://www.microsoft.com/zh-TW/download/details.aspx?id=30679) : 系統若內建則不需要
-- [Microsoft Visual C++ 2015 Redistributable(x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145) : 系統若內建則不需要
+- [Microsoft Visual C++ 2008 Redistributable(x64)](https://www.microsoft.com/zh-tw/download/details.aspx?id=2092) : PHP 5.5 需要，系統若內建則不需要安裝
+- [Microsoft Visual C++ 2012 Redistributable(x64)](https://www.microsoft.com/zh-TW/download/details.aspx?id=30679) : PHP 5.6 需要，系統若內建則不需要
+- [Microsoft Visual C++ 2015 Redistributable(x64)](https://www.microsoft.com/en-us/download/details.aspx?id=48145) : PHP 7.0+ 需要，系統若內建則不需要
 
 ## 安裝 ##
 
@@ -124,14 +124,14 @@ php -v
 
 - Apache 2.4.25 64bit : From [http://www.apachehaus.com/](http://www.apachehaus.com/cgi-bin/download.plx)
 - Mod FCGID 2.3.9 for Apache 2.4.x x64 : From [www.apachehaus.com](http://www.apachehaus.com/cgi-bin/download.plx)
-- PHP 5.6.30 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.31 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.0.20 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.1.6 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.22 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.1.8 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.7.1 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- phpMyAdmin 4.7.3 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
 - php-xdebug 2.5.4 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - php-apcu 4.0.11(php 5.x)/5.1.8(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.4.2 : From [getcomposer.org](https://getcomposer.org )
+- composer 1.5.1 : From [getcomposer.org](https://getcomposer.org )

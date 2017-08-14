@@ -1,5 +1,66 @@
 [
     {
+        "name": "phpmyadmin/sql-parser",
+        "version": "v4.1.9",
+        "version_normalized": "4.1.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpmyadmin/sql-parser.git",
+            "reference": "deac47217144b21056271674533b289239e1b279"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/deac47217144b21056271674533b289239e1b279",
+            "reference": "deac47217144b21056271674533b289239e1b279",
+            "shasum": ""
+        },
+        "require": {
+            "ext-mbstring": "*",
+            "php": ">=5.3.0"
+        },
+        "conflict": {
+            "phpmyadmin/motranslator": "<3.0"
+        },
+        "require-dev": {
+            "phpunit/php-code-coverage": "*",
+            "phpunit/phpunit": "~4.8 || ~5.7"
+        },
+        "suggest": {
+            "phpmyadmin/motranslator": "Translate messages to your favorite locale"
+        },
+        "time": "2017-07-12 14:54:33",
+        "bin": [
+            "bin/highlight-query",
+            "bin/lint-query"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "PhpMyAdmin\\SqlParser\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "The phpMyAdmin Team",
+                "email": "developers@phpmyadmin.net",
+                "homepage": "https://www.phpmyadmin.net/team/"
+            }
+        ],
+        "description": "A validating SQL lexer and parser with a focus on MySQL dialect.",
+        "homepage": "https://github.com/phpmyadmin/sql-parser",
+        "keywords": [
+            "analysis",
+            "lexer",
+            "parser",
+            "sql"
+        ]
+    },
+    {
         "name": "psr/log",
         "version": "1.0.2",
         "version_normalized": "1.0.2.0",
@@ -49,64 +110,53 @@
         ]
     },
     {
-        "name": "phpmyadmin/sql-parser",
-        "version": "v4.1.5",
-        "version_normalized": "4.1.5.0",
+        "name": "psr/simple-cache",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/phpmyadmin/sql-parser.git",
-            "reference": "2ccd17dc14b1e57376e58aebcd46831dc7c25de5"
+            "url": "https://github.com/php-fig/simple-cache.git",
+            "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/2ccd17dc14b1e57376e58aebcd46831dc7c25de5",
-            "reference": "2ccd17dc14b1e57376e58aebcd46831dc7c25de5",
+            "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/753fa598e8f3b9966c886fe13f370baa45ef0e24",
+            "reference": "753fa598e8f3b9966c886fe13f370baa45ef0e24",
             "shasum": ""
         },
         "require": {
-            "ext-mbstring": "*",
             "php": ">=5.3.0"
         },
-        "conflict": {
-            "phpmyadmin/motranslator": "<3.0"
-        },
-        "require-dev": {
-            "phpunit/php-code-coverage": "*",
-            "phpunit/phpunit": "~4.8 || ~5.7"
-        },
-        "suggest": {
-            "phpmyadmin/motranslator": "Translate messages to your favorite locale"
-        },
-        "time": "2017-05-15 08:28:56",
-        "bin": [
-            "bin/highlight-query",
-            "bin/lint-query"
-        ],
+        "time": "2017-01-02 13:31:39",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "PhpMyAdmin\\SqlParser\\": "src"
+                "Psr\\SimpleCache\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GPL-2.0+"
+            "MIT"
         ],
         "authors": [
             {
-                "name": "The phpMyAdmin Team",
-                "email": "developers@phpmyadmin.net",
-                "homepage": "https://www.phpmyadmin.net/team/"
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
             }
         ],
-        "description": "A validating SQL lexer and parser with a focus on MySQL dialect.",
-        "homepage": "https://github.com/phpmyadmin/sql-parser",
+        "description": "Common interfaces for simple caching",
         "keywords": [
-            "analysis",
-            "lexer",
-            "parser",
-            "sql"
+            "cache",
+            "caching",
+            "psr",
+            "psr-16",
+            "simple-cache"
         ]
     },
     {
@@ -159,26 +209,31 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v3.2.8",
-        "version_normalized": "3.2.8.0",
+        "version": "v3.3.5",
+        "version_normalized": "3.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "ce81ce67baa387c556d03f389fb3c9efc11286aa"
+            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/ce81ce67baa387c556d03f389fb3c9efc11286aa",
-            "reference": "ce81ce67baa387c556d03f389fb3c9efc11286aa",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
+            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9",
             "psr/cache": "~1.0",
-            "psr/log": "~1.0"
+            "psr/log": "~1.0",
+            "psr/simple-cache": "^1.0"
+        },
+        "conflict": {
+            "symfony/var-dumper": "<3.3"
         },
         "provide": {
-            "psr/cache-implementation": "1.0"
+            "psr/cache-implementation": "1.0",
+            "psr/simple-cache-implementation": "1.0"
         },
         "require-dev": {
             "cache/integration-tests": "dev-master",
@@ -189,11 +244,11 @@
         "suggest": {
             "symfony/polyfill-apcu": "For using ApcuAdapter on HHVM"
         },
-        "time": "2017-04-12 14:14:23",
+        "time": "2017-07-17 17:27:31",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
@@ -219,7 +274,7 @@
                 "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "Symfony implementation of PSR-6",
+        "description": "Symfony Cache component with PSR-6, PSR-16, and tags",
         "homepage": "https://symfony.com",
         "keywords": [
             "caching",
@@ -228,28 +283,28 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v3.2.8",
-        "version_normalized": "3.2.8.0",
+        "version": "v3.3.5",
+        "version_normalized": "3.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
-            "reference": "b43eea00de866786cc2fec2b86c7f6d22c6e47d8"
+            "reference": "48abe52c5b80babe29e956d900b7ab06faf50eef"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/expression-language/zipball/b43eea00de866786cc2fec2b86c7f6d22c6e47d8",
-            "reference": "b43eea00de866786cc2fec2b86c7f6d22c6e47d8",
+            "url": "https://api.github.com/repos/symfony/expression-language/zipball/48abe52c5b80babe29e956d900b7ab06faf50eef",
+            "reference": "48abe52c5b80babe29e956d900b7ab06faf50eef",
             "shasum": ""
         },
         "require": {
             "php": ">=5.5.9",
             "symfony/cache": "~3.1"
         },
-        "time": "2017-05-01 14:55:58",
+        "time": "2017-05-01 15:01:29",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.2-dev"
+                "dev-master": "3.3-dev"
             }
         },
         "installation-source": "dist",
@@ -280,17 +335,17 @@
     },
     {
         "name": "phpmyadmin/motranslator",
-        "version": "3.2",
-        "version_normalized": "3.2.0.0",
+        "version": "3.3",
+        "version_normalized": "3.3.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpmyadmin/motranslator.git",
-            "reference": "c8f913c75f8b52310d11f291c9748819763f6c02"
+            "reference": "877f76827fa69bf27e4ffc28d258e9fba3442d8f"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpmyadmin/motranslator/zipball/c8f913c75f8b52310d11f291c9748819763f6c02",
-            "reference": "c8f913c75f8b52310d11f291c9748819763f6c02",
+            "url": "https://api.github.com/repos/phpmyadmin/motranslator/zipball/877f76827fa69bf27e4ffc28d258e9fba3442d8f",
+            "reference": "877f76827fa69bf27e4ffc28d258e9fba3442d8f",
             "shasum": ""
         },
         "require": {
@@ -301,7 +356,7 @@
             "phpunit/php-code-coverage": "*",
             "phpunit/phpunit": "~4.8 || ~5.7"
         },
-        "time": "2017-05-23 07:30:40",
+        "time": "2017-06-01 11:50:55",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -387,28 +442,27 @@
     },
     {
         "name": "tecnickcom/tcpdf",
-        "version": "6.2.12",
-        "version_normalized": "6.2.12.0",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-09-12 10:08:34",
+        "time": "2017-04-26 08:14:48",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "classmap": [
-                "fonts",
                 "config",
                 "include",
                 "tcpdf.php",
@@ -452,17 +506,17 @@
     },
     {
         "name": "phpseclib/phpseclib",
-        "version": "2.0.5",
-        "version_normalized": "2.0.5.0",
+        "version": "2.0.6",
+        "version_normalized": "2.0.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "f8dd0e18d2328c447dd4190fecd11ef52680d968"
+            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/f8dd0e18d2328c447dd4190fecd11ef52680d968",
-            "reference": "f8dd0e18d2328c447dd4190fecd11ef52680d968",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34a7699e6f31b1ef4035ee36444407cecf9f56aa",
+            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa",
             "shasum": ""
         },
         "require": {
@@ -480,7 +534,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
             "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
         },
-        "time": "2017-05-08 05:58:35",
+        "time": "2017-06-05 06:31:10",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

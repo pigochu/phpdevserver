@@ -375,7 +375,7 @@ $token_provided = false;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (PMA_isValid($_POST['token'])) {
         $token_provided = true;
-        $token_mismatch = ! hash_equals($_SESSION[' PMA_token '], $_POST['token']);
+        $token_mismatch = ! @hash_equals($_SESSION[' PMA_token '], $_POST['token']);
     }
 
     if ($token_mismatch) {
@@ -460,13 +460,29 @@ $GLOBALS['PMA_Config']->checkErrors();
 /**
  * As we try to handle charsets by ourself, mbstring overloads just
  * break it, see bug 1063821.
+ *
+ * We specifically use empty here as we are looking for anything else than
+ * empty value or 0.
  */
-if (@extension_loaded('mbstring') && @ini_get('mbstring.func_overload') != '0') {
+if (@extension_loaded('mbstring') && !empty(@ini_get('mbstring.func_overload'))) {
     PMA_fatalError(
         __(
             'You have enabled mbstring.func_overload in your PHP '
             . 'configuration. This option is incompatible with phpMyAdmin '
             . 'and might cause some data to be corrupted!'
+        )
+    );
+}
+
+/**
+ * The ini_set and ini_get functions can be disabled using
+ * disable_functions but we're relying quite a lot of them.
+ */
+if (! function_exists('ini_get') || ! function_exists('ini_set')) {
+    PMA_fatalError(
+        __(
+            'You have disabled ini_get and/or ini_set in php.ini. '
+            . 'This option is incompatible with phpMyAdmin!'
         )
     );
 }
@@ -630,7 +646,7 @@ if (! defined('PMA_MINIMUM_COMMON')) {
          * the required auth type plugin
          */
         $auth_class = "Authentication" . ucfirst($cfg['Server']['auth_type']);
-        if (! file_exists(
+        if (! @file_exists(
             './libraries/plugins/auth/'
             . $auth_class . '.php'
         )) {

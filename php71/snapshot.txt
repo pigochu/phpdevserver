@@ -1,9 +1,9 @@
 This snapshot was automatically generated on
-Thu, 08 Jun 2017 02:10:05 +0000
+Tue, 01 Aug 2017 21:14:22 +0000
 
-Version: 7.1.6
+Version: 7.1.8
 Branch: HEAD
-Build: C:\php-sdk\php71\vc14\x64\obj\Release
+Build: C:\php-snap-build\php71\vc14\x64\obj\Release
 
 Built-in Extensions
 ===========================
@@ -113,9 +113,9 @@ Module: php_phpdbg_webhelper.dll
 Module: php_bz2.dll
 ===========================
 	vcruntime140.dll
+	api-ms-win-crt-heap-l1-1-0.dll
 	api-ms-win-crt-string-l1-1-0.dll
 	api-ms-win-crt-runtime-l1-1-0.dll
-	api-ms-win-crt-heap-l1-1-0.dll
 	api-ms-win-crt-stdio-l1-1-0.dll
 	api-ms-win-crt-math-l1-1-0.dll
 
@@ -183,8 +183,8 @@ Module: php_gd2.dll
 ===========================
 	vcruntime140.dll
 	api-ms-win-crt-stdio-l1-1-0.dll
-	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-heap-l1-1-0.dll
+	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-string-l1-1-0.dll
 	api-ms-win-crt-utility-l1-1-0.dll
 	api-ms-win-crt-filesystem-l1-1-0.dll
@@ -469,8 +469,8 @@ Module: php_xsl.dll
 ===========================
 	vcruntime140.dll
 	api-ms-win-crt-stdio-l1-1-0.dll
-	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-heap-l1-1-0.dll
+	api-ms-win-crt-runtime-l1-1-0.dll
 	api-ms-win-crt-string-l1-1-0.dll
 	api-ms-win-crt-filesystem-l1-1-0.dll
 	api-ms-win-crt-math-l1-1-0.dll

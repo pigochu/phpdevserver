@@ -10,6 +10,7 @@ return array(
     'Symfony\\Component\\ExpressionLanguage\\' => array($vendorDir . '/symfony/expression-language'),
     'Symfony\\Component\\Cache\\' => array($vendorDir . '/symfony/cache'),
     'ReCaptcha\\' => array($vendorDir . '/google/recaptcha/src/ReCaptcha'),
+    'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'PhpMyAdmin\\SqlParser\\' => array($vendorDir . '/phpmyadmin/sql-parser/src'),
