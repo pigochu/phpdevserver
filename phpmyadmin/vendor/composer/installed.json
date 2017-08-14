@@ -1,17 +1,17 @@
 [
     {
         "name": "phpmyadmin/sql-parser",
-        "version": "v4.1.7",
-        "version_normalized": "4.1.7.0",
+        "version": "v4.1.9",
+        "version_normalized": "4.1.9.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpmyadmin/sql-parser.git",
-            "reference": "a6c1b67119d334b985cf2f386710c7e35623e09f"
+            "reference": "deac47217144b21056271674533b289239e1b279"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/a6c1b67119d334b985cf2f386710c7e35623e09f",
-            "reference": "a6c1b67119d334b985cf2f386710c7e35623e09f",
+            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/deac47217144b21056271674533b289239e1b279",
+            "reference": "deac47217144b21056271674533b289239e1b279",
             "shasum": ""
         },
         "require": {
@@ -28,7 +28,7 @@
         "suggest": {
             "phpmyadmin/motranslator": "Translate messages to your favorite locale"
         },
-        "time": "2017-06-06 13:05:05",
+        "time": "2017-07-12 14:54:33",
         "bin": [
             "bin/highlight-query",
             "bin/lint-query"
@@ -209,17 +209,17 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v3.3.2",
-        "version_normalized": "3.3.2.0",
+        "version": "v3.3.5",
+        "version_normalized": "3.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "8e85dafad9c0680bcda90eec0a144d4b34923312"
+            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/8e85dafad9c0680bcda90eec0a144d4b34923312",
-            "reference": "8e85dafad9c0680bcda90eec0a144d4b34923312",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
+            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
             "shasum": ""
         },
         "require": {
@@ -244,7 +244,7 @@
         "suggest": {
             "symfony/polyfill-apcu": "For using ApcuAdapter on HHVM"
         },
-        "time": "2017-06-06 03:13:52",
+        "time": "2017-07-17 17:27:31",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -283,8 +283,8 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v3.3.2",
-        "version_normalized": "3.3.2.0",
+        "version": "v3.3.5",
+        "version_normalized": "3.3.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
@@ -442,28 +442,27 @@
     },
     {
         "name": "tecnickcom/tcpdf",
-        "version": "6.2.12",
-        "version_normalized": "6.2.12.0",
+        "version": "6.2.13",
+        "version_normalized": "6.2.13.0",
         "source": {
             "type": "git",
             "url": "https://github.com/tecnickcom/TCPDF.git",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f"
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/2f732eaa91b5665274689b1d40b285a7bacdc37f",
-            "reference": "2f732eaa91b5665274689b1d40b285a7bacdc37f",
+            "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/95c5938aafe4b20df1454dbddb3e5005c0b26f64",
+            "reference": "95c5938aafe4b20df1454dbddb3e5005c0b26f64",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2015-09-12 10:08:34",
+        "time": "2017-04-26 08:14:48",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "classmap": [
-                "fonts",
                 "config",
                 "include",
                 "tcpdf.php",
