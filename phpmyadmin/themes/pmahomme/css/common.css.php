@@ -2186,9 +2186,9 @@ input#input_import_file {
 /**
  * Indexes
  */
-#index_frm .index_info input,
+#index_frm .index_info input[type="text"],
 #index_frm .index_info select {
-    width: 14em;
+    width: 100%;
     margin: 0;
     box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -2233,7 +2233,7 @@ table#index_columns {
 
 table#index_columns select {
     width: 85%;
-    float: right;
+    float: <?php echo $left; ?>;
 }
 
 #move_columns_dialog div {

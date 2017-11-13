@@ -1,5 +1,28 @@
 # Change Log
 
+## [4.2.3] - 2017-10-10
+
+* Make mbstring extension optional (though Symfony polyfill).
+* Fixed build CREATE TABLE query with PARTITIONS having ENGINE but not VALUES.
+
+## [4.2.2] - 2017-09-28
+
+* Added support for binding parameters.
+
+## [4.2.1] - 2017-09-08
+
+* Fixed minor bug in Query::getFlags.
+* Localizaton updates.
+
+## [4.2.0] - 2017-08-30
+
+* Initial support for MariaDB SQL contexts.
+* Add support for MariaDB 10.3 INTERSECT and EXCEPT.
+
+## [4.1.10] - 2017-08-21
+
+* Use custom LoaderException for context loading errors.
+
 ## [4.1.9] - 2017-07-12
 
 * Various code cleanups.

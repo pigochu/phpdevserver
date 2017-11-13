@@ -1,22 +1,83 @@
 [
     {
-        "name": "phpmyadmin/sql-parser",
-        "version": "v4.1.9",
-        "version_normalized": "4.1.9.0",
+        "name": "symfony/polyfill-mbstring",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/phpmyadmin/sql-parser.git",
-            "reference": "deac47217144b21056271674533b289239e1b279"
+            "url": "https://github.com/symfony/polyfill-mbstring.git",
+            "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/deac47217144b21056271674533b289239e1b279",
-            "reference": "deac47217144b21056271674533b289239e1b279",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+            "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
             "shasum": ""
         },
         "require": {
-            "ext-mbstring": "*",
-            "php": ">=5.3.0"
+            "php": ">=5.3.3"
+        },
+        "suggest": {
+            "ext-mbstring": "For best performance"
+        },
+        "time": "2017-10-11T12:05:26+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Mbstring\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill for the Mbstring extension",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "mbstring",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "phpmyadmin/sql-parser",
+        "version": "v4.2.3",
+        "version_normalized": "4.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/phpmyadmin/sql-parser.git",
+            "reference": "ab4d910fcfb331c58269afd5cf85281cdab954ce"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/ab4d910fcfb331c58269afd5cf85281cdab954ce",
+            "reference": "ab4d910fcfb331c58269afd5cf85281cdab954ce",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "symfony/polyfill-mbstring": "^1.3"
         },
         "conflict": {
             "phpmyadmin/motranslator": "<3.0"
@@ -26,9 +87,10 @@
             "phpunit/phpunit": "~4.8 || ~5.7"
         },
         "suggest": {
+            "ext-mbstring": "For best performance",
             "phpmyadmin/motranslator": "Translate messages to your favorite locale"
         },
-        "time": "2017-07-12 14:54:33",
+        "time": "2017-10-10T12:58:08+00:00",
         "bin": [
             "bin/highlight-query",
             "bin/lint-query"
@@ -61,35 +123,38 @@
         ]
     },
     {
-        "name": "psr/log",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
+        "name": "symfony/polyfill-apcu",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/php-fig/log.git",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+            "url": "https://github.com/symfony/polyfill-apcu.git",
+            "reference": "04f62674339602def515bff4bc6901fc1d4951e8"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/04f62674339602def515bff4bc6901fc1d4951e8",
+            "reference": "04f62674339602def515bff4bc6901fc1d4951e8",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.0"
+            "php": ">=5.3.3"
         },
-        "time": "2016-10-10 12:19:37",
+        "time": "2017-10-11T12:05:26+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.0.x-dev"
+                "dev-master": "1.6-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "Psr\\Log\\": "Psr/Log/"
-            }
+                "Symfony\\Polyfill\\Apcu\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -97,16 +162,22 @@
         ],
         "authors": [
             {
-                "name": "PHP-FIG",
-                "homepage": "http://www.php-fig.org/"
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
             }
         ],
-        "description": "Common interface for logging libraries",
-        "homepage": "https://github.com/php-fig/log",
+        "description": "Symfony polyfill backporting apcu_* functions to lower PHP versions",
+        "homepage": "https://symfony.com",
         "keywords": [
-            "log",
-            "psr",
-            "psr-3"
+            "apcu",
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
         ]
     },
     {
@@ -127,7 +198,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2017-01-02 13:31:39",
+        "time": "2017-01-02T13:31:39+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -160,6 +231,55 @@
         ]
     },
     {
+        "name": "psr/log",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-10-10T12:19:37+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Log\\": "Psr/Log/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    },
+    {
         "name": "psr/cache",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -177,7 +297,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2016-08-06 20:24:11",
+        "time": "2016-08-06T20:24:11+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -209,24 +329,25 @@
     },
     {
         "name": "symfony/cache",
-        "version": "v3.3.5",
-        "version_normalized": "3.3.5.0",
+        "version": "v3.3.10",
+        "version_normalized": "3.3.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/cache.git",
-            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054"
+            "reference": "5f78b9728869434a445bdd86d63ef723f93e5433"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/cache/zipball/265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
-            "reference": "265987c7f524b9ad17d0a0b8819ac53ce1bb8054",
+            "url": "https://api.github.com/repos/symfony/cache/zipball/5f78b9728869434a445bdd86d63ef723f93e5433",
+            "reference": "5f78b9728869434a445bdd86d63ef723f93e5433",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.5.9",
+            "php": "^5.5.9|>=7.0.8",
             "psr/cache": "~1.0",
             "psr/log": "~1.0",
-            "psr/simple-cache": "^1.0"
+            "psr/simple-cache": "^1.0",
+            "symfony/polyfill-apcu": "~1.1"
         },
         "conflict": {
             "symfony/var-dumper": "<3.3"
@@ -241,10 +362,7 @@
             "doctrine/dbal": "~2.4",
             "predis/predis": "~1.0"
         },
-        "suggest": {
-            "symfony/polyfill-apcu": "For using ApcuAdapter on HHVM"
-        },
-        "time": "2017-07-17 17:27:31",
+        "time": "2017-10-04T07:58:49+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -283,24 +401,24 @@
     },
     {
         "name": "symfony/expression-language",
-        "version": "v3.3.5",
-        "version_normalized": "3.3.5.0",
+        "version": "v3.3.10",
+        "version_normalized": "3.3.10.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/expression-language.git",
-            "reference": "48abe52c5b80babe29e956d900b7ab06faf50eef"
+            "reference": "6e8837e9e18d3b16c5e8379b519d030aa3a08a0c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/expression-language/zipball/48abe52c5b80babe29e956d900b7ab06faf50eef",
-            "reference": "48abe52c5b80babe29e956d900b7ab06faf50eef",
+            "url": "https://api.github.com/repos/symfony/expression-language/zipball/6e8837e9e18d3b16c5e8379b519d030aa3a08a0c",
+            "reference": "6e8837e9e18d3b16c5e8379b519d030aa3a08a0c",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.5.9",
+            "php": "^5.5.9|>=7.0.8",
             "symfony/cache": "~3.1"
         },
-        "time": "2017-05-01 15:01:29",
+        "time": "2017-10-02T06:42:24+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -356,7 +474,7 @@
             "phpunit/php-code-coverage": "*",
             "phpunit/phpunit": "~4.8 || ~5.7"
         },
-        "time": "2017-06-01 11:50:55",
+        "time": "2017-06-01T11:50:55+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -409,7 +527,7 @@
         "suggest": {
             "ext-dbase": "For dbf files parsing"
         },
-        "time": "2017-05-15 08:31:47",
+        "time": "2017-05-15T08:31:47+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -458,7 +576,7 @@
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2017-04-26 08:14:48",
+        "time": "2017-04-26T08:14:48+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -506,17 +624,17 @@
     },
     {
         "name": "phpseclib/phpseclib",
-        "version": "2.0.6",
-        "version_normalized": "2.0.6.0",
+        "version": "2.0.7",
+        "version_normalized": "2.0.7.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpseclib/phpseclib.git",
-            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa"
+            "reference": "f4b6a522dfa1fd1e477c9cfe5909d5b31f098c0b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34a7699e6f31b1ef4035ee36444407cecf9f56aa",
-            "reference": "34a7699e6f31b1ef4035ee36444407cecf9f56aa",
+            "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/f4b6a522dfa1fd1e477c9cfe5909d5b31f098c0b",
+            "reference": "f4b6a522dfa1fd1e477c9cfe5909d5b31f098c0b",
             "shasum": ""
         },
         "require": {
@@ -534,7 +652,7 @@
             "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
             "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
         },
-        "time": "2017-06-05 06:31:10",
+        "time": "2017-10-23T05:04:54+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -619,7 +737,7 @@
         "require-dev": {
             "phpunit/phpunit": "^4.8"
         },
-        "time": "2017-03-09 18:44:34",
+        "time": "2017-03-09T18:44:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
