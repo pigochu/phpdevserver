@@ -126,7 +126,7 @@ php -v
 - Mod FCGID 2.3.9 for Apache 2.4.x x64 : From [www.apachehaus.com](http://www.apachehaus.com/cgi-bin/download.plx)
 - PHP 5.6.31 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.0.22 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.25 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 7.1.11 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
 - phpMyAdmin 4.7.3 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
