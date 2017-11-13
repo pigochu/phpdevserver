@@ -6,6 +6,9 @@ phpdevserver Change Log
 - 升級 PHP 71 至 7.1.11
 - 升級 PHP 70 至 7.0.25
 - 升級 PHP 56 至 5.6.32
+- 升級 phpmyadmin 至 4.7.5
+- 升級 composer 至 1.5.2
+- 升級 php-xdebug 至 2.5.5
 
 0.5.8 2017-08-14
 -----------------------
