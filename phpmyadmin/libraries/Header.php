@@ -177,7 +177,7 @@ class Header
         // Here would not be a good place to add CodeMirror because
         // the user preferences have not been merged at this point
 
-        $this->_scripts->addFile('messages.php');
+        $this->_scripts->addFile('messages.php', false, array('l' => $GLOBALS['lang']));
         // Append the theme id to this url to invalidate
         // the cache on a theme change. Though this might be
         // unavailable for fatal errors.
@@ -674,7 +674,9 @@ class Header
                 . $basedir . 'js/codemirror/addon/lint/lint.css?' . $v . '" />';
             $retval .= '<link rel="stylesheet" type="text/css" href="'
                 . $basedir . 'phpmyadmin.css.php?'
-                . 'nocache=' . $theme_id . $GLOBALS['text_dir'] . '" />';
+                . 'nocache=' . $theme_id . $GLOBALS['text_dir']
+                . (isset($GLOBALS['server']) ? '&amp;server=' . $GLOBALS['server'] : '')
+                . '" />';
             // load Print view's CSS last, so that it overrides all other CSS while
             // 'printing'
             $retval .= '<link rel="stylesheet" type="text/css" href="'

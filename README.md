@@ -1,4 +1,4 @@
-phpdevserver 0.5.8
+phpdevserver 0.5.9
 ==================
 
 PHP Dev Server 集成了 Apache 2.4 , PHP 5.5.X/5.6.X/7.0.X/7.1.X , phpMyAdmin , win-Bash , 提供 PHP 開發者一個方便切換 PHP 版本所需的環境進行開發與測試(千萬別拿來當正式機提供服務)
@@ -124,14 +124,14 @@ php -v
 
 - Apache 2.4.25 64bit : From [http://www.apachehaus.com/](http://www.apachehaus.com/cgi-bin/download.plx)
 - Mod FCGID 2.3.9 for Apache 2.4.x x64 : From [www.apachehaus.com](http://www.apachehaus.com/cgi-bin/download.plx)
-- PHP 5.6.31 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 5.6.32 64bit : From [windows.php.net](http://windows.php.net/download/)
 - PHP 5.5.38 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.0.22 64bit : From [windows.php.net](http://windows.php.net/download/)
-- PHP 7.1.8 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.0.25 64bit : From [windows.php.net](http://windows.php.net/download/)
+- PHP 7.1.11 64bit : From [windows.php.net](http://windows.php.net/download/)
 - win-bash 1.1 : From [win-bash.sourceforge.net](http://win-bash.sourceforge.net/)
-- phpMyAdmin 4.7.3 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
+- phpMyAdmin 4.7.5 : From [www.phpmyadmin.net](https://www.phpmyadmin.net/)
 - Imagick 6.9.3-7 64bit From [PECL](http://windows.php.net/downloads/pecl/deps/)
-- php-xdebug 2.5.4 : From [xdebug.org](http://xdebug.org/)
+- php-xdebug 2.5.5 : From [xdebug.org](http://xdebug.org/)
 - php-imagick 3.4.3 : From [PECL](http://windows.php.net/downloads/pecl/releases/imagick/)
 - php-apcu 4.0.11(php 5.x)/5.1.8(php 7.x) : From [PECL](https://pecl.php.net/package/APCu)
-- composer 1.5.1 : From [getcomposer.org](https://getcomposer.org )
+- composer 1.5.2 : From [getcomposer.org](https://getcomposer.org )
