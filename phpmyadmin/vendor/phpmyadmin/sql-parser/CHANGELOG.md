@@ -1,5 +1,11 @@
 # Change Log
 
+## [4.2.4] - 2017-12-06
+
+* Fix parsing of CREATE TABLE with per field COLLATE.
+* Improved Context::loadClosest to better deal with corner cases.
+* Localizaton updates.
+
 ## [4.2.3] - 2017-10-10
 
 * Make mbstring extension optional (though Symfony polyfill).

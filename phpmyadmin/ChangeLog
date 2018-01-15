@@ -1,6 +1,22 @@
 phpMyAdmin - ChangeLog
 ======================
 
+4.7.7 (2017-12-23)
+- issue #13865 Fixed displaying of formatted numeric values for some locales
+- issue #13856 Ensure datetimepicker is always loaded for datetime fields
+- issue #13848 Fixed PHP error when browsing certain results
+- issue        [security] Fix XSRF/CSRF vulnerability, see PMASA-2017-09
+
+4.7.6 (2017-11-29)
+- issue #13517 Fixed check all interaction with filtering
+- issue #13803 Add SJIS-win to default list of allowed charsets
+- issue #13436 Improve detection that MySQL server needs SSL connection
+- issue #13038 Support JSON datatype on MariaDB 10.2.7 and newer
+- issue #13824 Fixed constructing ALTER query with AFTER
+- issue #13821 Lock page when changes are done in the SQL editor
+- issue #13842 Prefer iconv for encoding conversions
+- issue #13737 Fixed changing password on MariaDB cluster
+
 4.7.5 (2017-10-23)
 - issue #13615 Avoid problems with browsing unknown query types
 - issue #13612 Integrate tooltip into datetime pickers
@@ -20,6 +36,7 @@ phpMyAdmin - ChangeLog
 - issue #13686 Clicking on column name to trigger sort with an active search leads to logout
 - issue #13725 Fixed copying tables with specific PARTITION definition
 - issue #13761 Fixed listing of bookmarks for a database
+- issue #13800 Database lost when renaming to similar name and lower_case_table_names=1
 
 4.7.4 (2017-08-23)
 - issue #13415 Remove shadow from the logo

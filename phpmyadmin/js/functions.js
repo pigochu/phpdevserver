@@ -156,16 +156,12 @@ function PMA_addDatepicker($this_element, type, options)
             }
         }
     };
-    if (type == "datetime" || type == "timestamp") {
-        $this_element.datetimepicker($.extend(defaultOptions, options));
-    }
-    else if (type == "date") {
-        $this_element.datetimepicker($.extend(defaultOptions, options));
-    }
-    else if (type == "time") {
+    if (type == "time") {
         $this_element.timepicker($.extend(defaultOptions, options));
         // Add a tip regarding entering MySQL allowed-values for TIME data-type
         PMA_tooltip($this_element, 'input', PMA_messages.strMysqlAllowedValuesTipTime);
+    } else {
+        $this_element.datetimepicker($.extend(defaultOptions, options));
     }
 }
 
@@ -293,6 +289,15 @@ function PMA_getSQLEditor($textarea, options, resize, lintOptions) {
             });
         // enable autocomplete
         codemirrorEditor.on("inputRead", codemirrorAutocompleteOnInputRead);
+
+        // page locking
+        codemirrorEditor.on('change', function (e) {
+            e.data = {
+                value: 3,
+                content: codemirrorEditor.isClean(),
+            };
+            AJAX.lockPageHandler(e);
+        });
 
         return codemirrorEditor;
     }
@@ -4741,7 +4746,7 @@ $(document).on("change", checkboxes_sel, checkboxes_changed);
 
 $(document).on("change", "input.checkall_box", function () {
     var is_checked = $(this).is(":checked");
-    $(this.form).find(checkboxes_sel).prop("checked", is_checked)
+    $(this.form).find(checkboxes_sel).not('.row-hidden').prop("checked", is_checked)
     .parents("tr").toggleClass("marked", is_checked);
 });
 
