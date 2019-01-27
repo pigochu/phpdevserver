@@ -38,6 +38,10 @@ class CreateDefinition extends Component
         'NOT NULL' => 1,
         'NULL' => 1,
         'DEFAULT' => array(2, 'expr', array('breakOnAlias' => true)),
+        /* Following are not according to grammar, but MySQL happily accepts
+         * these at any location */
+        'CHARSET' => array(2, 'var'),
+        'COLLATE' => array(3, 'var'),
         'AUTO_INCREMENT' => 3,
         'PRIMARY' => 4,
         'PRIMARY KEY' => 4,
@@ -255,7 +259,7 @@ class CreateDefinition extends Component
                 }
                 $state = 5;
             } elseif ($state === 5) {
-                if ((!empty($expr->type)) || (!empty($expr->key))) {
+                if (!empty($expr->type) || !empty($expr->key)) {
                     $ret[] = $expr;
                 }
                 $expr = new self();
@@ -277,7 +281,7 @@ class CreateDefinition extends Component
         }
 
         // Last iteration was not saved.
-        if ((!empty($expr->type)) || (!empty($expr->key))) {
+        if (!empty($expr->type) || !empty($expr->key)) {
             $ret[] = $expr;
         }
 
@@ -311,7 +315,7 @@ class CreateDefinition extends Component
             $tmp .= 'CONSTRAINT ';
         }
 
-        if ((isset($component->name)) && ($component->name !== '')) {
+        if (isset($component->name) && ($component->name !== '')) {
             $tmp .= Context::escape($component->name) . ' ';
         }
 
