@@ -1,0 +1,1 @@
+extension=php_fileinfo.dll

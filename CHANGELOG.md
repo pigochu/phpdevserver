@@ -1,15 +1,12 @@
 phpdevserver Change Log
 ========================
 
-0.5.11
------------------------
-- 升級 composer 至 1.6.3
 
-
-0.5.10
+0.5.10 2019-01-27
 -----------------------
-- 升級 phpmyadmin 至 4.7.7
-- 升級 composer 至 1.6.2
+- 升級 phpmyadmin 至 4.8.5
+- 升級 composer 至 1.8.0
+- 增加 PHP 7.3.1 (未包含 imagick extension , 包含 xdebug 2.7.0BETA 1)
 
 
 0.5.9 2017-11-13
